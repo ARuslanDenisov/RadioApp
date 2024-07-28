@@ -290,10 +290,10 @@
 			isa = PBXGroup;
 			children = (
 				442681062C56701B00E8C7F5 /* URLManager.swift */,
+				4426810E2C56709100E8C7F5 /* NetworkServiceAA.swift */,
 				442681082C56704400E8C7F5 /* FBAuthService.swift */,
 				4426810A2C56705800E8C7F5 /* FBFirestoreService.swift */,
 				4426810C2C56706500E8C7F5 /* FBStorageService.swift */,
-				4426810E2C56709100E8C7F5 /* NetworkServiceAA.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -642,7 +642,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -676,7 +675,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
