@@ -11,7 +11,7 @@ struct TestView: View {
     var body: some View {
         VStack {
             Button {
-                print(URLManager.shared.createURL(uuids: ["1","2", "3"]))
+//                print(URLManager.shared.createURL(uuids: ["1","2", "3"]))
             } label: {
                 Text("printMe")
             }

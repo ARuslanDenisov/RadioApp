@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var authCheck = true
+    @State var showSignInView = false
+    
     var body: some View {
         VStack {
             //check
-            if authCheck {
+            if showSignInView {
                 //button
                 ZStack {
                     Text("")
@@ -20,10 +21,20 @@ struct RootView: View {
             } else {
                 AuthView()
             }
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            
+            
+            NavigationView {
+                
+            }
+            .onAppear {
+                let authUser = try? AuthenticationManager.shared.getAuthenticationUser()
+                self.showSignInView = authUser == nil
+            }
+            .fullScreenCover(isPresented: $showSignInView, content: {
+                NavigationView {
+                    AuthView()
+                }
+            })
         }
         .padding()
     }

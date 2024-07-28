@@ -20,7 +20,6 @@
 		442680FD2C566FD900E8C7F5 /* AllStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680FC2C566FD900E8C7F5 /* AllStationView.swift */; };
 		442680FF2C566FE600E8C7F5 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680FE2C566FE600E8C7F5 /* FavoriteView.swift */; };
 		442681012C566FF000E8C7F5 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681002C566FF000E8C7F5 /* PopularView.swift */; };
-		442681032C566FFC00E8C7F5 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681022C566FFC00E8C7F5 /* AuthView.swift */; };
 		442681052C56700800E8C7F5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681042C56700800E8C7F5 /* OnboardingView.swift */; };
 		442681072C56701B00E8C7F5 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681062C56701B00E8C7F5 /* URLManager.swift */; };
 		442681092C56704400E8C7F5 /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681082C56704400E8C7F5 /* FBAuthService.swift */; };
@@ -58,6 +57,9 @@
 		442681812C56831500E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 442681802C56831500E8C7F5 /* GoogleService-Info.plist */; };
 		442681832C569FFF00E8C7F5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681822C569FFF00E8C7F5 /* TestView.swift */; };
 		442681862C56A2EC00E8C7F5 /* TextResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681852C56A2EC00E8C7F5 /* TextResource.swift */; };
+		92FBFE172C56B24800A96597 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FBFE162C56B24800A96597 /* AuthView.swift */; };
+		92FBFE192C56C10D00A96597 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FBFE182C56C10D00A96597 /* AuthenticationManager.swift */; };
+		92FBFE1B2C56E25F00A96597 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FBFE1A2C56E25F00A96597 /* SignInEmailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +77,6 @@
 		442680FC2C566FD900E8C7F5 /* AllStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStationView.swift; sourceTree = "<group>"; };
 		442680FE2C566FE600E8C7F5 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		442681002C566FF000E8C7F5 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
-		442681022C566FFC00E8C7F5 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		442681042C56700800E8C7F5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		442681062C56701B00E8C7F5 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		442681082C56704400E8C7F5 /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
@@ -106,6 +107,9 @@
 		442681802C56831500E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		442681822C569FFF00E8C7F5 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		442681852C56A2EC00E8C7F5 /* TextResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextResource.swift; sourceTree = "<group>"; };
+		92FBFE162C56B24800A96597 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		92FBFE182C56C10D00A96597 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		92FBFE1A2C56E25F00A96597 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +198,9 @@
 		442680E32C566DE700E8C7F5 /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
-				442681022C566FFC00E8C7F5 /* AuthView.swift */,
+				92FBFE162C56B24800A96597 /* AuthView.swift */,
+				92FBFE182C56C10D00A96597 /* AuthenticationManager.swift */,
+				92FBFE1A2C56E25F00A96597 /* SignInEmailViewModel.swift */,
 			);
 			path = AuthViews;
 			sourceTree = "<group>";
@@ -469,7 +475,6 @@
 				442680D72C566CBA00E8C7F5 /* RootView.swift in Sources */,
 				4426811F2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift in Sources */,
 				442681262C56727900E8C7F5 /* EqualizerView.swift in Sources */,
-				442681032C566FFC00E8C7F5 /* AuthView.swift in Sources */,
 				442681092C56704400E8C7F5 /* FBAuthService.swift in Sources */,
 				442681832C569FFF00E8C7F5 /* TestView.swift in Sources */,
 				442680F52C566FA100E8C7F5 /* ProfileView.swift in Sources */,
@@ -486,12 +491,15 @@
 				442681152C56714500E8C7F5 /* StationModel.swift in Sources */,
 				442680FF2C566FE600E8C7F5 /* FavoriteView.swift in Sources */,
 				442681012C566FF000E8C7F5 /* PopularView.swift in Sources */,
+				92FBFE1B2C56E25F00A96597 /* SignInEmailViewModel.swift in Sources */,
 				442681052C56700800E8C7F5 /* OnboardingView.swift in Sources */,
 				442681862C56A2EC00E8C7F5 /* TextResource.swift in Sources */,
 				442681242C56726100E8C7F5 /* WaveAnimationElement.swift in Sources */,
+				92FBFE192C56C10D00A96597 /* AuthenticationManager.swift in Sources */,
 				442681172C56719300E8C7F5 /* TabBarView.swift in Sources */,
 				442681132C56713200E8C7F5 /* UserModel.swift in Sources */,
 				442681192C5671A800E8C7F5 /* RadioButtonsView.swift in Sources */,
+				92FBFE172C56B24800A96597 /* AuthView.swift in Sources */,
 				442680F92C566FC200E8C7F5 /* StationDetailView.swift in Sources */,
 				442681072C56701B00E8C7F5 /* URLManager.swift in Sources */,
 				4426810B2C56705800E8C7F5 /* FBFirestoreService.swift in Sources */,
