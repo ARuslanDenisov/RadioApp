@@ -1,0 +1,770 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		442680D52C566CBA00E8C7F5 /* RadioAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680D42C566CBA00E8C7F5 /* RadioAppApp.swift */; };
+		442680D72C566CBA00E8C7F5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680D62C566CBA00E8C7F5 /* RootView.swift */; };
+		442680D92C566CBB00E8C7F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 442680D82C566CBB00E8C7F5 /* Assets.xcassets */; };
+		442680DC2C566CBB00E8C7F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 442680DB2C566CBB00E8C7F5 /* Preview Assets.xcassets */; };
+		442680F12C566F7500E8C7F5 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680F02C566F7500E8C7F5 /* LicenseView.swift */; };
+		442680F32C566F9700E8C7F5 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680F22C566F9700E8C7F5 /* AboutView.swift */; };
+		442680F52C566FA100E8C7F5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680F42C566FA100E8C7F5 /* ProfileView.swift */; };
+		442680F72C566FB200E8C7F5 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680F62C566FB200E8C7F5 /* ProfileEditView.swift */; };
+		442680F92C566FC200E8C7F5 /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680F82C566FC200E8C7F5 /* StationDetailView.swift */; };
+		442680FB2C566FCC00E8C7F5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680FA2C566FCC00E8C7F5 /* SearchView.swift */; };
+		442680FD2C566FD900E8C7F5 /* AllStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680FC2C566FD900E8C7F5 /* AllStationView.swift */; };
+		442680FF2C566FE600E8C7F5 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442680FE2C566FE600E8C7F5 /* FavoriteView.swift */; };
+		442681012C566FF000E8C7F5 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681002C566FF000E8C7F5 /* PopularView.swift */; };
+		442681032C566FFC00E8C7F5 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681022C566FFC00E8C7F5 /* AuthView.swift */; };
+		442681052C56700800E8C7F5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681042C56700800E8C7F5 /* OnboardingView.swift */; };
+		442681072C56701B00E8C7F5 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681062C56701B00E8C7F5 /* URLManager.swift */; };
+		442681092C56704400E8C7F5 /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681082C56704400E8C7F5 /* FBAuthService.swift */; };
+		4426810B2C56705800E8C7F5 /* FBFirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426810A2C56705800E8C7F5 /* FBFirestoreService.swift */; };
+		4426810D2C56706500E8C7F5 /* FBStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426810C2C56706500E8C7F5 /* FBStorageService.swift */; };
+		4426810F2C56709100E8C7F5 /* NetworkServiceAA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426810E2C56709100E8C7F5 /* NetworkServiceAA.swift */; };
+		442681132C56713200E8C7F5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681122C56713200E8C7F5 /* UserModel.swift */; };
+		442681152C56714500E8C7F5 /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681142C56714500E8C7F5 /* StationModel.swift */; };
+		442681172C56719300E8C7F5 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681162C56719300E8C7F5 /* TabBarView.swift */; };
+		442681192C5671A800E8C7F5 /* RadioButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681182C5671A800E8C7F5 /* RadioButtonsView.swift */; };
+		4426811B2C5671CB00E8C7F5 /* VolumeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426811A2C5671CB00E8C7F5 /* VolumeSliderView.swift */; };
+		4426811D2C5671E600E8C7F5 /* RadioSmallGridElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426811C2C5671E600E8C7F5 /* RadioSmallGridElement.swift */; };
+		4426811F2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426811E2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift */; };
+		442681212C56721200E8C7F5 /* RadioBigAllStationElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681202C56721200E8C7F5 /* RadioBigAllStationElement.swift */; };
+		442681242C56726100E8C7F5 /* WaveAnimationElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681232C56726100E8C7F5 /* WaveAnimationElement.swift */; };
+		442681262C56727900E8C7F5 /* EqualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681252C56727900E8C7F5 /* EqualizerView.swift */; };
+		442681292C5672FE00E8C7F5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 442681282C5672FE00E8C7F5 /* FirebaseAnalytics */; };
+		4426812B2C5672FE00E8C7F5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 4426812A2C5672FE00E8C7F5 /* FirebaseAnalyticsOnDeviceConversion */; };
+		4426813B2C5672FE00E8C7F5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4426813A2C5672FE00E8C7F5 /* FirebaseFirestore */; };
+		4426813F2C5672FE00E8C7F5 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4426813E2C5672FE00E8C7F5 /* FirebaseFirestoreSwift */; };
+		442681552C5672FE00E8C7F5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 442681542C5672FE00E8C7F5 /* FirebaseStorage */; };
+		4426815D2C56737200E8C7F5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4426815C2C56737200E8C7F5 /* Kingfisher */; };
+		442681602C5673D100E8C7F5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4426815F2C5673D100E8C7F5 /* FirebaseAuth */; };
+		442681622C5673D700E8C7F5 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 442681612C5673D700E8C7F5 /* SwiftyJSON */; };
+		442681642C56744B00E8C7F5 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681632C56744B00E8C7F5 /* ImageExtension.swift */; };
+		442681762C5675B200E8C7F5 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4426816D2C5675B200E8C7F5 /* SF-Pro-Display-Semibold.otf */; };
+		442681772C5675B200E8C7F5 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4426816E2C5675B200E8C7F5 /* SF-Pro-Display-Thin.otf */; };
+		442681782C5675B200E8C7F5 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4426816F2C5675B200E8C7F5 /* SF-Pro-Display-Black.otf */; };
+		442681792C5675B200E8C7F5 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 442681702C5675B200E8C7F5 /* SF-Pro-Display-Regular.otf */; };
+		4426817A2C5675B200E8C7F5 /* SF-Pro-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 442681712C5675B200E8C7F5 /* SF-Pro-Display-Ultralight.otf */; };
+		4426817B2C5675B200E8C7F5 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 442681722C5675B200E8C7F5 /* SF-Pro-Display-Medium.otf */; };
+		4426817C2C5675B200E8C7F5 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 442681732C5675B200E8C7F5 /* SF-Pro-Display-Bold.otf */; };
+		4426817D2C5675B200E8C7F5 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 442681742C5675B200E8C7F5 /* SF-Pro-Display-Light.otf */; };
+		4426817E2C5675B200E8C7F5 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 442681752C5675B200E8C7F5 /* SF-Pro-Display-Heavy.otf */; };
+		442681812C56831500E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 442681802C56831500E8C7F5 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		442680D12C566CBA00E8C7F5 /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		442680D42C566CBA00E8C7F5 /* RadioAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioAppApp.swift; sourceTree = "<group>"; };
+		442680D62C566CBA00E8C7F5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		442680D82C566CBB00E8C7F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		442680DB2C566CBB00E8C7F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		442680F02C566F7500E8C7F5 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
+		442680F22C566F9700E8C7F5 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		442680F42C566FA100E8C7F5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		442680F62C566FB200E8C7F5 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		442680F82C566FC200E8C7F5 /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
+		442680FA2C566FCC00E8C7F5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		442680FC2C566FD900E8C7F5 /* AllStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStationView.swift; sourceTree = "<group>"; };
+		442680FE2C566FE600E8C7F5 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		442681002C566FF000E8C7F5 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		442681022C566FFC00E8C7F5 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		442681042C56700800E8C7F5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		442681062C56701B00E8C7F5 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		442681082C56704400E8C7F5 /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
+		4426810A2C56705800E8C7F5 /* FBFirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBFirestoreService.swift; sourceTree = "<group>"; };
+		4426810C2C56706500E8C7F5 /* FBStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageService.swift; sourceTree = "<group>"; };
+		4426810E2C56709100E8C7F5 /* NetworkServiceAA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceAA.swift; sourceTree = "<group>"; };
+		442681122C56713200E8C7F5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		442681142C56714500E8C7F5 /* StationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
+		442681162C56719300E8C7F5 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		442681182C5671A800E8C7F5 /* RadioButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsView.swift; sourceTree = "<group>"; };
+		4426811A2C5671CB00E8C7F5 /* VolumeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderView.swift; sourceTree = "<group>"; };
+		4426811C2C5671E600E8C7F5 /* RadioSmallGridElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSmallGridElement.swift; sourceTree = "<group>"; };
+		4426811E2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioBigFavoriteElement.swift; sourceTree = "<group>"; };
+		442681202C56721200E8C7F5 /* RadioBigAllStationElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioBigAllStationElement.swift; sourceTree = "<group>"; };
+		442681232C56726100E8C7F5 /* WaveAnimationElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimationElement.swift; sourceTree = "<group>"; };
+		442681252C56727900E8C7F5 /* EqualizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerView.swift; sourceTree = "<group>"; };
+		442681632C56744B00E8C7F5 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		4426816D2C5675B200E8C7F5 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		4426816E2C5675B200E8C7F5 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		4426816F2C5675B200E8C7F5 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		442681702C5675B200E8C7F5 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		442681712C5675B200E8C7F5 /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		442681722C5675B200E8C7F5 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		442681732C5675B200E8C7F5 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		442681742C5675B200E8C7F5 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		442681752C5675B200E8C7F5 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		4426817F2C5676A400E8C7F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		442681802C56831500E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		442680CE2C566CBA00E8C7F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				442681292C5672FE00E8C7F5 /* FirebaseAnalytics in Frameworks */,
+				4426813B2C5672FE00E8C7F5 /* FirebaseFirestore in Frameworks */,
+				442681622C5673D700E8C7F5 /* SwiftyJSON in Frameworks */,
+				4426815D2C56737200E8C7F5 /* Kingfisher in Frameworks */,
+				4426812B2C5672FE00E8C7F5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				442681552C5672FE00E8C7F5 /* FirebaseStorage in Frameworks */,
+				442681602C5673D100E8C7F5 /* FirebaseAuth in Frameworks */,
+				4426813F2C5672FE00E8C7F5 /* FirebaseFirestoreSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		442680C82C566CBA00E8C7F5 = {
+			isa = PBXGroup;
+			children = (
+				442680D32C566CBA00E8C7F5 /* RadioApp */,
+				442680D22C566CBA00E8C7F5 /* Products */,
+				4426815E2C5673D100E8C7F5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		442680D22C566CBA00E8C7F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				442680D12C566CBA00E8C7F5 /* RadioApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		442680D32C566CBA00E8C7F5 /* RadioApp */ = {
+			isa = PBXGroup;
+			children = (
+				4426817F2C5676A400E8C7F5 /* Info.plist */,
+				442681802C56831500E8C7F5 /* GoogleService-Info.plist */,
+				442680D42C566CBA00E8C7F5 /* RadioAppApp.swift */,
+				442680D62C566CBA00E8C7F5 /* RootView.swift */,
+				442680EC2C566E6C00E8C7F5 /* LicenseView */,
+				442680EB2C566E5F00E8C7F5 /* AboutView */,
+				442680EA2C566E5300E8C7F5 /* ProfileEditView */,
+				442680E92C566E4500E8C7F5 /* ProfileView */,
+				442680E82C566E3800E8C7F5 /* StationDetailView */,
+				442680E72C566E2E00E8C7F5 /* SearchView */,
+				442680E62C566E2400E8C7F5 /* AllStationView */,
+				442680E52C566E1D00E8C7F5 /* FavoriteView */,
+				442680E42C566E1100E8C7F5 /* PopularView */,
+				442680E32C566DE700E8C7F5 /* AuthViews */,
+				442680E22C566DDB00E8C7F5 /* OnboardingView */,
+				442680EE2C566E9C00E8C7F5 /* Services */,
+				442680ED2C566E9500E8C7F5 /* Models */,
+				442680EF2C566F3000E8C7F5 /* Elements */,
+				442681222C56723100E8C7F5 /* EqualizerView */,
+				442681112C5670ED00E8C7F5 /* Resources */,
+				442680DA2C566CBB00E8C7F5 /* Preview Content */,
+				442681102C56709D00E8C7F5 /* Extensions */,
+				442680D82C566CBB00E8C7F5 /* Assets.xcassets */,
+			);
+			path = RadioApp;
+			sourceTree = "<group>";
+		};
+		442680DA2C566CBB00E8C7F5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				442680DB2C566CBB00E8C7F5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		442680E22C566DDB00E8C7F5 /* OnboardingView */ = {
+			isa = PBXGroup;
+			children = (
+				442681042C56700800E8C7F5 /* OnboardingView.swift */,
+			);
+			path = OnboardingView;
+			sourceTree = "<group>";
+		};
+		442680E32C566DE700E8C7F5 /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
+				442681022C566FFC00E8C7F5 /* AuthView.swift */,
+			);
+			path = AuthViews;
+			sourceTree = "<group>";
+		};
+		442680E42C566E1100E8C7F5 /* PopularView */ = {
+			isa = PBXGroup;
+			children = (
+				442681002C566FF000E8C7F5 /* PopularView.swift */,
+			);
+			path = PopularView;
+			sourceTree = "<group>";
+		};
+		442680E52C566E1D00E8C7F5 /* FavoriteView */ = {
+			isa = PBXGroup;
+			children = (
+				442680FE2C566FE600E8C7F5 /* FavoriteView.swift */,
+			);
+			path = FavoriteView;
+			sourceTree = "<group>";
+		};
+		442680E62C566E2400E8C7F5 /* AllStationView */ = {
+			isa = PBXGroup;
+			children = (
+				442680FC2C566FD900E8C7F5 /* AllStationView.swift */,
+			);
+			path = AllStationView;
+			sourceTree = "<group>";
+		};
+		442680E72C566E2E00E8C7F5 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				442680FA2C566FCC00E8C7F5 /* SearchView.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		442680E82C566E3800E8C7F5 /* StationDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				442680F82C566FC200E8C7F5 /* StationDetailView.swift */,
+			);
+			path = StationDetailView;
+			sourceTree = "<group>";
+		};
+		442680E92C566E4500E8C7F5 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				442680F42C566FA100E8C7F5 /* ProfileView.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		442680EA2C566E5300E8C7F5 /* ProfileEditView */ = {
+			isa = PBXGroup;
+			children = (
+				442680F62C566FB200E8C7F5 /* ProfileEditView.swift */,
+			);
+			path = ProfileEditView;
+			sourceTree = "<group>";
+		};
+		442680EB2C566E5F00E8C7F5 /* AboutView */ = {
+			isa = PBXGroup;
+			children = (
+				442680F22C566F9700E8C7F5 /* AboutView.swift */,
+			);
+			path = AboutView;
+			sourceTree = "<group>";
+		};
+		442680EC2C566E6C00E8C7F5 /* LicenseView */ = {
+			isa = PBXGroup;
+			children = (
+				442680F02C566F7500E8C7F5 /* LicenseView.swift */,
+			);
+			path = LicenseView;
+			sourceTree = "<group>";
+		};
+		442680ED2C566E9500E8C7F5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				442681122C56713200E8C7F5 /* UserModel.swift */,
+				442681142C56714500E8C7F5 /* StationModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		442680EE2C566E9C00E8C7F5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				442681062C56701B00E8C7F5 /* URLManager.swift */,
+				442681082C56704400E8C7F5 /* FBAuthService.swift */,
+				4426810A2C56705800E8C7F5 /* FBFirestoreService.swift */,
+				4426810C2C56706500E8C7F5 /* FBStorageService.swift */,
+				4426810E2C56709100E8C7F5 /* NetworkServiceAA.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		442680EF2C566F3000E8C7F5 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				442681162C56719300E8C7F5 /* TabBarView.swift */,
+				442681182C5671A800E8C7F5 /* RadioButtonsView.swift */,
+				4426811A2C5671CB00E8C7F5 /* VolumeSliderView.swift */,
+				4426811C2C5671E600E8C7F5 /* RadioSmallGridElement.swift */,
+				4426811E2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift */,
+				442681202C56721200E8C7F5 /* RadioBigAllStationElement.swift */,
+				442681232C56726100E8C7F5 /* WaveAnimationElement.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		442681102C56709D00E8C7F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				442681632C56744B00E8C7F5 /* ImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		442681112C5670ED00E8C7F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				442681662C56749400E8C7F5 /* Sounds */,
+				442681652C56748A00E8C7F5 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		442681222C56723100E8C7F5 /* EqualizerView */ = {
+			isa = PBXGroup;
+			children = (
+				442681252C56727900E8C7F5 /* EqualizerView.swift */,
+			);
+			path = EqualizerView;
+			sourceTree = "<group>";
+		};
+		4426815E2C5673D100E8C7F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		442681652C56748A00E8C7F5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4426816F2C5675B200E8C7F5 /* SF-Pro-Display-Black.otf */,
+				442681732C5675B200E8C7F5 /* SF-Pro-Display-Bold.otf */,
+				442681752C5675B200E8C7F5 /* SF-Pro-Display-Heavy.otf */,
+				442681742C5675B200E8C7F5 /* SF-Pro-Display-Light.otf */,
+				442681722C5675B200E8C7F5 /* SF-Pro-Display-Medium.otf */,
+				442681702C5675B200E8C7F5 /* SF-Pro-Display-Regular.otf */,
+				4426816D2C5675B200E8C7F5 /* SF-Pro-Display-Semibold.otf */,
+				4426816E2C5675B200E8C7F5 /* SF-Pro-Display-Thin.otf */,
+				442681712C5675B200E8C7F5 /* SF-Pro-Display-Ultralight.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		442681662C56749400E8C7F5 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		442680D02C566CBA00E8C7F5 /* RadioApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 442680DF2C566CBB00E8C7F5 /* Build configuration list for PBXNativeTarget "RadioApp" */;
+			buildPhases = (
+				442680CD2C566CBA00E8C7F5 /* Sources */,
+				442680CE2C566CBA00E8C7F5 /* Frameworks */,
+				442680CF2C566CBA00E8C7F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadioApp;
+			packageProductDependencies = (
+				442681282C5672FE00E8C7F5 /* FirebaseAnalytics */,
+				4426812A2C5672FE00E8C7F5 /* FirebaseAnalyticsOnDeviceConversion */,
+				4426813A2C5672FE00E8C7F5 /* FirebaseFirestore */,
+				4426813E2C5672FE00E8C7F5 /* FirebaseFirestoreSwift */,
+				442681542C5672FE00E8C7F5 /* FirebaseStorage */,
+				4426815C2C56737200E8C7F5 /* Kingfisher */,
+				4426815F2C5673D100E8C7F5 /* FirebaseAuth */,
+				442681612C5673D700E8C7F5 /* SwiftyJSON */,
+			);
+			productName = RadioApp;
+			productReference = 442680D12C566CBA00E8C7F5 /* RadioApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		442680C92C566CBA00E8C7F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					442680D02C566CBA00E8C7F5 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 442680CC2C566CBA00E8C7F5 /* Build configuration list for PBXProject "RadioApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 442680C82C566CBA00E8C7F5;
+			packageReferences = (
+				442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4426815A2C56732200E8C7F5 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				4426815B2C56737200E8C7F5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
+			productRefGroup = 442680D22C566CBA00E8C7F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				442680D02C566CBA00E8C7F5 /* RadioApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		442680CF2C566CBA00E8C7F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4426817B2C5675B200E8C7F5 /* SF-Pro-Display-Medium.otf in Resources */,
+				4426817E2C5675B200E8C7F5 /* SF-Pro-Display-Heavy.otf in Resources */,
+				442681772C5675B200E8C7F5 /* SF-Pro-Display-Thin.otf in Resources */,
+				4426817C2C5675B200E8C7F5 /* SF-Pro-Display-Bold.otf in Resources */,
+				442681762C5675B200E8C7F5 /* SF-Pro-Display-Semibold.otf in Resources */,
+				442681812C56831500E8C7F5 /* GoogleService-Info.plist in Resources */,
+				4426817A2C5675B200E8C7F5 /* SF-Pro-Display-Ultralight.otf in Resources */,
+				442681782C5675B200E8C7F5 /* SF-Pro-Display-Black.otf in Resources */,
+				4426817D2C5675B200E8C7F5 /* SF-Pro-Display-Light.otf in Resources */,
+				442680DC2C566CBB00E8C7F5 /* Preview Assets.xcassets in Resources */,
+				442681792C5675B200E8C7F5 /* SF-Pro-Display-Regular.otf in Resources */,
+				442680D92C566CBB00E8C7F5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		442680CD2C566CBA00E8C7F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				442680F32C566F9700E8C7F5 /* AboutView.swift in Sources */,
+				442680D72C566CBA00E8C7F5 /* RootView.swift in Sources */,
+				4426811F2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift in Sources */,
+				442681262C56727900E8C7F5 /* EqualizerView.swift in Sources */,
+				442681032C566FFC00E8C7F5 /* AuthView.swift in Sources */,
+				442681092C56704400E8C7F5 /* FBAuthService.swift in Sources */,
+				442680F52C566FA100E8C7F5 /* ProfileView.swift in Sources */,
+				442680F12C566F7500E8C7F5 /* LicenseView.swift in Sources */,
+				4426811D2C5671E600E8C7F5 /* RadioSmallGridElement.swift in Sources */,
+				442681212C56721200E8C7F5 /* RadioBigAllStationElement.swift in Sources */,
+				4426810D2C56706500E8C7F5 /* FBStorageService.swift in Sources */,
+				442680FD2C566FD900E8C7F5 /* AllStationView.swift in Sources */,
+				4426810F2C56709100E8C7F5 /* NetworkServiceAA.swift in Sources */,
+				442680FB2C566FCC00E8C7F5 /* SearchView.swift in Sources */,
+				442680F72C566FB200E8C7F5 /* ProfileEditView.swift in Sources */,
+				442681642C56744B00E8C7F5 /* ImageExtension.swift in Sources */,
+				442680D52C566CBA00E8C7F5 /* RadioAppApp.swift in Sources */,
+				442681152C56714500E8C7F5 /* StationModel.swift in Sources */,
+				442680FF2C566FE600E8C7F5 /* FavoriteView.swift in Sources */,
+				442681012C566FF000E8C7F5 /* PopularView.swift in Sources */,
+				442681052C56700800E8C7F5 /* OnboardingView.swift in Sources */,
+				442681242C56726100E8C7F5 /* WaveAnimationElement.swift in Sources */,
+				442681172C56719300E8C7F5 /* TabBarView.swift in Sources */,
+				442681132C56713200E8C7F5 /* UserModel.swift in Sources */,
+				442681192C5671A800E8C7F5 /* RadioButtonsView.swift in Sources */,
+				442680F92C566FC200E8C7F5 /* StationDetailView.swift in Sources */,
+				442681072C56701B00E8C7F5 /* URLManager.swift in Sources */,
+				4426810B2C56705800E8C7F5 /* FBFirestoreService.swift in Sources */,
+				4426811B2C5671CB00E8C7F5 /* VolumeSliderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		442680DD2C566CBB00E8C7F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		442680DE2C566CBB00E8C7F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		442680E02C566CBB00E8C7F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RadioApp/Preview Content\"";
+				DEVELOPMENT_TEAM = MMRD3ZF494;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RadioApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = smTeam6.RadioApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		442680E12C566CBB00E8C7F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RadioApp/Preview Content\"";
+				DEVELOPMENT_TEAM = MMRD3ZF494;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RadioApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = smTeam6.RadioApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		442680CC2C566CBA00E8C7F5 /* Build configuration list for PBXProject "RadioApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				442680DD2C566CBB00E8C7F5 /* Debug */,
+				442680DE2C566CBB00E8C7F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		442680DF2C566CBB00E8C7F5 /* Build configuration list for PBXNativeTarget "RadioApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				442680E02C566CBB00E8C7F5 /* Debug */,
+				442680E12C566CBB00E8C7F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.29.0;
+			};
+		};
+		4426815A2C56732200E8C7F5 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		4426815B2C56737200E8C7F5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		442681282C5672FE00E8C7F5 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		4426812A2C5672FE00E8C7F5 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		4426813A2C5672FE00E8C7F5 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		4426813E2C5672FE00E8C7F5 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		442681542C5672FE00E8C7F5 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		4426815C2C56737200E8C7F5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4426815B2C56737200E8C7F5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		4426815F2C5673D100E8C7F5 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 442681272C5672FE00E8C7F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		442681612C5673D700E8C7F5 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4426815A2C56732200E8C7F5 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 442680C92C566CBA00E8C7F5 /* Project object */;
+}

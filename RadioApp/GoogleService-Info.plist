@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAZ0L-yvnyVl_9H0qrQxTNeEBW6T0NBAE8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>25877551460</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>smTeam6.RadioApp</string>
+	<key>PROJECT_ID</key>
+	<string>radioapp-43b5d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>radioapp-43b5d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:25877551460:ios:0e1070b7baec46658a4271</string>
+</dict>
+</plist>
