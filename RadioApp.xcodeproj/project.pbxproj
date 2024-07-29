@@ -58,6 +58,8 @@
 		442681812C56831500E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 442681802C56831500E8C7F5 /* GoogleService-Info.plist */; };
 		442681832C569FFF00E8C7F5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681822C569FFF00E8C7F5 /* TestView.swift */; };
 		442681862C56A2EC00E8C7F5 /* TextResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681852C56A2EC00E8C7F5 /* TextResource.swift */; };
+		442681882C57636F00E8C7F5 /* FontsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681872C57636F00E8C7F5 /* FontsEnum.swift */; };
+		4426818A2C57645500E8C7F5 /* PasswordAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681892C57645500E8C7F5 /* PasswordAuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,8 @@
 		442681802C56831500E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		442681822C569FFF00E8C7F5 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		442681852C56A2EC00E8C7F5 /* TextResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextResource.swift; sourceTree = "<group>"; };
+		442681872C57636F00E8C7F5 /* FontsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsEnum.swift; sourceTree = "<group>"; };
+		442681892C57645500E8C7F5 /* PasswordAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				442681022C566FFC00E8C7F5 /* AuthView.swift */,
+				442681892C57645500E8C7F5 /* PasswordAuthView.swift */,
 			);
 			path = AuthViews;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				4426816D2C5675B200E8C7F5 /* SF-Pro-Display-Semibold.otf */,
 				4426816E2C5675B200E8C7F5 /* SF-Pro-Display-Thin.otf */,
 				442681712C5675B200E8C7F5 /* SF-Pro-Display-Ultralight.otf */,
+				442681872C57636F00E8C7F5 /* FontsEnum.swift */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 			files = (
 				442680F32C566F9700E8C7F5 /* AboutView.swift in Sources */,
 				442680D72C566CBA00E8C7F5 /* RootView.swift in Sources */,
+				4426818A2C57645500E8C7F5 /* PasswordAuthView.swift in Sources */,
 				4426811F2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift in Sources */,
 				442681262C56727900E8C7F5 /* EqualizerView.swift in Sources */,
 				442681032C566FFC00E8C7F5 /* AuthView.swift in Sources */,
@@ -474,6 +481,7 @@
 				442681832C569FFF00E8C7F5 /* TestView.swift in Sources */,
 				442680F52C566FA100E8C7F5 /* ProfileView.swift in Sources */,
 				442680F12C566F7500E8C7F5 /* LicenseView.swift in Sources */,
+				442681882C57636F00E8C7F5 /* FontsEnum.swift in Sources */,
 				4426811D2C5671E600E8C7F5 /* RadioSmallGridElement.swift in Sources */,
 				442681212C56721200E8C7F5 /* RadioBigAllStationElement.swift in Sources */,
 				4426810D2C56706500E8C7F5 /* FBStorageService.swift in Sources */,
