@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct AuthView: View {
-    var signIn: Bool = true
-    @State private var login = ""
-    @State private var password = ""
-    @State private var name = ""
-    @State private var passwordHidden = true
-    @State private var signInBool = false
+    @StateObject var mainViewModel: DataViewModel
+    @StateObject var viewModel: AuthViewModel = AuthViewModel()
+    @Binding var showAuthView: Bool
     var body: some View {
         ZStack {
             Image("bgAuth")
@@ -26,10 +23,17 @@ struct AuthView: View {
                         .resizableToFit()
                         .frame(width: 58, height: 58)
                     Spacer()
+                    Button {
+                        viewModel.email = "test@test.ru"
+                        viewModel.password = "qwerty"
+                    } label: {
+                        Image(systemName: "person")
+                            .frame(width: 10)
+                    }
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(signInBool ? "Sign in" : "Sign up")
+                        Text(viewModel.signInBool ? "Sign in" : "Sign up")
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.bold, size: 50))
                             .padding(.vertical, 1)
@@ -42,7 +46,7 @@ struct AuthView: View {
                 .padding(.top, 35)
                 HStack {
                     VStack(alignment: .leading) {
-                        if !signInBool {
+                        if !viewModel.signInBool {
                             Text("Name")
                                 .foregroundStyle(.white)
                                 .font(.custom(FontApp.medium, size: 16))
@@ -53,7 +57,7 @@ struct AuthView: View {
                                     .foregroundStyle(.raPink)
                                     .shadow(color: .raPink, radius: 5)
                                     .background(.white.opacity(0.05))
-                                TextField("You email", text: $login)
+                                TextField("You name", text: $viewModel.name)
                                     .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
@@ -70,7 +74,7 @@ struct AuthView: View {
                                 .foregroundStyle(.raPink)
                                 .shadow(color: .raPink, radius: 5)
                                 .background(.white.opacity(0.05))
-                            TextField("You email", text: $login)
+                            TextField("You email", text: $viewModel.email)
                                 .padding(.horizontal, 10)
                                 .font(.custom(FontApp.medium, size: 16))
                                 .foregroundStyle(.raLightGray)
@@ -86,13 +90,13 @@ struct AuthView: View {
                                 .foregroundStyle(.raPink)
                                 .shadow(color: .raPink, radius: 5)
                                 .background(.white.opacity(0.05))
-                            if passwordHidden {
-                                SecureField("Your password", text: $password)
+                            if viewModel.passwordHidden {
+                                SecureField("Your password", text: $viewModel.password)
                                     .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
                             } else {
-                                TextField("Your password", text: $password)
+                                TextField("Your password", text: $viewModel.password)
                                     .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
@@ -101,9 +105,9 @@ struct AuthView: View {
                             HStack {
                                 Spacer()
                                 Button {
-                                    passwordHidden.toggle()
+                                    viewModel.passwordHidden.toggle()
                                 } label: {
-                                    Image(systemName: passwordHidden ? "eye" : "eye.slash")
+                                    Image(systemName: viewModel.passwordHidden ? "eye" : "eye.slash")
                                         .foregroundStyle(.raLightGray)
                                 }
                                 .padding(.horizontal, 10)
@@ -115,7 +119,7 @@ struct AuthView: View {
                     }
                     Spacer()
                 }
-                if signInBool {
+                if viewModel.signInBool {
                     HStack {
                         Spacer()
                         Button {
@@ -143,7 +147,7 @@ struct AuthView: View {
                     
                     //TODO: autorization google+
                     Button {
-                        //something happend
+                       // something happend
                     } label: {
                         Image("googleLogo")
                             .resizableToFit()
@@ -155,8 +159,25 @@ struct AuthView: View {
                     Spacer()
                     HStack {
                         VStack (alignment: .leading) {
+                            // MARK: Sing in Sign up button
                             Button {
-                                //something happend
+                                if viewModel.signInBool {
+                                    Task {
+                                        let result = await !viewModel.signIn()
+                                        DispatchQueue.main.async {
+                                            showAuthView = result
+                                        }
+                                    }
+                                } else {
+                                    Task {
+                                        let result = await !viewModel.signUp()
+                                        DispatchQueue.main.async {
+                                            mainViewModel.user = viewModel.userModel
+                                            showAuthView = result
+                                        }
+                                    }
+                                    
+                                }
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10 )
@@ -169,9 +190,9 @@ struct AuthView: View {
                                 .frame(width: 153, height: 62)
                             }
                             Button {
-                                signInBool.toggle()
+                                viewModel.signInBool.toggle()
                             } label: {
-                                Text("Or \(!signInBool ? "Sign Up" : "Sign In")")
+                                Text("Or \(!viewModel.signInBool ? "Sign Up" : "Sign In")")
                                     .padding(.vertical, 8)
                                     .foregroundStyle(.raLightGray)
                                     .font(.custom(FontApp.medium, size: 16))
@@ -187,10 +208,10 @@ struct AuthView: View {
             .padding(38)
             
         }
-        .animation(.easeInOut, value: signInBool)
+        .animation(.easeInOut, value: viewModel.signInBool)
     }
 }
 
 #Preview {
-    AuthView()
+    AuthView(mainViewModel: DataViewModel(), showAuthView: .constant(true))
 }

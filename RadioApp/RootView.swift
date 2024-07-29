@@ -8,31 +8,35 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var showSignInView = false
+    @State var showAuthView = true
+    @StateObject var dataViewModel = DataViewModel()
     
     var body: some View {
         VStack {
-            //check
-            if showSignInView {
-                //button
-                ZStack {
-                    Text("")
-                }
-            } else {
-                AuthView()
+            Text("ROOT VIEW")
+            Button {
+                print(FBAuthService.shared.currentUser)
+            } label: {
+                Text("Privaet")
             }
-            
+            Button {
+                try? FBAuthService.shared.signOut()
+            } label: {
+                Text("sign out!")
+                    .font(.custom(FontApp.heavy, size: 50))
+                    .foregroundStyle(.raPink)
+            }
             
             NavigationView {
                 
             }
             .onAppear {
-                let authUser = try? AuthenticationManager.shared.getAuthenticationUser()
-                self.showSignInView = authUser == nil
+//                let authUser = try? FBAuthService.shared.getAuthenticationUser()
+//                self.showAuthView = authUser == nil
             }
-            .fullScreenCover(isPresented: $showSignInView, content: {
+            .fullScreenCover(isPresented: $showAuthView, content: {
                 NavigationView {
-                    AuthView()
+                    AuthView(mainViewModel: dataViewModel, showAuthView: $showAuthView)
                 }
             })
         }
