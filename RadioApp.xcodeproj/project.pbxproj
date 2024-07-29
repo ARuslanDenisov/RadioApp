@@ -58,6 +58,7 @@
 		442681812C56831500E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 442681802C56831500E8C7F5 /* GoogleService-Info.plist */; };
 		442681832C569FFF00E8C7F5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681822C569FFF00E8C7F5 /* TestView.swift */; };
 		442681862C56A2EC00E8C7F5 /* TextResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681852C56A2EC00E8C7F5 /* TextResource.swift */; };
+		523FA26F2C57A44A0065A5D5 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FA26E2C57A44A0065A5D5 /* TabBarButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		442681802C56831500E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		442681822C569FFF00E8C7F5 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		442681852C56A2EC00E8C7F5 /* TextResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextResource.swift; sourceTree = "<group>"; };
+		523FA26E2C57A44A0065A5D5 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +297,7 @@
 		442680EF2C566F3000E8C7F5 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				442681162C56719300E8C7F5 /* TabBarView.swift */,
+				523FA26D2C57A4310065A5D5 /* TabBarView */,
 				442681182C5671A800E8C7F5 /* RadioButtonsView.swift */,
 				4426811A2C5671CB00E8C7F5 /* VolumeSliderView.swift */,
 				4426811C2C5671E600E8C7F5 /* RadioSmallGridElement.swift */,
@@ -368,6 +370,15 @@
 				442681852C56A2EC00E8C7F5 /* TextResource.swift */,
 			);
 			path = Texts;
+			sourceTree = "<group>";
+		};
+		523FA26D2C57A4310065A5D5 /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				442681162C56719300E8C7F5 /* TabBarView.swift */,
+				523FA26E2C57A44A0065A5D5 /* TabBarButton.swift */,
+			);
+			path = TabBarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +497,7 @@
 				442681152C56714500E8C7F5 /* StationModel.swift in Sources */,
 				442680FF2C566FE600E8C7F5 /* FavoriteView.swift in Sources */,
 				442681012C566FF000E8C7F5 /* PopularView.swift in Sources */,
+				523FA26F2C57A44A0065A5D5 /* TabBarButton.swift in Sources */,
 				442681052C56700800E8C7F5 /* OnboardingView.swift in Sources */,
 				442681862C56A2EC00E8C7F5 /* TextResource.swift in Sources */,
 				442681242C56726100E8C7F5 /* WaveAnimationElement.swift in Sources */,
