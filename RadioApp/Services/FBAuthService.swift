@@ -10,28 +10,6 @@ import FirebaseAuth
 
 import SwiftUI
 
-@MainActor
-final class SignInEmailViewModel: ObservableObject {
-    @Published var email = ""
-    @Published var password = ""
-    
-    func signIn() {
-        guard !email.isEmpty, !password.isEmpty else {
-            print("No email or password")
-            return
-        }
-        
-        Task {
-            do {
-                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
-                print(returnedUserData)
-            } catch {
-                print(error)
-            }
-        }
-       
-    }
-}
 
 struct AuthDataResultModel {
     let uid: String
@@ -45,9 +23,22 @@ struct AuthDataResultModel {
     }
 }
 
-final class AuthenticationManager {
-    static let shared = AuthenticationManager()
+final class FBAuthService {
+    static let shared = FBAuthService()
     private init() {}
+    var currentUser : User?
+    
+    
+    func signIn (email: String, password: String ) async throws -> Bool {
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            currentUser = result.user
+            return true
+        } catch {
+            print("wrong email or password")
+        }
+        return false
+    }
     
     func getAuthenticationUser() throws -> AuthDataResultModel {
         guard let user = Auth.auth().currentUser else {
@@ -56,13 +47,25 @@ final class AuthenticationManager {
         return AuthDataResultModel(user: user)
     }
     
-    func createUser(email: String, password: String) async  throws -> AuthDataResultModel {
-        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
-        return AuthDataResultModel(user: authDataResult.user)
+//    func signUp(email: String, password: String) async  throws -> AuthDataResultModel {
+//        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+//        return AuthDataResultModel(user: authDataResult.user)
+//     }
+    func signUp(email: String, password: String) async  throws -> Bool {
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            currentUser = result.user
+            return true
+        } catch {
+            print("cant create user")
+        }
+        return false
      }
     
     func signOut() throws {
         try Auth.auth().signOut()
     }
+    
+    
 }
 

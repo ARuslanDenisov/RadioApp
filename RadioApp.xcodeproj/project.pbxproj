@@ -46,7 +46,6 @@
 		442681602C5673D100E8C7F5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4426815F2C5673D100E8C7F5 /* FirebaseAuth */; };
 		442681622C5673D700E8C7F5 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 442681612C5673D700E8C7F5 /* SwiftyJSON */; };
 		442681642C56744B00E8C7F5 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681632C56744B00E8C7F5 /* ImageExtension.swift */; };
-		442681812C56831500E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 442681802C56831500E8C7F5 /* GoogleService-Info.plist */; };
 		442681832C569FFF00E8C7F5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681822C569FFF00E8C7F5 /* TestView.swift */; };
 		442681862C56A2EC00E8C7F5 /* TextResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681852C56A2EC00E8C7F5 /* TextResource.swift */; };
 		442681882C57636F00E8C7F5 /* FontsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681872C57636F00E8C7F5 /* FontsEnum.swift */; };
@@ -60,6 +59,9 @@
 		4426819A2C57A96500E8C7F5 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 442681912C57A96400E8C7F5 /* SFProDisplay-Regular.ttf */; };
 		4426819B2C57A96500E8C7F5 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 442681922C57A96500E8C7F5 /* SFProDisplay-Semibold.ttf */; };
 		4426819C2C57A96500E8C7F5 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 442681932C57A96500E8C7F5 /* SFProDisplay-Medium.ttf */; };
+		4426819E2C57C86200E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4426819D2C57C86200E8C7F5 /* GoogleService-Info.plist */; };
+		442681A02C57C8A400E8C7F5 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */; };
+		442681A22C57CE2E00E8C7F5 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,7 +98,6 @@
 		442681252C56727900E8C7F5 /* EqualizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerView.swift; sourceTree = "<group>"; };
 		442681632C56744B00E8C7F5 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		4426817F2C5676A400E8C7F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		442681802C56831500E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		442681822C569FFF00E8C7F5 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		442681852C56A2EC00E8C7F5 /* TextResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextResource.swift; sourceTree = "<group>"; };
 		442681872C57636F00E8C7F5 /* FontsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsEnum.swift; sourceTree = "<group>"; };
@@ -110,6 +111,9 @@
 		442681912C57A96400E8C7F5 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		442681922C57A96500E8C7F5 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		442681932C57A96500E8C7F5 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		4426819D2C57C86200E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +155,8 @@
 		442680D32C566CBA00E8C7F5 /* RadioApp */ = {
 			isa = PBXGroup;
 			children = (
+				4426819D2C57C86200E8C7F5 /* GoogleService-Info.plist */,
 				4426817F2C5676A400E8C7F5 /* Info.plist */,
-				442681802C56831500E8C7F5 /* GoogleService-Info.plist */,
 				442680D42C566CBA00E8C7F5 /* RadioAppApp.swift */,
 				442680D62C566CBA00E8C7F5 /* RootView.swift */,
 				442680EC2C566E6C00E8C7F5 /* LicenseView */,
@@ -200,6 +204,7 @@
 			children = (
 				442681022C566FFC00E8C7F5 /* AuthView.swift */,
 				442681892C57645500E8C7F5 /* PasswordAuthView.swift */,
+				442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */,
 			);
 			path = AuthViews;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 			children = (
 				442681122C56713200E8C7F5 /* UserModel.swift */,
 				442681142C56714500E8C7F5 /* StationModel.swift */,
+				4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -451,10 +457,10 @@
 			files = (
 				4426819B2C57A96500E8C7F5 /* SFProDisplay-Semibold.ttf in Resources */,
 				442681962C57A96500E8C7F5 /* SFProDisplay-Heavy.ttf in Resources */,
-				442681812C56831500E8C7F5 /* GoogleService-Info.plist in Resources */,
 				442681992C57A96500E8C7F5 /* SFProDisplay-Light.ttf in Resources */,
 				4426819A2C57A96500E8C7F5 /* SFProDisplay-Regular.ttf in Resources */,
 				442680DC2C566CBB00E8C7F5 /* Preview Assets.xcassets in Resources */,
+				4426819E2C57C86200E8C7F5 /* GoogleService-Info.plist in Resources */,
 				442681952C57A96500E8C7F5 /* SFProDisplay-Ultralight.ttf in Resources */,
 				442680D92C566CBB00E8C7F5 /* Assets.xcassets in Resources */,
 				442681982C57A96500E8C7F5 /* SFProDisplay-Thin.ttf in Resources */,
@@ -477,9 +483,11 @@
 				4426811F2C5671FB00E8C7F5 /* RadioBigFavoriteElement.swift in Sources */,
 				442681262C56727900E8C7F5 /* EqualizerView.swift in Sources */,
 				442681032C566FFC00E8C7F5 /* AuthView.swift in Sources */,
+				442681A02C57C8A400E8C7F5 /* DataViewModel.swift in Sources */,
 				442681092C56704400E8C7F5 /* FBAuthService.swift in Sources */,
 				442681832C569FFF00E8C7F5 /* TestView.swift in Sources */,
 				442680F52C566FA100E8C7F5 /* ProfileView.swift in Sources */,
+				442681A22C57CE2E00E8C7F5 /* AuthViewModel.swift in Sources */,
 				442680F12C566F7500E8C7F5 /* LicenseView.swift in Sources */,
 				442681882C57636F00E8C7F5 /* FontsEnum.swift in Sources */,
 				4426811D2C5671E600E8C7F5 /* RadioSmallGridElement.swift in Sources */,
