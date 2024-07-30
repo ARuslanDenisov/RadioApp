@@ -15,7 +15,7 @@ struct RootView: View {
         VStack {
             Text("ROOT VIEW")
             Button {
-                print(FBAuthService.shared.currentUser)
+//                print(FBAuthService.shared.currentUser)
             } label: {
                 Text("Privaet")
             }
