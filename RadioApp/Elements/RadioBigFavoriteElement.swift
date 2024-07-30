@@ -15,8 +15,8 @@ struct RadioBigFavoriteElement: View {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(.raDarkBlue)
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.white ,lineWidth: 1)
-            HStack { 
+                .stroke(.raLightGray ,lineWidth: 0.8)
+            HStack {
                 VStack (alignment: .leading , spacing: 4 ){
                     Text(station.name)
                         .foregroundStyle(.white)
