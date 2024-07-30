@@ -17,7 +17,7 @@ import Foundation
 //http://all.api.radio-browser.info/json/stations/search?name=jazz&limit=100
 //GET /json/stations/search?tag=rock&codec=mp3&order=country&reverse=true&limit=1000
 ///stations/bycountry/austria
-/////http://all.api.radio-browser.info/json/stations
+/////http://all.api.radio-browser.info/json/stations?limit=
 ///
 class URLManager {
     
