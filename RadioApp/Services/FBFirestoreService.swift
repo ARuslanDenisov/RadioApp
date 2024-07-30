@@ -49,7 +49,7 @@ class FBFirestoreService {
     
     //update
     
-    func updateUser (user: UserModel) async throws -> UserModel {
+    func updateUser (user: UserModel) async throws {
         do {
             try await usersRef.document(user.id).setData(user.representation)
             try await updateFavorites(user: user)
