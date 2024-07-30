@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 struct UserModel : Identifiable, Codable {
     var id: String = ""
@@ -34,4 +35,29 @@ struct UserModel : Identifiable, Codable {
     init () { }
     
 
+}
+
+extension UserModel {
+    var representation: [String: Any] {
+        var dict = [String: Any]()
+        dict["id"] = self.id
+        dict["name"] = self.name
+        dict["email"] = self.email
+        dict["photoUrl"] = self.photoUrl
+        return dict
+    }
+    
+    
+    init?(qdSnap: DocumentSnapshot) async throws {
+        guard let data = qdSnap.data() else { return nil }
+        guard let id = data["id"] as? String,
+              let name = data["name"] as? String,
+              let email = data["email"] as? String,
+              let photoUrl = data["photoUrl"] as? String else { return nil }
+        self.id = id
+        self.name = name
+        self.email = email
+        self.photoUrl = photoUrl
+        self.favorites = try await FBFirestoreService.shared.getUserFavorites(userId: id)
+    }
 }
