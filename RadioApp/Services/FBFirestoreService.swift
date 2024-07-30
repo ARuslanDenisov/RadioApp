@@ -10,9 +10,11 @@ import Foundation
 import Foundation
 import FirebaseFirestore
 
+
 class FBFirestoreService {
     static let shared = FBFirestoreService(); private init () { }
     let db = Firestore.firestore()
+    
     
     var usersRef: CollectionReference { db.collection("users") }
     var favoritesRef: CollectionReference { db.collection("favorites") }
@@ -23,7 +25,9 @@ class FBFirestoreService {
     //create
     func addNewUser (newUser: UserModel) async throws -> Bool {
         do {
+            print("newUser in \(newUser)")
             try await usersRef.document(newUser.id).setData(newUser.representation)
+            print("прошли добавление")
             return true
         } catch {
             return false

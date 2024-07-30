@@ -7,6 +7,9 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseStorage
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -26,6 +29,7 @@ struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
+//                TestView()
                 RootView()
             }
         }
