@@ -12,20 +12,20 @@ struct TestView: View {
     @State var test: [StationModel] = []
     var body: some View {
         VStack {
-            ScrollView {
-                VStack {
-                    ForEach(test, id: \.id) { value in
-                        ZStack {
-                            KFImage(URL(string: value.favicon))
-                                .resizable()
-                                .scaledToFit()
-                            Text(value.name)
-                                .foregroundStyle(.raPink)
-                                .font(.headline)
-                        }
-                    }
-                }
-            }
+//            ScrollView {
+//                VStack {
+//                    ForEach(test, id: \.id) { value in
+//                        ZStack {
+//                            KFImage(URL(string: value.favicon))
+//                                .resizable()
+//                                .scaledToFit()
+//                            Text(value.name)
+//                                .foregroundStyle(.raPink)
+//                                .font(.headline)
+//                        }
+//                    }
+//                }
+//            }
             Button {
                 getAll(value: 20)
             } label: {
