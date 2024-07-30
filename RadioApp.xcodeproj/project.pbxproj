@@ -65,6 +65,8 @@
 		44B60EE92C59254A001177C2 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B60EE82C59254A001177C2 /* Shapes.swift */; };
 		92E634A32C5944B700C24A05 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 92E634A22C5944B700C24A05 /* GoogleSignIn */; };
 		92E634A52C5944B700C24A05 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 92E634A42C5944B700C24A05 /* GoogleSignInSwift */; };
+		92E634A72C594A8E00C24A05 /* Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E634A62C594A8E00C24A05 /* Utilites.swift */; };
+		92E634A92C5954D100C24A05 /* GoogleSignInResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E634A82C5954D100C24A05 /* GoogleSignInResultModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +120,8 @@
 		4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		44B60EE82C59254A001177C2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		92E634A62C594A8E00C24A05 /* Utilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilites.swift; sourceTree = "<group>"; };
+		92E634A82C5954D100C24A05 /* GoogleSignInResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInResultModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +297,7 @@
 				442681122C56713200E8C7F5 /* UserModel.swift */,
 				442681142C56714500E8C7F5 /* StationModel.swift */,
 				4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */,
+				92E634A82C5954D100C24A05 /* GoogleSignInResultModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				442681632C56744B00E8C7F5 /* ImageExtension.swift */,
+				92E634A62C594A8E00C24A05 /* Utilites.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				442681A22C57CE2E00E8C7F5 /* AuthViewModel.swift in Sources */,
 				44B60EE92C59254A001177C2 /* Shapes.swift in Sources */,
 				442680F12C566F7500E8C7F5 /* LicenseView.swift in Sources */,
+				92E634A92C5954D100C24A05 /* GoogleSignInResultModel.swift in Sources */,
 				442681882C57636F00E8C7F5 /* FontsEnum.swift in Sources */,
 				4426811D2C5671E600E8C7F5 /* RadioSmallGridElement.swift in Sources */,
 				442681212C56721200E8C7F5 /* RadioBigAllStationElement.swift in Sources */,
@@ -518,6 +525,7 @@
 				442681242C56726100E8C7F5 /* WaveAnimationElement.swift in Sources */,
 				442681172C56719300E8C7F5 /* TabBarView.swift in Sources */,
 				442681132C56713200E8C7F5 /* UserModel.swift in Sources */,
+				92E634A72C594A8E00C24A05 /* Utilites.swift in Sources */,
 				442681192C5671A800E8C7F5 /* RadioButtonsView.swift in Sources */,
 				442680F92C566FC200E8C7F5 /* StationDetailView.swift in Sources */,
 				442681072C56701B00E8C7F5 /* URLManager.swift in Sources */,

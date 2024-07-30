@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct AuthView: View {
     @StateObject var mainViewModel: DataViewModel
@@ -146,6 +148,17 @@ struct AuthView: View {
                     }
                     
                     //TODO: autorization google+
+                    GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
+                        Task {
+                            do {
+                                try await viewModel.signInGoogle()
+                                // showSignIn = false
+                            } catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    
                     Button {
                        // something happend
                     } label: {
