@@ -9,7 +9,12 @@ import SwiftUI
 
 struct AllStationView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.raDarkBlue
+                .ignoresSafeArea()
+            Text("All station view")
+                .foregroundStyle(.white)
+        }
     }
 }
 
