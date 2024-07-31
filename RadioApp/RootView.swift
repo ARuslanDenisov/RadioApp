@@ -10,26 +10,18 @@ import SwiftUI
 struct RootView: View {
     @State var showAuthView = true
     @StateObject var dataViewModel = DataViewModel()
+    @State var index = 0
+    
     
     var body: some View {
-        VStack {
-            Text("ROOT VIEW")
-            Button {
-//                print(FBAuthService.shared.currentUser)
-            } label: {
-                Text("Privaet")
-            }
-            Button {
-                try? FBAuthService.shared.signOut()
-            } label: {
-                Text("sign out!")
-                    .font(.custom(FontApp.heavy, size: 50))
-                    .foregroundStyle(.raPink)
-            }
-            
+        
             NavigationView {
-                
-            }
+                ZStack {
+                    VStack {
+                        Spacer()
+                        TabBarView(selectedTab: $index)
+                    }
+                }
             .onAppear {
 //                let authUser = try? FBAuthService.shared.getAuthenticationUser()
 //                self.showAuthView = authUser == nil
