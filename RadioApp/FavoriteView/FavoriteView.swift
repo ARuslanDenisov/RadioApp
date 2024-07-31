@@ -14,39 +14,7 @@ struct FavoriteView: View {
             Color.raDarkBlue
                 .ignoresSafeArea()
             //Header
-            VStack {
-                HStack(spacing: 0) {
-                    Image("appLogo")
-                        .resizableToFit()
-                        .frame(width: 33)
-                        .padding(.trailing, 7)
-                    Text("Hello, ")
-                        .foregroundStyle(.white)
-                        .font(.custom(FontApp.bold, size: 30))
-                    Text(viewModel.user.name.isEmpty ? "New user" : viewModel.user.name)
-                        .foregroundStyle(.raPink)
-                        .font(.custom(FontApp.bold, size: 30))
-                    Spacer()
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        //тут будет картинка пользователя
-                        Image("")
-                            .resizableToFit()
-                        ZStack {
-                            Rectangle()
-                                .foregroundStyle(.white)
-                        }
-                        .clipShape(TriangleShape().offset(x:-20, y: 15))
-                        
-                        
-                    }
-                    .frame(width: 30,height: 30)
-                    
-                }
-                .padding(5)
-                Spacer()
-            }
+            
             //favorites with scroll view
             VStack(alignment: .leading, spacing: 0) {
                 Text("Favorites")
