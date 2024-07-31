@@ -1,14 +1,7 @@
-//
-//  StationModel.swift
-//  RadioApp
-//
-//  Created by Руслан on 28.07.2024.
-//
-
 import Foundation
 import FirebaseFirestore
 
-struct StationModel : Identifiable, Codable {
+struct StationModel: Identifiable, Codable {
     let id: String
     let name: String
     let favicon: String
@@ -17,7 +10,9 @@ struct StationModel : Identifiable, Codable {
     let language: String
     let countryCode: String
     let votes: Int
+    var isActive: Bool = false // for smallElement in popular view
     
+
     init(id: String, name: String, favicon: String, streamUrl: String, tags: String, language: String, countryCode: String, votes: Int) {
         self.id = id
         self.name = name
@@ -28,7 +23,8 @@ struct StationModel : Identifiable, Codable {
         self.countryCode = countryCode
         self.votes = votes
     }
-    init () {
+    
+    init() {
         self.id = ""
         self.name = ""
         self.favicon = ""
@@ -38,10 +34,8 @@ struct StationModel : Identifiable, Codable {
         self.countryCode = ""
         self.votes = 0
     }
-}
 
-extension StationModel {
-    var representation : [String: Any] {
+    var representation: [String: Any] {
         var dict = [String: Any]()
         dict["id"] = self.id
         dict["name"] = self.name
@@ -53,7 +47,7 @@ extension StationModel {
         dict["votes"] = self.votes
         return dict
     }
-    
+
     init?(qdSnap: QueryDocumentSnapshot) {
         let data = qdSnap.data()
         guard let id = data["id"] as? String,
@@ -72,6 +66,18 @@ extension StationModel {
         self.language = language
         self.countryCode = countryCode
         self.votes = votes
+    }
+}
 
+extension StationModel {
+    static func sampleData() -> [StationModel] {
+        return [
+            StationModel(id: "1", name: "POP", favicon: "", streamUrl: "", tags: "Radio Record", language: "", countryCode: "", votes: 315),
+            StationModel(id: "2", name: "16bit", favicon: "", streamUrl: "", tags: "Radio Gameplay", language: "", countryCode: "", votes: 240),
+            StationModel(id: "3", name: "Punk", favicon: "", streamUrl: "", tags: "Russian Punk rock", language: "", countryCode: "", votes: 200),
+            StationModel(id: "4", name: "Dj remix", favicon: "", streamUrl: "", tags: "!REMIX! ", language: "", countryCode: "", votes: 54),
+            StationModel(id: "5", name: "Adult", favicon: "", streamUrl: "", tags: "RUSSIAN WAVE", language: "", countryCode: "", votes: 315),
+            StationModel(id: "6", name: "Etnic", favicon: "", streamUrl: "", tags: "beufm.kz", language: "", countryCode: "", votes: 74)
+        ]
     }
 }
