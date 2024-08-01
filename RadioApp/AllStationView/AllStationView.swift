@@ -13,7 +13,7 @@ struct AllStationView: View {
             Color.raDarkBlue
                 .ignoresSafeArea()
             Text("All station view")
-                .foregroundStyle(.white)
+                .foregroundStyle(.blue)
         }
     }
 }
