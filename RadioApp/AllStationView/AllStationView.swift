@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AllStationView: View {
 
-    var dataVM: DataViewModel
     var stationModel: [StationModel]
     @State var searchRadio: String = ""
     
@@ -19,73 +18,35 @@ struct AllStationView: View {
                 .ignoresSafeArea()
             
             VStack {
+                HStack {
                     Text("All Stations")
-                        .foregroundStyle(.white)
-                        .font(.custom(FontApp.regular, size: 30))
-                    .padding(.top, 100)
+                            .foregroundStyle(.white)
+                            .font(.custom(FontApp.regular, size: 30))
+                        .padding(.top, 80)
+                        .padding(.leading, 50)
+                    Spacer()
+                }
+                
                 
                 SearchField(searchRadio: $searchRadio)
+                    .padding(.horizontal, 10)
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 12) {
                         ForEach(stationModel, id: \.id) { station in
-                            RadioBigAllStationElement(dataVM: dataVM, playingNow: false)
+                            RadioBigAllStationElement(station: station, playingNow: true)
                         }
                     }
                 }
-                
+                .frame(width: 300, height: 380)
+                Spacer()
             }
             
-        }
-    }
-}
-
-extension View {
-    func placeholder<Content: View>(
-        when shouldShow: Bool,
-        alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View {
-
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
         }
     }
 }
 
 #Preview {
-    AllStationView(dataVM: DataViewModel(user: UserModel(id: "", name: "Mark", email: "", photoUrl: "", favorites: []), stationNow: StationModel()), stationModel: [StationModel(id: "", name: "Arizona", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 1)])
+    AllStationView(stationModel: [StationModel(id: "0", name: "Radio Record", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 100)])
 }
 
-struct SearchField: View {
-    @Binding var searchRadio: String
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .frame(height: 44)
-                .foregroundStyle(.raMediumBlue)
-            
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.white)
-                    .padding()
-                TextField("Search radio station", text: $searchRadio)
-                    .foregroundStyle(.white)
-                    .placeholder(when: searchRadio.isEmpty) {
-                        Text("Search radio station").foregroundColor(.white)
-                    }
-                Button {
-                    
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .padding(9)
-                        .foregroundStyle(.raLightBlue)
-                        .background(.black)
-                        .clipShape(Circle())
-                        .padding()
-                }
-            }
-        }
-    }
-}

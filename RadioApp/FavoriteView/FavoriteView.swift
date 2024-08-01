@@ -20,15 +20,14 @@ struct FavoriteView: View {
                 Text("Favorites")
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
-                    .padding(.top, 100)
+                    .padding(.top, 80)
                 ScrollView {
                     ForEach(viewModel.user.favorites) { station in
                         NavigationLink {
                             
                         } label: {
                             RadioBigFavoriteElement(station: station, animationStart: true)
-                        }
-                        
+                        } 
                     }
                 }
                 .padding(.top, 20)

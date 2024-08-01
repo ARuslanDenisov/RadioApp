@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct RadioBigAllStationElement: View {
-    var dataVM: DataViewModel
+    var station: StationModel
     @State var playingNow: Bool
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
-                .foregroundStyle(playingNow ? .raPink : .raDarkBlue )
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(.raLightGray)
-            
+                .foregroundStyle(playingNow ? .raPink : .raDarkBlue)
+            if !playingNow {
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(.raLightGray, lineWidth: 0.8)
+            }
             HStack {
                 Spacer()
                 VStack {
-                    Text("votes \(dataVM.stationNow.votes)")
+                    Text("votes \(station.votes)")
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.bold, size: 10))
                     Spacer()
@@ -29,13 +30,13 @@ struct RadioBigAllStationElement: View {
             }
             .padding(10)
             
-            VStack(alignment: .leading) {
-                Text(dataVM.stationNow.name)
+            VStack(alignment: .leading, spacing: 10) {
+                Text(station.name)
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.bold, size: 30))
                 
                 HStack {
-                    Text(dataVM.stationNow.tags.isEmpty ? "Popular" : "\(dataVM.stationNow.tags)")
+                    Text(station.tags.isEmpty ? "Popular" : "\(station.tags)")
                         .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 15))
                     Spacer()
@@ -46,7 +47,7 @@ struct RadioBigAllStationElement: View {
                 }
                 
                 Text(playingNow ? "Playing now" : "")
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.raPlayingNowText)
                     .opacity(0.8)
                     .font(.custom(FontApp.bold, size: 14))
             }
@@ -57,5 +58,5 @@ struct RadioBigAllStationElement: View {
 }
 
 #Preview {
-    RadioBigAllStationElement(dataVM: DataViewModel(user: UserModel(id: "", name: "Mark", email: "", photoUrl: "", favorites: []), stationNow: StationModel()), playingNow: true)
+    RadioBigAllStationElement(station: StationModel(id: "", name: "Radio Record", favicon: "", streamUrl: "", tags: "Pop", language: "", countryCode: "", votes: 200), playingNow: true)
 }

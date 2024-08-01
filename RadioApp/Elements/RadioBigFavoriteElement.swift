@@ -12,9 +12,9 @@ struct RadioBigFavoriteElement: View {
     @State var animationStart: Bool
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 15)
                 .foregroundStyle(.raDarkBlue)
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 15)
                 .stroke(.raLightGray ,lineWidth: 0.8)
             HStack {
                 VStack (alignment: .leading , spacing: 4 ){
