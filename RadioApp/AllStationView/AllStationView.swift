@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AllStationView: View {
 
-    var stationModel: [StationModel]
+    var viewModel: DataViewModel
+    var stationModel: [StationModel] = []
     @State var searchRadio: String = ""
     
     var body: some View {
@@ -47,6 +48,6 @@ struct AllStationView: View {
 }
 
 #Preview {
-    AllStationView(stationModel: [StationModel(id: "0", name: "Radio Record", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 100)])
+    AllStationView(viewModel: DataViewModel(), stationModel: [StationModel(id: "0", name: "Radio Record", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 100)])
 }
 

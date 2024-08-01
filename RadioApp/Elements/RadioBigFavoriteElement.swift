@@ -25,20 +25,22 @@ struct RadioBigFavoriteElement: View {
                     Text(station.tags.isEmpty ? "\(station.language)" : "\(station.tags)")
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.regular, size: 15))
-                    ZStack{
-                      //Animation
+                    ZStack {
+                        WaveAnimationElement(color: .raMediumBlue, animationStop: animationStart)
                     }
                     .frame(width: 94, height: 23)
                 }
+                
                 .padding(.horizontal, 22)
                 Spacer()
             }
         }
         .frame(width: 293, height: 123)
         
+        
     }
 }
 
 #Preview {
-    RadioBigFavoriteElement(station: StationModel(id: "", name: "Arizona FM", favicon: "", streamUrl: "", tags: "popular music" , language: "English", countryCode: "", votes: 27), animationStart: false)
+    RadioBigFavoriteElement(station: StationModel(id: "", name: "Arizona FM", favicon: "", streamUrl: "", tags: "popular music" , language: "English", countryCode: "", votes: 27), animationStart: true)
 }

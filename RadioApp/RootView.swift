@@ -21,7 +21,7 @@ struct RootView: View {
                 switch index {
                 case 0: PopularView()
                 case 1: FavoriteView(viewModel: dataViewModel)
-                case 2: AllStationView(stationModel: [StationModel()])
+                case 2: AllStationView(viewModel: dataViewModel)
                 default: PopularView()
                 }
 

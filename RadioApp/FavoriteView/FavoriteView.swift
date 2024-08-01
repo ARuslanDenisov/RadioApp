@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FavoriteView: View {
     @StateObject var viewModel: DataViewModel
+    @State var activeStation: StationModel = StationModel()
+    @State var bool = false
     var body: some View {
         ZStack{
             Color.raDarkBlue
@@ -23,11 +25,25 @@ struct FavoriteView: View {
                     .padding(.top, 80)
                 ScrollView {
                     ForEach(viewModel.user.favorites) { station in
-                        NavigationLink {
-                            
-                        } label: {
+//                        NavigationLink {
+//                            
+//                        } label: {
+//                            RadioBigFavoriteElement(station: station, animationStart: true)
+//                        }
+                        if station.id == activeStation.id {
+                            RadioBigFavoriteElement(station: station, animationStart: false)
+                                .onTapGesture {
+                                    activeStation = station
+                                }
+                        } else {
                             RadioBigFavoriteElement(station: station, animationStart: true)
-                        } 
+                                .onTapGesture {
+                                    activeStation = station
+                                }
+                        }
+                        
+                        
+                           
                     }
                 }
                 .padding(.top, 20)
@@ -42,7 +58,8 @@ struct FavoriteView: View {
 
 #Preview {
     NavigationView {
-        FavoriteView(viewModel: DataViewModel(user: UserModel(id: "", name: "Artem", email: "", photoUrl: "", favorites: [StationModel(id: "12312312", name: "Radio da4a", favicon: "", streamUrl: "", tags: "Popular", language: "English", countryCode: "RU", votes: 35)]), stationNow: StationModel()))
+        FavoriteView(viewModel: DataViewModel(user: UserModel(id: "", name: "Artem", email: "", photoUrl: "", favorites: [StationModel(id: "12312312", name: "Radio da4a", favicon: "", streamUrl: "", tags: "Popular", language: "English", countryCode: "RU", votes: 35),StationModel(id: "12412412", name: "Radio volga", favicon: "", streamUrl: "", tags: "Popular", language: "English", countryCode: "RU", votes: 35)
+                                                                                                                         ]), stationNow: StationModel()))
     }
 }
 

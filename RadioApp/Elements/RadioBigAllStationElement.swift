@@ -25,6 +25,7 @@ struct RadioBigAllStationElement: View {
                     Text("votes \(station.votes)")
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.bold, size: 10))
+                        .padding(.trailing, 20)
                     Spacer()
                 }
             }
@@ -41,7 +42,7 @@ struct RadioBigAllStationElement: View {
                     .font(.custom(FontApp.regular, size: 15))
                     Spacer()
                     ZStack{
-                        Color.blue
+                        WaveAnimationElement(color: .raPlayingNowText, animationStop: !playingNow)
                     }
                     .frame(width: 94, height: 23)
                 }
