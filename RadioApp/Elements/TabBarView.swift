@@ -23,6 +23,7 @@ struct TabBarView: View {
                         .frame(width: 15, height: 15)
                         .foregroundStyle(selectedTab == 0 ? .raLightBlue : .clear)
                 }
+                .frame(width: 100, height: 50)
                 .onTapGesture {
                     selectedTab = 0
                 }
@@ -36,6 +37,7 @@ struct TabBarView: View {
                         .frame(width: 15, height: 15)
                         .foregroundStyle(selectedTab == 1 ? .raLightBlue : .clear)
                 }
+                .frame(width: 100, height: 50)
                 .onTapGesture {
                     selectedTab = 1
                 }
@@ -49,6 +51,7 @@ struct TabBarView: View {
                         .frame(width: 15, height: 15)
                         .foregroundStyle(selectedTab == 2 ? .raLightBlue : .clear)
                 }
+                .frame(width: 100, height: 50)
                 .onTapGesture {
                     selectedTab = 2
                 }

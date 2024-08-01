@@ -32,10 +32,12 @@ struct RootView: View {
                 //header
                 VStack {
                     HStack(spacing: 0) {
-                        Image("appLogo")
-                            .resizableToFit()
-                            .frame(width: 33)
-                            .padding(.trailing, 7)
+                        Button {  print(dataViewModel.user) } label: {
+                            Image("appLogo")
+                                .resizableToFit()
+                                .frame(width: 33)
+                                .padding(.trailing, 7)
+                        }
                         Text("Hello, ")
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.bold, size: 30))
@@ -44,7 +46,7 @@ struct RootView: View {
                             .font(.custom(FontApp.bold, size: 30))
                         Spacer()
                         NavigationLink {
-                            ProfileView()
+//                            ProfileView()
                         } label: {
                             //тут будет картинка пользователя
                             Image("")
@@ -75,8 +77,9 @@ struct RootView: View {
         .animation(.easeInOut(duration: 1), value: index)
         
         .onAppear {
-            let authUser = try? FBAuthService.shared.getAuthenticationUser()
-            self.showAuthView = authUser == nil
+//            let authUser = try? FBAuthService.shared.getAuthenticationUser()
+//            print(authUser)
+//            self.showAuthView = authUser == nil
         }
         .fullScreenCover(isPresented: $showAuthView, content: {
             NavigationView {

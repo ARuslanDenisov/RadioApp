@@ -177,6 +177,12 @@ struct AuthView: View {
                                 if viewModel.signInBool {
                                     Task {
                                         let result = await !viewModel.signIn()
+                                        if result {
+                                            if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+                                                mainViewModel.signIn(id: authUser.uid)
+                                                mainViewModel.getUserPhoto()
+                                            }
+                                        }
                                         DispatchQueue.main.async {
                                             showAuthView = result
                                         }
@@ -184,6 +190,10 @@ struct AuthView: View {
                                 } else {
                                     Task {
                                         let result = await !viewModel.signUp()
+                                        if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+                                            viewModel.userModel.id = authUser.uid
+                                            mainViewModel.signUp(user: viewModel.userModel)
+                                        }
                                         DispatchQueue.main.async {
                                             mainViewModel.user = viewModel.userModel
                                             showAuthView = result
@@ -205,7 +215,7 @@ struct AuthView: View {
                             Button {
                                 viewModel.signInBool.toggle()
                             } label: {
-                                Text("Or \(!viewModel.signInBool ? "Sign Up" : "Sign In")")
+                                Text("Or \(viewModel.signInBool ? "Sign Up" : "Sign In")")
                                     .padding(.vertical, 8)
                                     .foregroundStyle(.raLightGray)
                                     .font(.custom(FontApp.medium, size: 16))
