@@ -8,16 +8,45 @@
 import SwiftUI
 
 struct AllStationView: View {
+
+    var stationModel: [StationModel]
+    @State var searchRadio: String = ""
+    
     var body: some View {
         ZStack {
             Color.raDarkBlue
                 .ignoresSafeArea()
-            Text("All station view")
-                .foregroundStyle(.white)
+            
+            VStack {
+                HStack {
+                    Text("All Stations")
+                            .foregroundStyle(.white)
+                            .font(.custom(FontApp.regular, size: 30))
+                        .padding(.top, 80)
+                        .padding(.leading, 50)
+                    Spacer()
+                }
+                
+                
+                SearchField(searchRadio: $searchRadio)
+                    .padding(.horizontal, 10)
+                
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 12) {
+                        ForEach(stationModel, id: \.id) { station in
+                            RadioBigAllStationElement(station: station, playingNow: true)
+                        }
+                    }
+                }
+                .frame(width: 300, height: 380)
+                Spacer()
+            }
+            
         }
     }
 }
 
 #Preview {
-    AllStationView()
+    AllStationView(stationModel: [StationModel(id: "0", name: "Radio Record", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 100)])
 }
+

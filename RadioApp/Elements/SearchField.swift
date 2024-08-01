@@ -1,0 +1,44 @@
+//
+//  SearchField.swift
+//  RadioApp
+//
+//  Created by Юрий on 01.08.2024.
+//
+
+import SwiftUI
+
+struct SearchField: View {
+    @Binding var searchRadio: String
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .frame(height: 44)
+                .foregroundStyle(.raSearch)
+            
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.white)
+                    .padding()
+                TextField("", text: $searchRadio)
+                    .foregroundStyle(.white)
+                    .placeholder(when: searchRadio.isEmpty) {
+                        Text("Search radio station")
+                            .foregroundStyle(.white)
+                            .font(.custom(FontApp.regular, size: 14))
+                    }
+                Button {
+                    
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .padding(9)
+                        .foregroundStyle(.raLightBlue)
+                        .background(.black)
+                        .clipShape(Circle())
+                        .padding()
+                }
+            }
+        }
+    }
+}
+
