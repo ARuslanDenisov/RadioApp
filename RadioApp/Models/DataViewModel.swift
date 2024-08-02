@@ -61,9 +61,12 @@ class DataViewModel: ObservableObject{
     func signIn (id: String) {
         Task {
             do {
-                let user = try await FBFirestoreService.shared.getUser(userId: id)
+                let userFB = try await FBFirestoreService.shared.getUser(userId: id)
+                print("we have a user")
                 DispatchQueue.main.async {
-                    self.user = user
+                    print("прокидываем юзера в модель")
+                    print(userFB)
+                    self.user = userFB
                 }
             } catch {
                 print("problem with sign in FB in mainModel")

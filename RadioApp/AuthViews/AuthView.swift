@@ -26,8 +26,8 @@ struct AuthView: View {
                         .frame(width: 58, height: 58)
                     Spacer()
                     Button {
-                        viewModel.email = "test@test.ru"
-                        viewModel.password = "qwerty"
+                        viewModel.email = "challenge3fb@gmail.com"
+                        viewModel.password = "SwiftTeam6"
                     } label: {
                         Image(systemName: "person")
                             .frame(width: 10)
