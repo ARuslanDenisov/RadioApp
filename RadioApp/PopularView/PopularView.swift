@@ -3,7 +3,6 @@ import SwiftUI
 
 struct PopularView: View {
     @StateObject var viewModel: DataViewModel
-    @State private var stations: [StationModel] = StationModel.sampleData()
     var body: some View {
         ZStack{
             Color.raDarkBlue
@@ -17,7 +16,7 @@ struct PopularView: View {
                 ScrollView{
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 139))], spacing: 15) {
                     
-                        ForEach(stations, id: \.id) { station in
+                        ForEach(viewModel.popular, id: \.id) { station in
                             if viewModel.stationNow.id == station.id {
                                 RadioSmallGridElement(station: station, active: true )
                                     .onTapGesture {

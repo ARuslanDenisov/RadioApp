@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct RootView: View {
     @StateObject var dataViewModel = DataViewModel()
@@ -84,11 +85,10 @@ struct RootView: View {
         .animation(.easeInOut(duration: 1), value: dataViewModel.showAuthView)
         
         .onAppear {
-//            let authUser = try? FBAuthService.shared.getAuthenticationUser()
-//            print(authUser)
-//            self.showAuthView = authUser == nil
+            
         }
     }
+
 }
 
 #Preview {

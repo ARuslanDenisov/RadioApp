@@ -9,8 +9,7 @@ import SwiftUI
 
 struct AllStationView: View {
 
-    var viewModel: DataViewModel
-    var stationModel: [StationModel] = []
+    @StateObject var viewModel: DataViewModel
     @State var searchRadio: String = ""
     
     var body: some View {
@@ -34,12 +33,28 @@ struct AllStationView: View {
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 12) {
-                        ForEach(stationModel, id: \.id) { station in
-                            RadioBigAllStationElement(station: station, playingNow: true)
+                        ForEach(viewModel.allStation, id: \.id) { station in
+//                            RadioBigAllStationElement(station: station, playingNow: true)
+                            if viewModel.stationNow.id == station.id {
+                                RadioBigAllStationElement(station: station, playingNow: true)
+                                    .shadow(color: .raPink.opacity(0.7), radius: 10)
+                                    .onTapGesture {
+                                        viewModel.stationNow = station
+                                        print(viewModel.stationNow)
+                                    }
+                            } else {
+                                RadioBigAllStationElement(station: station, playingNow: false)
+                                    .onTapGesture {
+                                        viewModel.stationNow = station
+                                        print(viewModel.stationNow)
+                                    }
+                            }
+                                
                         }
                     }
+                    .animation(.easeInOut, value: viewModel.stationNow.id)
                 }
-                .frame(width: 300, height: 380)
+//                .frame(width: 300, height: 380)
                 Spacer()
             }
             
@@ -48,6 +63,6 @@ struct AllStationView: View {
 }
 
 #Preview {
-    AllStationView(viewModel: DataViewModel(), stationModel: [StationModel(id: "0", name: "Radio Record", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 100)])
+    AllStationView(viewModel: DataViewModel())
 }
 
