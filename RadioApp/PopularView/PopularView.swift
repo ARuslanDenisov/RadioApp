@@ -11,12 +11,15 @@ struct PopularView: View {
     @StateObject var viewModel: DataViewModel
     var body: some View {
         ZStack {
+            Color.raDarkBlue
+                .ignoresSafeArea()
             Text("PopularView")
         }
+        
+        
     }
 }
 
 #Preview {
     PopularView(viewModel: DataViewModel())
 }
-

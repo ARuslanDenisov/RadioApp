@@ -11,20 +11,15 @@ import SwiftUI
 
 @MainActor
 
-class DataViewModel: ObservableObject{
+class DataViewModel: ObservableObject {
+    //user
     @Published var user: UserModel = UserModel()
+    //stationNow playing
     @Published var stationNow: StationModel = StationModel()
     @Published var userPhoto: UIImage = UIImage(systemName: "person")!
     @Published var showAuthView = true
     
-    init(user: UserModel, stationNow: StationModel) {
-        self.user = user
-        self.stationNow = stationNow
-    }
-    init() {
-        user = UserModel()
-        stationNow = StationModel()
-    }
+
     
     func signUp (user: UserModel) {
         Task {
@@ -49,16 +44,6 @@ class DataViewModel: ObservableObject{
         }
     }
     
-    //    func signIn (id: String) async throws -> UserModel {
-    //            do {
-    //                let user = try await FBFirestoreService.shared.getUser(userId: id)
-    //                return user
-    //            } catch {
-    //                print("problem with sign in FB in mainModel")
-    //                return UserModel()
-    //            }
-    //    }
-    //
     func signIn (id: String) {
         Task {
             do {
@@ -90,5 +75,24 @@ class DataViewModel: ObservableObject{
                 self.userPhoto = UIImage(systemName: "xmark")!
             }
         }
+    }
+    
+    func checkAuth () {
+        if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+            signIn(id: authUser.uid)
+            showAuthView = false
+        } else {
+            showAuthView = true
+        }
+    }
+    //MARK: Inits
+    
+    init(user: UserModel, stationNow: StationModel) {
+        self.user = user
+        self.stationNow = stationNow
+    }
+    
+    init() {
+        checkAuth()
     }
 }
