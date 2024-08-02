@@ -8,42 +8,7 @@ struct PopularView: View {
         ZStack{
             Color.raDarkBlue
                 .ignoresSafeArea()
-            //Header
-            VStack {
-                HStack(spacing: 0) {
-                    Image("appLogo")
-                        .resizableToFit()
-                        .frame(width: 33)
-                        .padding(.trailing, 7)
-                    Text("Hello, ")
-                        .foregroundStyle(.white)
-                        .font(.custom(FontApp.bold, size: 30))
-                    Text(viewModel.user.name.isEmpty ? "New user" : viewModel.user.name)
-                        .foregroundStyle(.raPink)
-                        .font(.custom(FontApp.bold, size: 30))
-                    Spacer()
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        //тут будет картинка пользователя
-                        Image("")
-                            .resizableToFit()
-                        ZStack {
-                            Rectangle()
-                                .foregroundStyle(.white)
-                        }
-                        .clipShape(TriangleShape().offset(x:-20, y: 15))
-                        
-                        
-                    }
-                    .frame(width: 30,height: 30)
-                    
-                }
-                .padding(5)
-                Spacer()
-            }
-            
-            
+
             VStack(alignment: .leading, spacing: 0) {
                 Text("Popular")
                     .foregroundStyle(.white)
@@ -53,11 +18,8 @@ struct PopularView: View {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 139))], spacing: 15) {
                     
                         ForEach(stations.indices, id: \.self) { index in
-                            RadioSmallGridElement(station: $stations[index])
-//                                .environmentObject(viewModel)
-                                .onTapGesture {
-                                    stations[index].isActive.toggle()
-                                }
+                            RadioSmallGridElement(station: stations[index], active: true)
+                                
                         }
                     }
                 }
