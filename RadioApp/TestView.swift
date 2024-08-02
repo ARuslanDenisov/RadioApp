@@ -22,18 +22,20 @@ struct TestView: View {
                 VStack {
                     Spacer()
                     ZStack {
-                        
-                        sixAngleShape()
-                            .stroke(lineWidth: 1)
-                            .foregroundStyle(.raPink)
-                            .frame(width: 60, height: 60)
-                            .scaleEffect(CGFloat(!rad ? 0.3 : 1.5), anchor: .center)
-                            .opacity(!rad ? 1.0 : 0.0)
-                            .shadow(radius: 10)
-                        sixAngleShape()
-                            .frame(width: 60, height: 60)
-                            .scaleEffect(rad2 ? 1.0 : 1.1 )
-                            .foregroundStyle(.raPink)
+//                        TriangleShape()
+//                            .frame(width: 40, height: 40)
+//
+//                        sixAngleShape()
+//                            .stroke(lineWidth: 1)
+//                            .foregroundStyle(.raPink)
+//                            .frame(width: 60, height: 60)
+//                            .scaleEffect(CGFloat(!rad ? 0.3 : 1.5), anchor: .center)
+//                            .opacity(!rad ? 1.0 : 0.0)
+//                            .shadow(radius: 10)
+//                        sixAngleShape()
+//                            .frame(width: 60, height: 60)
+//                            .scaleEffect(rad2 ? 1.0 : 1.1 )
+//                            .foregroundStyle(.raPink)
                     }
                     Spacer()
                     

@@ -12,9 +12,10 @@ import SwiftUI
 @MainActor
 
 class DataViewModel: ObservableObject{
-    @State var user: UserModel = UserModel()
-    var stationNow: StationModel = StationModel()
-    var userPhoto: UIImage = UIImage(systemName: "person")!
+    @Published var user: UserModel = UserModel()
+    @Published var stationNow: StationModel = StationModel()
+    @Published var userPhoto: UIImage = UIImage(systemName: "person")!
+    @Published var showAuthView = true
     
     init(user: UserModel, stationNow: StationModel) {
         self.user = user
@@ -86,7 +87,7 @@ class DataViewModel: ObservableObject{
                     print("problem with user picture")
                 }
             } else {
-                self.userPhoto = UIImage(systemName: "person")!
+                self.userPhoto = UIImage(systemName: "xmark")!
             }
         }
     }

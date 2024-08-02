@@ -148,19 +148,25 @@ struct AuthView: View {
                     }
                     
                     //TODO: autorization google+
-                    GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
+//                    GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
+//
+//                    }
+                    
+                    Button {
                         Task {
                             do {
                                 try await viewModel.signInGoogle()
-                                // showSignIn = false
+                                if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+                                    mainViewModel.signIn(id: authUser.uid)
+                                    mainViewModel.getUserPhoto()
+                                    DispatchQueue.main.async {
+                                        showAuthView = false
+                                    }
+                                }
                             } catch {
                                 print(error)
                             }
                         }
-                    }
-                    
-                    Button {
-                       // something happend
                     } label: {
                         Image("googleLogo")
                             .resizableToFit()
@@ -177,7 +183,7 @@ struct AuthView: View {
                                 if viewModel.signInBool {
                                     Task {
                                         let result = await !viewModel.signIn()
-                                        if result {
+                                        if !result {
                                             if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
                                                 mainViewModel.signIn(id: authUser.uid)
                                                 mainViewModel.getUserPhoto()
@@ -190,7 +196,11 @@ struct AuthView: View {
                                 } else {
                                     Task {
                                         let result = await !viewModel.signUp()
+                                        print("result out")
+                                        print(result)
                                         if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+                                            print("authuser fetch in")
+                                            print(authUser.uid)
                                             viewModel.userModel.id = authUser.uid
                                             mainViewModel.signUp(user: viewModel.userModel)
                                         }
