@@ -10,7 +10,6 @@ struct StationModel: Identifiable, Codable {
     let language: String
     let countryCode: String
     let votes: Int
-    var isActive: Bool = false // for smallElement in popular view
     
 
     init(id: String, name: String, favicon: String, streamUrl: String, tags: String, language: String, countryCode: String, votes: Int) {
