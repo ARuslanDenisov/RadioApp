@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var showAuthView = true
     @StateObject var dataViewModel = DataViewModel()
     @State var index = 0
     
@@ -19,72 +18,73 @@ struct RootView: View {
                 .ignoresSafeArea()
             NavigationView {
                 switch index {
-                case 0: PopularView()
+                case 0: PopularView(viewModel: dataViewModel)
                 case 1: FavoriteView(viewModel: dataViewModel)
                 case 2: AllStationView(viewModel: dataViewModel)
-                default: PopularView()
+                default: PopularView(viewModel: dataViewModel)
                 }
 
             }
             .navigationViewStyle(.stack)
-            
-            VStack {
-                //header
+            if dataViewModel.showAuthView {
+                NavigationView {
+                    AuthView(mainViewModel: dataViewModel, showAuthView: $dataViewModel.showAuthView)
+                        .opacity(dataViewModel.showAuthView ? 1 : 0)
+                }
+            }
+            if !dataViewModel.showAuthView {
                 VStack {
-                    HStack(spacing: 0) {
-                        Image("appLogo")
-                            .resizableToFit()
-                            .frame(width: 33)
-                            .padding(.trailing, 7)
-                        Text("Hello, ")
-                            .foregroundStyle(.white)
-                            .font(.custom(FontApp.bold, size: 30))
-                        Text(dataViewModel.user.name.isEmpty ? "New user" : dataViewModel.user.name)
-                            .foregroundStyle(.raPink)
-                            .font(.custom(FontApp.bold, size: 30))
-                        Spacer()
-                        NavigationLink {
-                            ProfileView()
-                        } label: {
-                            //тут будет картинка пользователя
-                            Image("")
-                                .resizableToFit()
-                            ZStack {
-                                Rectangle()
-                                    .foregroundStyle(.white)
+                    //header
+                    VStack {
+                        HStack(spacing: 0) {
+                            Button {  print(dataViewModel.user) } label: {
+                                Image("appLogo")
+                                    .resizableToFit()
+                                    .frame(width: 33)
+                                    .padding(.trailing, 7)
                             }
-                            .clipShape(TriangleShape().offset(x:-20, y: 15))
-                            
+                            Text("Hello, ")
+                                .foregroundStyle(.white)
+                                .font(.custom(FontApp.bold, size: 30))
+                            Text(dataViewModel.user.name)
+                                .foregroundStyle(.raPink)
+                                .font(.custom(FontApp.bold, size: 30))
+                            Spacer()
+                            NavigationLink {
+                                ProfileView()
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .foregroundStyle(.white)
+                                    Image(uiImage: dataViewModel.userPhoto)
+                                        .resizableToFit()
+                                }
+                                .clipShape(TriangleShape())
+                            }
+                            .frame(width: 40,height: 40)
                             
                         }
-                        .frame(width: 30,height: 30)
-                        
+                        .padding(5)
+                        Spacer()
                     }
-                    .padding(5)
                     Spacer()
+                    //tabbar
+                    TabBarView(selectedTab: $index)
                 }
-                //                    .padding(.top, 60)
-                Spacer()
-                //tabbar
-                TabBarView(selectedTab: $index)
+                .opacity(dataViewModel.showAuthView ? 0 : 1)
             }
-            
         }
         //animation
         
         .animation(.easeInOut(duration: 1), value: index)
+        .animation(.easeInOut(duration: 0.5), value: dataViewModel.user.name)
+        .animation(.easeInOut(duration: 1), value: dataViewModel.showAuthView)
         
         .onAppear {
-            let authUser = try? FBAuthService.shared.getAuthenticationUser()
-            self.showAuthView = authUser == nil
+//            let authUser = try? FBAuthService.shared.getAuthenticationUser()
+//            print(authUser)
+//            self.showAuthView = authUser == nil
         }
-        .fullScreenCover(isPresented: $showAuthView, content: {
-            NavigationView {
-                AuthView(mainViewModel: dataViewModel, showAuthView: $showAuthView)
-            }
-        })
-        
-        
     }
 }
 

@@ -23,14 +23,11 @@ class FBFirestoreService {
     // CRUD operations
     
     //create
-    func addNewUser (newUser: UserModel) async throws -> Bool {
+    func addNewUser (newUser: UserModel) async throws{
         do {
-            print("newUser in \(newUser)")
             try await usersRef.document(newUser.id).setData(newUser.representation)
-            print("прошли добавление")
-            return true
         } catch {
-            return false
+            print("add new use FB error")
         }
     }
     

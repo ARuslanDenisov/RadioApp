@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct PopularView: View {
+    @StateObject var viewModel: DataViewModel
     var body: some View {
         ZStack {
             Color.raDarkBlue
                 .ignoresSafeArea()
-            Text("Popular view")
-                .foregroundStyle(.white)
+            Text("PopularView")
         }
+        
+        
     }
 }
 
 #Preview {
-    PopularView()
+    PopularView(viewModel: DataViewModel())
 }

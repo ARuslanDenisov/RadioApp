@@ -30,6 +30,11 @@ class FBStorageService: ObservableObject {
         }
     }
     
+    func checkImage (user: UserModel) async throws -> Bool {
+        let storageRef = storage.reference().child("\(user.id)/\(user.id).jpg")
+        return storageRef.isAccessibilityElement
+    }
+    
     func downloadImage (user: UserModel ) async throws -> UIImage {
         
         let storageRef = storage.reference().child("\(user.id)/\(user.id).jpg")
