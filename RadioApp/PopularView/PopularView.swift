@@ -13,12 +13,22 @@ struct PopularView: View {
                 Text("Popular")
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
-                    .padding(.top, 100)
+                    .padding(.top, 80)
                 ScrollView{
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 139))], spacing: 15) {
                     
-                        ForEach(stations.indices, id: \.self) { index in
-                            RadioSmallGridElement(station: stations[index], active: true)
+                        ForEach(stations, id: \.id) { station in
+                            if viewModel.stationNow.id == station.id {
+                                RadioSmallGridElement(station: station, active: true )
+                                    .onTapGesture {
+                                        viewModel.stationNow = station
+                                    }
+                            } else {
+                                RadioSmallGridElement(station: station, active: false )
+                                    .onTapGesture {
+                                        viewModel.stationNow = station
+                                    }
+                            }
                                 
                         }
                     }
@@ -29,7 +39,7 @@ struct PopularView: View {
             }
           
             
-            
+            .animation(.easeInOut, value: viewModel.stationNow.id)
         }
     }
 }

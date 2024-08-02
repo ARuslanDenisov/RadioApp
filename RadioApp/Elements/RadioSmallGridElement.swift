@@ -9,14 +9,18 @@ struct RadioSmallGridElement: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(active ? Color.pink : Color.raDarkBlue)
-                .frame(width: 139, height: 139)
-                .overlay(
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(active ? .raPink : Color.raDarkBlue)
+                   
+                if !active {
                     RoundedRectangle(cornerRadius: 10)
                         .strokeBorder(
                             Color.gray
-                        ))
+                        )
+                }
+            }
+            .frame(width: 139, height: 139)
 
             VStack {
                 HStack {
@@ -24,13 +28,12 @@ struct RadioSmallGridElement: View {
                         .foregroundColor(.white)
                         .font(.system(size: 37))
                         .padding(.leading, 0)
+                        .opacity(active ? 1 : 0)
                     Spacer()
-                    Text("votes \(station.votes)")
-                        .foregroundColor(active ? .white : .gray)
-                        .font(.system(size: 12))
-                        .padding(.trailing, 5)
+                 
                     
                 }
+               
                 Spacer()
                 Text(station.name)
                     .bold()
@@ -40,16 +43,27 @@ struct RadioSmallGridElement: View {
                     .font(.caption)
                     .foregroundColor(active ? .white : .gray)
                 Spacer()
-                WaveAnimationElement(color: .raPink, animationStop: active )
-                                      Rectangle()
-                    .frame(width: 100, height: 20)
-                    .foregroundColor(.gray)
-                    .cornerRadius(10)
-                    .padding(.bottom, 10)
+                WaveAnimationElement(color: .raPlayingNowText, animationStop: !active )
+                    .frame(width: 94, height: 23)
+                    
             }
             .padding()
+            VStack {
+                HStack {
+                    Spacer()
+                    Text("votes \(station.votes)")
+                        .foregroundColor(active ? .white : .gray)
+                        .font(.custom(FontApp.bold , size: 10))
+                        .padding(20)
+                        .padding(.trailing, 10)
+                    
+                    
+                }
+                Spacer()
+            }
             
         }
+        .frame(width: 139, height: 139)
         .animation(.easeInOut, value: active)
     }
 }
@@ -58,5 +72,5 @@ struct RadioSmallGridElement: View {
 
 
 #Preview {
-    RadioSmallGridElement(station: StationModel(), active: true)
+    RadioSmallGridElement(station: StationModel(id: "1", name: "Radio Death", favicon: "", streamUrl: "", tags: "rock", language: "English", countryCode: "", votes: 121), active: false)
 }
