@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
-//    var dataVM: DataViewModel
+    @StateObject var viewModel: DataViewModel
     @State var notificationIsOn = true
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -191,7 +192,9 @@ struct ProfileView: View {
                 }
             }
                 Button {
-                    
+                    try? FBAuthService.shared.signOut()
+                    viewModel.checkAuth()
+                    dismiss()
                 } label: {
                     Text("Log Out")
                         .foregroundStyle(.white)
@@ -210,5 +213,5 @@ struct ProfileView: View {
 
 
 #Preview {
-    ProfileView()
+    ProfileView(viewModel: DataViewModel())
 }

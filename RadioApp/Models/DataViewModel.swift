@@ -18,6 +18,9 @@ class DataViewModel: ObservableObject {
     @Published var stationNow: StationModel = StationModel()
     @Published var userPhoto: UIImage = UIImage(systemName: "person")!
     @Published var showAuthView = true
+    @Published var play: Bool = false
+    @Published var next: Bool = false
+    @Published var prev: Bool = false
     
 
     
