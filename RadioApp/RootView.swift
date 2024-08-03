@@ -51,7 +51,7 @@ struct RootView: View {
                                 .font(.custom(FontApp.bold, size: 30))
                             Spacer()
                             NavigationLink {
-                                ProfileView()
+                                ProfileView(dataVM: dataViewModel)
                             } label: {
                                 ZStack {
                                     Rectangle()
