@@ -70,7 +70,7 @@ struct RootView: View {
                         .padding(5)
                         Spacer()
                     }
-                    RadioButtonsView(play: $dataViewModel.play, next: $dataViewModel.next, prev: $dataViewModel.prev)
+//                    RadioButtonsView(play: $dataViewModel.play, next: $dataViewModel.next, prev: $dataViewModel.prev)
                         .padding(10)
                     //tabbar
                     TabBarView(selectedTab: $index)

@@ -45,7 +45,7 @@ struct StationDetailView: View {
                 }
                 .frame(height: 448)
                 Spacer()
-                RadioButtonsView(play: $viewModel.play, next: $viewModel.next, prev: $viewModel.prev)
+//                RadioButtonsView(play: $viewModel.play, next: $viewModel.next, prev: $viewModel.prev)
             }
 //            .padding(.bottom, 286)
         }
