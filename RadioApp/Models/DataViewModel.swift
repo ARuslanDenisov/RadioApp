@@ -110,6 +110,13 @@ class DataViewModel: ObservableObject {
         default: ()
         }
     }
+    
+    func checkFavorite(station: StationModel) -> Bool {
+        guard user.favorites.count != 0 else { return false }
+        return user.favorites.contains { stationIn in
+            stationIn.id == station.id
+        }
+    }
     //MARK: Inits
     init(user: UserModel, stationNow: StationModel) {
         self.user = user
