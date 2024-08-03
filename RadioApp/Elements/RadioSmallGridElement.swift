@@ -51,7 +51,7 @@ struct RadioSmallGridElement: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("votes \(station.votes)")
+                    Text("votes \(formatVotes(votes: station.votes))")
                         .foregroundColor(active ? .white : .gray)
                         .font(.custom(FontApp.bold , size: 10))
                         .padding(20)
@@ -65,6 +65,9 @@ struct RadioSmallGridElement: View {
         }
         .frame(width: 139, height: 139)
         .animation(.easeInOut, value: active)
+    }
+    func formatVotes(votes: Int) -> String {
+        votes > 999 ? "\(votes/1000)K" : "\(votes)"
     }
 }
 

@@ -48,6 +48,7 @@ struct AllStationView: View {
                                         viewModel.stationNow = viewModel.allStation[index]
                                         viewModel.indexRadio = index
                                         viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
+                                        viewModel.play = true
                                     }
                             }
                                 

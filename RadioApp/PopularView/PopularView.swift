@@ -17,21 +17,44 @@ struct PopularView: View {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 139))], spacing: 15) {
                     
                         ForEach(viewModel.popular.indices, id: \.self) { index in
-                            if viewModel.stationNow.id == viewModel.popular[index].id {
-                                RadioSmallGridElement(station: viewModel.popular[index], active: true )
-                                    .onTapGesture {
+                            ZStack {
+                                if viewModel.stationNow.id == viewModel.popular[index].id {
+                                    RadioSmallGridElement(station: viewModel.popular[index], active: true )
                                     
+                                        .onLongPressGesture(minimumDuration: 1.0) {
+                                            print("long gesture")
+                                        }
+                                } else {
+                                    RadioSmallGridElement(station: viewModel.popular[index], active: false )
+                                        .onTapGesture {
+                                            viewModel.indexRadio = index
+                                            viewModel.stationNow = viewModel.popular[index]
+                                            viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                                            viewModel.radioPlayer.playMusic()
+                                            viewModel.play = true
+                                        }
+                                        .onLongPressGesture(minimumDuration: 1.0) {
+                                            print("long gesture")
+                                        }
+                                }
+                                //heart elements
+                                HStack {
+                                    Spacer()
+                                    VStack {
+                                        Image(systemName: viewModel.checkFavorite(station: viewModel.popular[index]) ? "heart" : "heart.fill")
+                                            .resizableToFit()
+                                            .frame(width: 13)
+                                            .foregroundStyle(.white)
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 15)
+                                            .onTapGesture {
+                                                
+                                            }
+                                        Spacer()
                                     }
-                            } else {
-                                RadioSmallGridElement(station: viewModel.popular[index], active: false )
-                                    .onTapGesture {
-                                        viewModel.indexRadio = index
-                                        viewModel.stationNow = viewModel.popular[index]
-                                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
-                                        viewModel.radioPlayer.playMusic()
-                                    }
+                                }
+                                .frame(width: 139, height: 139)
                             }
-                                
                         }
                     }
                 }
