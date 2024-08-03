@@ -12,6 +12,7 @@ import SwiftUI
 @MainActor
 
 class DataViewModel: ObservableObject {
+    @Published var tabBarIndex = 0
     //user
     @Published var user: UserModel = UserModel()
     //stationNow playing
@@ -19,11 +20,10 @@ class DataViewModel: ObservableObject {
     @Published var userPhoto: UIImage = UIImage(systemName: "person")!
     @Published var showAuthView = true
     @Published var play: Bool = false
-    @Published var next: Bool = false
-    @Published var prev: Bool = false
     @Published var popular: [StationModel] = []
     @Published var allStation : [StationModel] = []
-    
+    @Published var indexRadio = 0
+    @Published var radioPlayer = RadioPlayer.shared
 
     
     func signUp (user: UserModel) {
@@ -90,8 +90,27 @@ class DataViewModel: ObservableObject {
             showAuthView = true
         }
     }
-    //MARK: Inits
     
+    func nextStation () {
+        print("next station")
+        print(indexRadio)
+        print(popular.count - 1)
+        switch tabBarIndex {
+        case 0: stationNow = popular[indexRadio == (popular.count - 1) ? indexRadio : indexRadio + 1 ] ; indexRadio += 1
+        case 1: stationNow = user.favorites[indexRadio == (user.favorites.count - 1) ? indexRadio : indexRadio + 1] ; indexRadio += 1
+        case 2: stationNow = allStation[indexRadio == (allStation.count - 1) ? indexRadio : indexRadio + 1] ; indexRadio += 1
+        default: ()
+        }
+    }
+    func prevStation () {
+        switch tabBarIndex {
+        case 0: stationNow = popular[indexRadio == 0 ? indexRadio : indexRadio - 1 ] ; indexRadio -= 1
+        case 1: stationNow = user.favorites[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= 1
+        case 2: stationNow = allStation[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= 1
+        default: ()
+        }
+    }
+    //MARK: Inits
     init(user: UserModel, stationNow: StationModel) {
         self.user = user
         self.stationNow = stationNow

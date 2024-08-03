@@ -16,16 +16,19 @@ struct PopularView: View {
                 ScrollView{
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 139))], spacing: 15) {
                     
-                        ForEach(viewModel.popular, id: \.id) { station in
-                            if viewModel.stationNow.id == station.id {
-                                RadioSmallGridElement(station: station, active: true )
+                        ForEach(viewModel.popular.indices, id: \.self) { index in
+                            if viewModel.stationNow.id == viewModel.popular[index].id {
+                                RadioSmallGridElement(station: viewModel.popular[index], active: true )
                                     .onTapGesture {
-                                        viewModel.stationNow = station
+                                    
                                     }
                             } else {
-                                RadioSmallGridElement(station: station, active: false )
+                                RadioSmallGridElement(station: viewModel.popular[index], active: false )
                                     .onTapGesture {
-                                        viewModel.stationNow = station
+                                        viewModel.indexRadio = index
+                                        viewModel.stationNow = viewModel.popular[index]
+                                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                                        viewModel.radioPlayer.playMusic()
                                     }
                             }
                                 

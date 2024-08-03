@@ -9,8 +9,8 @@ import SwiftUI
 import AVFoundation
 
 struct RootView: View {
-    @StateObject var dataViewModel = DataViewModel()
-    @State var index = 0
+    @StateObject var viewModel = DataViewModel()
+    
     
     var body: some View {
         
@@ -18,29 +18,29 @@ struct RootView: View {
             Color.raDarkBlue
                 .ignoresSafeArea()
             NavigationView {
-                switch index {
-                case 0: PopularView(viewModel: dataViewModel)
-                case 1: FavoriteView(viewModel: dataViewModel)
-                case 2: AllStationView(viewModel: dataViewModel)
-                default: PopularView(viewModel: dataViewModel)
+                switch viewModel.tabBarIndex {
+                case 0: PopularView(viewModel: viewModel)
+                case 1: FavoriteView(viewModel: viewModel)
+                case 2: AllStationView(viewModel: viewModel)
+                default: PopularView(viewModel: viewModel)
                 }
 
             }
             .navigationViewStyle(.stack)
             // authView
-            if dataViewModel.showAuthView {
+            if viewModel.showAuthView {
                 NavigationView {
-                    AuthView(mainViewModel: dataViewModel, showAuthView: $dataViewModel.showAuthView)
-                        .opacity(dataViewModel.showAuthView ? 1 : 0)
+                    AuthView(mainViewModel: viewModel, showAuthView: $viewModel.showAuthView)
+                        .opacity(viewModel.showAuthView ? 1 : 0)
                 }
             }
             //header and tabBar
-            if !dataViewModel.showAuthView {
+            if !viewModel.showAuthView {
                 VStack {
                     //header
                     VStack {
                         HStack(spacing: 0) {
-                            Button {  print(dataViewModel.user) } label: {
+                            Button {  print(viewModel.user) } label: {
                                 Image("appLogo")
                                     .resizableToFit()
                                     .frame(width: 33)
@@ -49,17 +49,17 @@ struct RootView: View {
                             Text("Hello, ")
                                 .foregroundStyle(.white)
                                 .font(.custom(FontApp.bold, size: 30))
-                            Text(dataViewModel.user.name)
+                            Text(viewModel.user.name)
                                 .foregroundStyle(.raPink)
                                 .font(.custom(FontApp.bold, size: 30))
                             Spacer()
                             NavigationLink {
-                                ProfileView(viewModel: dataViewModel)
+                                ProfileView(viewModel: viewModel)
                             } label: {
                                 ZStack {
                                     Rectangle()
                                         .foregroundStyle(.white)
-                                    Image(uiImage: dataViewModel.userPhoto)
+                                    Image(uiImage: viewModel.userPhoto)
                                         .resizableToFit()
                                 }
                                 .clipShape(TriangleShape())
@@ -70,19 +70,62 @@ struct RootView: View {
                         .padding(5)
                         Spacer()
                     }
-//                    RadioButtonsView(play: $dataViewModel.play, next: $dataViewModel.next, prev: $dataViewModel.prev)
+                    //playButtons
+                    HStack (spacing: 30) {
+                        Button {
+                            viewModel.prevStation()
+                            viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                            viewModel.radioPlayer.playMusic()
+                            viewModel.play = true
+                        } label: {
+                            RadioButtonsView(play: false, state: .left)
+                        }
+                        Button {
+                            if viewModel.play {
+                                viewModel.radioPlayer.pauseMusic()
+                                viewModel.play = false
+                            } else {
+                                if viewModel.stationNow.id.isEmpty {
+                                    viewModel.radioPlayer.loadPlayer(from: viewModel.popular[0])
+                                    viewModel.stationNow = viewModel.popular[0]
+                                    viewModel.radioPlayer.playMusic()
+                                    viewModel.play = true
+                                } else {
+                                    viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                                    viewModel.radioPlayer.playMusic()
+                                    viewModel.play = true
+                                }
+                            }
+                            
+                        } label: {
+                            if viewModel.play {
+                                RadioButtonsView(play: true , state: .play)
+                            } else {
+                                RadioButtonsView(play: false , state: .play)
+                            }
+                            
+                        }
+                        Button {
+                            viewModel.nextStation()
+                            viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                            viewModel.radioPlayer.playMusic()
+                            viewModel.play = true
+                        } label: {
+                            RadioButtonsView(play: false, state: .right)
+                        }
+                    }
                         .padding(10)
                     //tabbar
-                    TabBarView(selectedTab: $index)
+                    TabBarView(selectedTab: $viewModel.tabBarIndex)
                 }
-                .opacity(dataViewModel.showAuthView ? 0 : 1)
+                .opacity(viewModel.showAuthView ? 0 : 1)
             }
         }
         //animation
         
-        .animation(.easeInOut(duration: 1), value: index)
-        .animation(.easeInOut(duration: 0.5), value: dataViewModel.user.name)
-        .animation(.easeInOut(duration: 1), value: dataViewModel.showAuthView)
+        .animation(.easeInOut(duration: 1), value: viewModel.tabBarIndex)
+        .animation(.easeInOut(duration: 0.5), value: viewModel.user.name)
+        .animation(.easeInOut(duration: 1), value: viewModel.showAuthView)
         
         .onAppear {
             

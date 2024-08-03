@@ -20,7 +20,7 @@ struct RadioButtonsView: View {
                             .resizableToFit()
                             .frame(width: 20, height: 20)
                             .foregroundStyle(.white)
-                            .offset(x: play ? 4 : 0 )
+                            .offset(x: !play ? 4 : 0 )
                         
                     }
                     .frame(width: 89, height: 89)
