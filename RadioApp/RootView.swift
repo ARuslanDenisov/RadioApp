@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct RootView: View {
     @StateObject var dataViewModel = DataViewModel()
@@ -26,12 +27,14 @@ struct RootView: View {
 
             }
             .navigationViewStyle(.stack)
+            // authView
             if dataViewModel.showAuthView {
                 NavigationView {
                     AuthView(mainViewModel: dataViewModel, showAuthView: $dataViewModel.showAuthView)
                         .opacity(dataViewModel.showAuthView ? 1 : 0)
                 }
             }
+            //header and tabBar
             if !dataViewModel.showAuthView {
                 VStack {
                     //header
@@ -51,7 +54,7 @@ struct RootView: View {
                                 .font(.custom(FontApp.bold, size: 30))
                             Spacer()
                             NavigationLink {
-                                ProfileView(dataVM: dataViewModel)
+                                ProfileView(viewModel: dataViewModel)
                             } label: {
                                 ZStack {
                                     Rectangle()
@@ -67,7 +70,8 @@ struct RootView: View {
                         .padding(5)
                         Spacer()
                     }
-                    Spacer()
+//                    RadioButtonsView(play: $dataViewModel.play, next: $dataViewModel.next, prev: $dataViewModel.prev)
+                        .padding(10)
                     //tabbar
                     TabBarView(selectedTab: $index)
                 }
@@ -81,11 +85,10 @@ struct RootView: View {
         .animation(.easeInOut(duration: 1), value: dataViewModel.showAuthView)
         
         .onAppear {
-//            let authUser = try? FBAuthService.shared.getAuthenticationUser()
-//            print(authUser)
-//            self.showAuthView = authUser == nil
+            
         }
     }
+
 }
 
 #Preview {

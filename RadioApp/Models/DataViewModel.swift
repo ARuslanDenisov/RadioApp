@@ -18,6 +18,11 @@ class DataViewModel: ObservableObject {
     @Published var stationNow: StationModel = StationModel()
     @Published var userPhoto: UIImage = UIImage(systemName: "person")!
     @Published var showAuthView = true
+    @Published var play: Bool = false
+    @Published var next: Bool = false
+    @Published var prev: Bool = false
+    @Published var popular: [StationModel] = []
+    @Published var allStation : [StationModel] = []
     
 
     
@@ -94,5 +99,14 @@ class DataViewModel: ObservableObject {
     
     init() {
         checkAuth()
+        Task {
+            do {
+                popular = try await NetworkServiceAA.shared.getPopularStations(numberLimit: 18)
+                allStation = try await NetworkServiceAA.shared.getAllStations(numberLimit: 15)
+            } catch {
+                print("error with getting all data")
+            }
+        }
+        
     }
 }

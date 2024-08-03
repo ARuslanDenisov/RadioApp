@@ -14,7 +14,7 @@ import Foundation
 //популярные
 //http://all.api.radio-browser.info/json/stations/topvote/10 popular 10-limits
 //поиск
-//http://all.api.radio-browser.info/json/stations/search?name=jazz&limit=100
+//http://all.api.radio-browser.info/json/stations/search?name=jazz&limit=100&codec=MP3
 //GET /json/stations/search?tag=rock&codec=mp3&order=country&reverse=true&limit=1000
 ///stations/bycountry/austria
 /////http://all.api.radio-browser.info/json/stations?limit=
