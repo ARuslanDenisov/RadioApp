@@ -12,7 +12,7 @@ import Foundation
 //стек через запятую
 //http://all.api.radio-browser.info/json/stations/byuuid?uuids=96102c22-0601-11e8-ae97-52543be04c81,566306b4-6f54-4ab6-a238-adcef2b645fd
 //популярные
-//http://all.api.radio-browser.info/json/stations/topvote/10 popular 10-limits
+//http://all.api.radio-browser.info/json/stations/topvote/10&codec=MP3 popular 10-limits
 //поиск
 //http://all.api.radio-browser.info/json/stations/search?name=jazz&limit=100&codec=MP3
 //GET /json/stations/search?tag=rock&codec=mp3&order=country&reverse=true&limit=1000

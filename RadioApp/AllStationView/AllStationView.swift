@@ -33,20 +33,21 @@ struct AllStationView: View {
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 12) {
-                        ForEach(viewModel.allStation, id: \.id) { station in
-//                            RadioBigAllStationElement(station: station, playingNow: true)
-                            if viewModel.stationNow.id == station.id {
-                                RadioBigAllStationElement(station: station, playingNow: true)
+                        ForEach(viewModel.allStation.indices, id: \.self) { index in
+                            if viewModel.stationNow.id == viewModel.allStation[index].id {
+                                RadioBigAllStationElement(station: viewModel.allStation[index], playingNow: true)
                                     .shadow(color: .raPink.opacity(0.7), radius: 10)
                                     .onTapGesture {
-                                        viewModel.stationNow = station
-                                        print(viewModel.stationNow)
+                                        viewModel.stationNow = viewModel.allStation[index]
+                                        viewModel.indexRadio = index
+                                        viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
                                     }
                             } else {
-                                RadioBigAllStationElement(station: station, playingNow: false)
+                                RadioBigAllStationElement(station: viewModel.allStation[index], playingNow: false)
                                     .onTapGesture {
-                                        viewModel.stationNow = station
-                                        print(viewModel.stationNow)
+                                        viewModel.stationNow = viewModel.allStation[index]
+                                        viewModel.indexRadio = index
+                                        viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
                                     }
                             }
                                 
