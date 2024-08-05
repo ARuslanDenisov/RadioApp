@@ -74,9 +74,6 @@ struct PopularView: View {
                 .offset(x:-7)
                 Spacer()
             }
-            .fullScreenCover(isPresented: $viewModel.showAuthView, content: {
-                StationDetailView(viewModel: viewModel)
-            })
             .animation(.easeInOut, value: viewModel.stationNow.id)
         }
     }

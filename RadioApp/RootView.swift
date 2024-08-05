@@ -121,6 +121,11 @@ struct RootView: View {
                 .opacity(viewModel.showAuthView ? 0 : 1)
             }
         }
+        .fullScreenCover(isPresented: $viewModel.showDetailView, content: {
+            NavigationView {
+                StationDetailView(viewModel: viewModel)
+            }
+        })
         //animation
         
         .animation(.easeInOut(duration: 1), value: viewModel.tabBarIndex)
