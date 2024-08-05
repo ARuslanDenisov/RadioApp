@@ -18,7 +18,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>RadioApp</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>RadioApp</string>
