@@ -62,6 +62,7 @@
 		4426819E2C57C86200E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4426819D2C57C86200E8C7F5 /* GoogleService-Info.plist */; };
 		442681A02C57C8A400E8C7F5 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */; };
 		442681A22C57CE2E00E8C7F5 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */; };
+		4499FFAE2C60BEDC00F25099 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */; };
 		44B60EE92C59254A001177C2 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B60EE82C59254A001177C2 /* Shapes.swift */; };
 		44F9E2AC2C5D2D8B007EEE38 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */; };
 		9238D3472C5BA37500D78661 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238D3462C5BA37500D78661 /* SearchField.swift */; };
@@ -123,6 +124,7 @@
 		4426819D2C57C86200E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		44B60EE82C59254A001177C2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		9238D3462C5BA37500D78661 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				442681022C566FFC00E8C7F5 /* AuthView.swift */,
 				442681892C57645500E8C7F5 /* PasswordAuthView.swift */,
 				442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */,
+				4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */,
 			);
 			path = AuthViews;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				4426810F2C56709100E8C7F5 /* NetworkServiceAA.swift in Sources */,
 				442680FB2C566FCC00E8C7F5 /* SearchView.swift in Sources */,
 				442680F72C566FB200E8C7F5 /* ProfileEditView.swift in Sources */,
+				4499FFAE2C60BEDC00F25099 /* PasswordResetView.swift in Sources */,
 				442681642C56744B00E8C7F5 /* ImageExtension.swift in Sources */,
 				442680D52C566CBA00E8C7F5 /* RadioAppApp.swift in Sources */,
 				442681152C56714500E8C7F5 /* StationModel.swift in Sources */,

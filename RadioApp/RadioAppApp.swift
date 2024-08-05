@@ -31,6 +31,9 @@ struct RadioAppApp: App {
             NavigationView {
 //                TestView()
                 RootView()
+                    .onOpenURL(perform: { url in
+                        PasswordResetView(incomingURL: url)
+                    })
             }
         }
     }
