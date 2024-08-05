@@ -35,6 +35,14 @@ struct RootView: View {
                 }
             }
             //header and tabBar
+            VStack {
+                Spacer()
+                EllipticalGradient(colors:[Color.raDarkBlue, Color.clear], center: .bottom, startRadiusFraction: 0.7, endRadiusFraction: 0.9)
+                    .frame(height: 150)
+                    .padding(.bottom, 20)
+                    
+                    
+            }
             if !viewModel.showAuthView {
                 VStack {
                     //header
@@ -71,50 +79,15 @@ struct RootView: View {
                         Spacer()
                     }
                     //playButtons
-                    HStack (spacing: 30) {
-                        Button {
-                            viewModel.prevStation()
-                            viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
-                            viewModel.radioPlayer.playMusic()
-                            viewModel.play = true
-                        } label: {
-                            RadioButtonsView(play: false, state: .left)
+                    ZStack {
+                        if viewModel.play {
+                            TabBarAnimation(animation: true)
+                                .frame(height: 100)
+                                .scaleEffect(1.4)
                         }
-                        Button {
-                            if viewModel.play {
-                                viewModel.radioPlayer.pauseMusic()
-                                viewModel.play = false
-                            } else {
-                                if viewModel.stationNow.id.isEmpty {
-                                    viewModel.radioPlayer.loadPlayer(from: viewModel.popular[0])
-                                    viewModel.stationNow = viewModel.popular[0]
-                                    viewModel.radioPlayer.playMusic()
-                                    viewModel.play = true
-                                } else {
-                                    viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
-                                    viewModel.radioPlayer.playMusic()
-                                    viewModel.play = true
-                                }
-                            }
-                            
-                        } label: {
-                            if viewModel.play {
-                                RadioButtonsView(play: true , state: .play)
-                            } else {
-                                RadioButtonsView(play: false , state: .play)
-                            }
-                            
-                        }
-                        Button {
-                            viewModel.nextStation()
-                            viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
-                            viewModel.radioPlayer.playMusic()
-                            viewModel.play = true
-                        } label: {
-                            RadioButtonsView(play: false, state: .right)
-                        }
+                        RadioButtonsView(viewModel: viewModel)
                     }
-                        .padding(10)
+                        
                     //tabbar
                     TabBarView(selectedTab: $viewModel.tabBarIndex)
                 }
@@ -131,6 +104,7 @@ struct RootView: View {
         .animation(.easeInOut(duration: 1), value: viewModel.tabBarIndex)
         .animation(.easeInOut(duration: 0.5), value: viewModel.user.name)
         .animation(.easeInOut(duration: 1), value: viewModel.showAuthView)
+        .animation(.easeInOut, value: viewModel.play)
         
         .onAppear {
             

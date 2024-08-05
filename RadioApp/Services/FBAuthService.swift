@@ -75,6 +75,14 @@ final class FBAuthService {
             return false
         }
     }
+    
+    func changeEmail (email: String, name: String) async throws {
+        do {
+            try await Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email)
+        } catch {
+            print("change email error")
+        }
+    }
 }
 
 extension FBAuthService {
