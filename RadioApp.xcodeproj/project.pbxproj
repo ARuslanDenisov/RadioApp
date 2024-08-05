@@ -67,6 +67,7 @@
 		44F9E2AC2C5D2D8B007EEE38 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */; };
 		9238D3472C5BA37500D78661 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238D3462C5BA37500D78661 /* SearchField.swift */; };
 		9238D3492C5BAD1F00D78661 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238D3482C5BAD1F00D78661 /* ViewExtension.swift */; };
+		9249A4172C61017A00DA279F /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9249A4162C61017A00DA279F /* NotificationManager.swift */; };
 		92C936592C5D5F3500EAE1B0 /* CustomToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C936582C5D5F3500EAE1B0 /* CustomToggle.swift */; };
 		92E634A32C5944B700C24A05 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 92E634A22C5944B700C24A05 /* GoogleSignIn */; };
 		92E634A52C5944B700C24A05 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 92E634A42C5944B700C24A05 /* GoogleSignInSwift */; };
@@ -129,6 +130,7 @@
 		44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		9238D3462C5BA37500D78661 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		9238D3482C5BAD1F00D78661 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		9249A4162C61017A00DA279F /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		92C936582C5D5F3500EAE1B0 /* CustomToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggle.swift; sourceTree = "<group>"; };
 		92E634A62C594A8E00C24A05 /* Utilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilites.swift; sourceTree = "<group>"; };
 		92E634A82C5954D100C24A05 /* GoogleSignInResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInResultModel.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				4426810A2C56705800E8C7F5 /* FBFirestoreService.swift */,
 				4426810C2C56706500E8C7F5 /* FBStorageService.swift */,
 				44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */,
+				9249A4162C61017A00DA279F /* NotificationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				442680FB2C566FCC00E8C7F5 /* SearchView.swift in Sources */,
 				442680F72C566FB200E8C7F5 /* ProfileEditView.swift in Sources */,
 				4499FFAE2C60BEDC00F25099 /* PasswordResetView.swift in Sources */,
+				9249A4172C61017A00DA279F /* NotificationManager.swift in Sources */,
 				442681642C56744B00E8C7F5 /* ImageExtension.swift in Sources */,
 				442680D52C566CBA00E8C7F5 /* RadioAppApp.swift in Sources */,
 				442681152C56714500E8C7F5 /* StationModel.swift in Sources */,

@@ -16,12 +16,12 @@ struct TestView: View {
     @State var rad2 = false
     @State var animation = false
     var body: some View {
-        ZStack {
-            HStack {
-                Spacer()
-                VStack {
-                    Spacer()
-                    ZStack {
+//        ZStack {
+//            HStack {
+//                Spacer()
+//                VStack {
+//                    Spacer()
+//                    ZStack {
 //                        TriangleShape()
 //                            .frame(width: 40, height: 40)
 //
@@ -36,20 +36,32 @@ struct TestView: View {
 //                            .frame(width: 60, height: 60)
 //                            .scaleEffect(rad2 ? 1.0 : 1.1 )
 //                            .foregroundStyle(.raPink)
-                    }
-                    Spacer()
-                    
-                }
-                Spacer()
+//                    }
+//                    Spacer()
+//                    
+//                }
+//                Spacer()
+//            }
+//            .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: false), value: rad)
+//            .animation(.easeInOut.repeatForever(autoreverses: true), value: rad2)
+//        }
+//        Button {
+//            rad.toggle()
+//            rad2.toggle()
+//        } label: {
+//            Text("perss me")
+//        }
+        VStack {
+            
+            Button("Notification") {
+                NotificationManager.instance.requestAutorzation()
             }
-            .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: false), value: rad)
-            .animation(.easeInOut.repeatForever(autoreverses: true), value: rad2)
+            Button("Schedule Notification") {
+                NotificationManager.instance.sheduleNotification()
+            }
         }
-        Button {
-            rad.toggle()
-            rad2.toggle()
-        } label: {
-            Text("perss me")
+        .onAppear {
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
             
     }
