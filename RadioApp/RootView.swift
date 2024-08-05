@@ -122,7 +122,9 @@ struct RootView: View {
             }
         }
         .fullScreenCover(isPresented: $viewModel.showDetailView, content: {
-            StationDetailView(viewModel: viewModel)
+            NavigationView {
+                StationDetailView(viewModel: viewModel)
+            }
         })
         //animation
         
