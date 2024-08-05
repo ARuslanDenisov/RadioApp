@@ -8,94 +8,172 @@
 import SwiftUI
 
 struct VolumeSliderView: View {
+    //TODO: Volume 
     @State var value: Double
-    @State var lastCoordinateValue: CGFloat = 0.0
-    var horizontal : Bool
+    @State private var lastCoordinateValue: CGFloat = 0.0
+    @State private var oldValue = 0.0
+    @State var horizontal : Bool
     @State var mute: Bool
-    @State var volume: Double
     var body: some View {
         GeometryReader { gr in
             let radius = 0.01
             let minValue = 0.0
             let maxValue = 190.0
-            
-            ZStack {
-                ZStack {
-                    HStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 200, height: 2)
-                        Spacer()
-                    }
-                    HStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundStyle(.raLightBlue)
-                            .frame(width: value, height: 2, alignment: .leading)
-                        Spacer()
-                    }
-                    
-                }
+            if horizontal {
                 HStack {
-                    Circle()
-                        .foregroundColor(Color.raLightBlue)
-                        .frame(width: 10, height: 10)
-                        .offset(x: self.value)
-                        .gesture(
-                            DragGesture(minimumDistance: 0)
-                                .onChanged { v in
-                                    if (abs(v.translation.width) < 0.1) {
-                                        self.lastCoordinateValue = self.value
-                                    }
-                                    if v.translation.width > 0 {
-                                        self.value = min(maxValue, self.lastCoordinateValue + v.translation.width)
-                                    } else {
-                                        self.value = max(minValue, self.lastCoordinateValue + v.translation.width)
-                                    }
-                                    
-                                }
-                        )
+                    Spacer()
+                    // image
+                    Image(systemName: volumeIconName(volume: value))
+                        .foregroundColor(.gray)
+                        .frame(width: 20, height: 20)
+                        .onTapGesture {
+                            if value != 0.0  {
+                                oldValue = value
+                                value = 0.0
+                                mute = true
+                            } else {
+                                value = oldValue
+                                mute = false
+                            }
+                            
+                        }
+                        .padding(.trailing, 19)
+                    // slider
+                    ZStack {
+                        HStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 190, height: 2)
+                            Spacer()
+                        }
+                        HStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(.raLightBlue)
+                                .frame(width: value, height: 2, alignment: .leading)
+                            Spacer()
+                        }
+                        HStack {
+                            Circle()
+                                .foregroundColor(Color.raLightBlue)
+                                .frame(width: 15, height: 15)
+                                .offset(x: self.value < 16 ? 0 : self.value-15)
+                                .gesture(
+                                    DragGesture(minimumDistance: 0)
+                                        .onChanged { v in
+                                            if (abs(v.translation.width) < 0.1) {
+                                                self.lastCoordinateValue = self.value
+                                            }
+                                            if v.translation.width > 0 {
+                                                self.value = min(maxValue, self.lastCoordinateValue + v.translation.width)
+                                            } else {
+                                                self.value = max(minValue, self.lastCoordinateValue + v.translation.width)
+                                            }
+                                            
+                                        }
+                                )
+                            Spacer()
+                        }
+                        
+                    }
+                    .frame(width: 190)
+                    // text
+                    
+                    Text(volumeText(volume:value))
+                        .foregroundColor(.white)
+                        .font(.custom(FontApp.regular, size: 18))
+                        .frame(width: 60)
+                        .padding(.leading, 5)
                     Spacer()
                 }
+            } else {
+                VStack {
+                    Spacer()
+                    // text
+                    Text(volumeText(volume:value))
+                        .foregroundColor(.white)
+                        .font(.custom(FontApp.regular, size: 18))
+                        .frame(width: 60)
+                        .padding(.bottom, 5)
+                    
+                    // slider
+                    ZStack {
+                        VStack {
+                            Spacer()
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 2, height: 190)
+                        }
+                        VStack {
+                            Spacer()
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(.raLightBlue)
+                                .frame(width: 2, height: value, alignment: .leading)
+                        }
+                        VStack {
+                            Spacer()
+                            Circle()
+                                .foregroundColor(Color.raLightBlue)
+                                .frame(width: 15, height: 15)
+//                                .offset(y: -self.value > -190 ? -190 : -self.value + 15)
+                                .offset(y: self.value-190)
+                                .gesture(
+                                    DragGesture(minimumDistance: 0)
+                                        .onChanged { v in
+                                            if (abs(v.translation.height) < 0.1) {
+                                                self.lastCoordinateValue = self.value
+                                            }
+                                            if v.translation.height > 0 {
+                                                self.value = min(maxValue, self.lastCoordinateValue + v.translation.height)
+                                            } else {
+                                                self.value = max(minValue, self.lastCoordinateValue + v.translation.height)
+                                            }
+                                            
+                                        }
+                                )
+                            
+                        }
+                        .rotationEffect(.degrees(180))
+                        
+                    }
+                    .frame(height: 190)
+                    // image
+                    Image(systemName: volumeIconName(volume: value))
+                        .foregroundColor(.gray)
+                        .frame(width: 20, height: 20)
+                        .onTapGesture {
+                            if value != 0.0  {
+                                oldValue = value
+                                value = 0.0
+                                mute = true
+                            } else {
+                                value = oldValue
+                                mute = false
+                            }
+                            
+                        }
+                        .padding(.top, 19)
+                    
+                }
             }
+            
         }
-//        ZStack {
-//            Color.raDarkBlue
-//            VStack {
-//                
-//                Text("\(Int(volume * 100))%")
-//                    .foregroundColor(.white)
-//                    .font(.title2)
-//                    .padding(.bottom, 100)
-//                
-//                Slider(value: $volume, in: 0...1)
-//                    .foregroundColor(.black)
-//                    .rotationEffect(.degrees(-90))
-//                    .frame(width: 200, height: 40)
-//                    .accentColor(.raLightBlue)
-//                    .shadow(radius: 50)
-//                Spacer()
-//                
-//                Image(systemName: volumeIconName(volume: volume))
-//                    .foregroundColor(.gray)
-//                    
-//            }
-//            .frame(width: 100, height: 300)
-//            .padding()
-//        }
-//        .edgesIgnoringSafeArea(.all)
+        .animation(.linear(duration: 0.1), value: value)
     }
     func volumeIconName(volume: Double) -> String {
         switch volume {
         case 0:
             return "volume.slash.fill"
-        case 0..<0.33:
+        case 0..<63.3:
             return "volume.1.fill"
-        case 0.33..<0.66:
+        case 63.3..<127.6:
             return "volume.2.fill"
-        case 0.66...1:
+        case 127.6...190:
             return "volume.3.fill"
         default:
             return "volume.fill"
         }
+    }
+    
+    func volumeText(volume: Double) -> String {
+        "\(volume != 190.0 ? Int(volume/1.90) : 100 )%"
     }
 }
 
@@ -103,5 +181,5 @@ struct VolumeSliderView: View {
 
 
 #Preview {
-    VolumeSliderView(value: 1.0, horizontal: false, mute: false, volume: 0.3)
+    VolumeSliderView(value: 1.0, horizontal: false, mute: false)
 }

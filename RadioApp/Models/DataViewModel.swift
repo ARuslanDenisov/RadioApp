@@ -24,6 +24,7 @@ class DataViewModel: ObservableObject {
     @Published var allStation : [StationModel] = []
     @Published var indexRadio = 0
     @Published var radioPlayer = RadioPlayer.shared
+    @Published var showDetailView = false
 
     
     func signUp (user: UserModel) {
