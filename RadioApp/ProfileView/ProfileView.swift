@@ -11,15 +11,8 @@ struct ProfileView: View {
     @StateObject var viewModel: DataViewModel
     @State var notificationIsOn = false
     @Environment(\.dismiss) var dismiss
-    let notification = NotificationManager.instance.requestAutorzation
-    
     
     var body: some View {
-        ZStack {
-            Color.raDarkBlue
-                .ignoresSafeArea()
-            
-            
             VStack {
                 ScrollView {
                     VStack(spacing: 40)  {
@@ -29,19 +22,19 @@ struct ProfileView: View {
                             .clipShape(Circle())
                             .frame(width: 54, height: 54)
                         VStack(alignment: .leading, spacing: 10) {
-                            Text("User")
+                            Text(viewModel.user.name)
                                 .font(Font.custom(FontApp.bold, size: 16))
                                 .foregroundStyle(.white)
                             
-                            Text("Mail")
+                            Text(viewModel.user.email)
                                 .font(Font.custom(FontApp.medium, size: 14))
                                 .foregroundStyle(.white)
                         }
                         .padding(.leading, 8)
                         Spacer()
                         
-                        Button {
-                            
+                        NavigationLink {
+                            ProfileEditView(viewModel: viewModel)
                         } label: {
                             Image(systemName: "square.and.pencil")
                                 .foregroundStyle(.raLightBlue)
@@ -80,6 +73,7 @@ struct ProfileView: View {
                                     .foregroundStyle(.white)
                                 
                             }
+                            .toggleStyle(CustomToggle(onColor: .raLightBlue, offColor: .gray, thumbColor: .raDarkGray))
                             .onChange(of: notificationIsOn) { value in
                                     if value {
                                         NotificationManager.instance.requestAutorzation()
@@ -203,6 +197,7 @@ struct ProfileView: View {
                     .padding(.horizontal, 24)
                 }
             }
+                .padding(.top, 30)
                 Button {
                     try? FBAuthService.shared.signOut()
                     viewModel.checkAuth()
@@ -237,8 +232,6 @@ struct ProfileView: View {
                     }
                 }
             }
-            
-        }
         .onAppear{
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
@@ -246,6 +239,6 @@ struct ProfileView: View {
 }
 
 
-//#Preview {
-//    ProfileView(viewModel: DataViewModel())
-//}
+#Preview {
+    ProfileView(viewModel: DataViewModel())
+}
