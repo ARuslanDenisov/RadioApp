@@ -218,6 +218,25 @@ struct ProfileView: View {
                 }
                 .padding(.horizontal, 24)
             }
+            .background(Image(.bg).ignoresSafeArea())
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.automatic)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Settings")
+                        .font(.custom(FontApp.semiBold, size: 24))
+                        .foregroundColor(.white)
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label : {
+                        Image(systemName: "arrow.left")
+                            .resizableToFit()
+                            .foregroundStyle(.white)
+                    }
+                }
+            }
             
         }
         .onAppear{
