@@ -51,7 +51,7 @@ final class FBAuthService {
 //        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
 //        return AuthDataResultModel(user: authDataResult.user)
 //     }
-    func signUp(email: String, password: String) async  throws -> Bool {
+    func signUp(email: String, password: String) async throws -> Bool {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             currentUser = result.user
@@ -64,6 +64,16 @@ final class FBAuthService {
     
     func signOut() throws {
         try Auth.auth().signOut()
+    }
+    
+    func sendEmailForChange (email: String ) async throws -> Bool {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+            return true
+        } catch {
+            print(error)
+            return false
+        }
     }
 }
 
