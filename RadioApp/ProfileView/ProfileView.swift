@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel: DataViewModel
-    @State var notificationIsOn = true
+    @State var notificationIsOn = false
     @Environment(\.dismiss) var dismiss
+    let notification = NotificationManager.instance.requestAutorzation
+    
     
     var body: some View {
         ZStack {
@@ -76,8 +78,18 @@ struct ProfileView: View {
                                 Text("Notification")
                                     .font(Font.custom(FontApp.medium, size: 14))
                                     .foregroundStyle(.white)
+                                
                             }
+                            .onChange(of: notificationIsOn) { value in
+                                    if value {
+                                        NotificationManager.instance.requestAutorzation()
+                                        NotificationManager.instance.sheduleNotification()
+                                    } else {
+                                        NotificationManager.instance.cancelNotification()
+                                    }
+                                }
                         }
+                        
                         
                         Divider().background(.gray)
                             .padding(.horizontal, 16)
@@ -208,10 +220,13 @@ struct ProfileView: View {
             }
             
         }
+        .onAppear{
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
     }
 }
 
 
-#Preview {
-    ProfileView(viewModel: DataViewModel())
-}
+//#Preview {
+//    ProfileView(viewModel: DataViewModel())
+//}
