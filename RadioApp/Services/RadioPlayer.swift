@@ -67,6 +67,10 @@ class RadioPlayer {
     func isPlayerPerforming() -> Bool {
         return player?.timeControlStatus == .playing ? true : false
     }
+    
+    func changeVolume () {
+        
+    }
 
 
 }

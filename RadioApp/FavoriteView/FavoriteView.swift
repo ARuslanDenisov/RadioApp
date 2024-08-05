@@ -12,7 +12,7 @@ struct FavoriteView: View {
     @State var activeStation: StationModel = StationModel()
     @State var bool = false
     var body: some View {
-        ZStack{
+        ZStack {
             Color.raDarkBlue
                 .ignoresSafeArea()
             //Header
@@ -48,6 +48,17 @@ struct FavoriteView: View {
                 }
                 .padding(.top, 20)
                 .frame(width: 300, height: 380  )
+                Spacer()
+            }
+            HStack {
+                VStack {
+//                    Spacer()
+                    VolumeSliderView(value: 1.0, horizontal: false, mute: true)
+                        .frame(height: 200)
+                        .padding(.bottom, 180)
+//                    Spacer()
+                }
+                .offset(x:-7)
                 Spacer()
             }
             

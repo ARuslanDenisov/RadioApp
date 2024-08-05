@@ -4,7 +4,7 @@ import SwiftUI
 struct PopularView: View {
     @StateObject var viewModel: DataViewModel
     var body: some View {
-        ZStack{
+        ZStack {
             Color.raDarkBlue
                 .ignoresSafeArea()
 
@@ -22,7 +22,7 @@ struct PopularView: View {
                                     RadioSmallGridElement(station: viewModel.popular[index], active: true )
                                     
                                         .onLongPressGesture(minimumDuration: 1.0) {
-                                            print("long gesture")
+                                            viewModel.showDetailView = true
                                         }
                                 } else {
                                     RadioSmallGridElement(station: viewModel.popular[index], active: false )
@@ -34,7 +34,7 @@ struct PopularView: View {
                                             viewModel.play = true
                                         }
                                         .onLongPressGesture(minimumDuration: 1.0) {
-                                            print("long gesture")
+                                            viewModel.showDetailView = true
                                         }
                                 }
                                 //heart elements
@@ -62,8 +62,21 @@ struct PopularView: View {
                 .frame(width: 300, height: 480  )
                 Spacer()
             }
-          
-            
+            //
+            HStack {
+                VStack {
+//                    Spacer()
+                    VolumeSliderView(value: 1.0, horizontal: false, mute: true)
+                        .frame(height: 200)
+                        .padding(.bottom, 180)
+//                    Spacer()
+                }
+                .offset(x:-7)
+                Spacer()
+            }
+            .fullScreenCover(isPresented: $viewModel.showAuthView, content: {
+                StationDetailView(viewModel: viewModel)
+            })
             .animation(.easeInOut, value: viewModel.stationNow.id)
         }
     }
