@@ -12,75 +12,46 @@ struct TestView: View {
     @State var test: [StationModel] = []
     @State var userIn: UserModel = UserModel()
     @State var userOut: UserModel = UserModel()
-    @State var rad = 0.0
+    @State var rad = false
+    @State var rad2 = false
+    @State var animation = false
     var body: some View {
-//        VStack {
-//                TextField("name", text: $userIn.name)
-//                .padding()
-//                .background()
-//                .shadow(radius: 10)
-//                .padding(5)
-//            TextField("email", text: $userIn.email)
-//            .padding()
-//            .background()
-//            .shadow(radius: 10)
-//            .padding(5)
+        ZStack {
+            HStack {
+                Spacer()
+                VStack {
+                    Spacer()
+                    ZStack {
+//                        TriangleShape()
+//                            .frame(width: 40, height: 40)
 //
-//            VStack{
-//                Text("name of 2 user: \(userOut.name)")
-//                Text("email of 2 user: \(userOut.email)")
-//            }
-//            Button {
-//                userIn.id = UUID().uuidString
-//                saveUser(user:userIn)
-//            } label: {
-//                ZStack {
-//                    Capsule()
-//                        .frame(width: 100, height: 50)
-//                    Text("Save me")
-//                        .foregroundStyle(.white)
-//                }
-//            }
-//            Button {
-//                Task {
-//                    let user = try await getUser(userId:userIn.id)
-//                    DispatchQueue.main.async {
-//                        userOut = user
-//                    }
-//                }
-//            } label: {
-//                ZStack {
-//                    Capsule()
-//                        .frame(width: 100, height: 50)
-//                    Text("Get user")
-//                        .foregroundStyle(.white)
-//                }
-//            }
-//            
-//            Button {
-//                Task {
-//                    do {
-//                        let ref = try await FBFirestoreService.shared.db.collection("users").addDocument(data: [
-//                            "first": "Alan",
-//                            "middle": "Mathison",
-//                            "last": "Turing",
-//                            "born": 1912
-//                        ])
-//                        print("Document added with ID: \(ref.documentID)")
-//                    } catch {
-//                        print("Error adding document: \(error)")
-//                    }
-//                }
-//            } label : {
-//                Text("testButton")
-//            }
-//        }
-        TriangleShape()
-            .foregroundColor(.raPink)
-            .frame(width: 15, height: 15)
-            .scaledToFit()
-        
-        Slider(value: $rad, in: 1...100)
+//                        sixAngleShape()
+//                            .stroke(lineWidth: 1)
+//                            .foregroundStyle(.raPink)
+//                            .frame(width: 60, height: 60)
+//                            .scaleEffect(CGFloat(!rad ? 0.3 : 1.5), anchor: .center)
+//                            .opacity(!rad ? 1.0 : 0.0)
+//                            .shadow(radius: 10)
+//                        sixAngleShape()
+//                            .frame(width: 60, height: 60)
+//                            .scaleEffect(rad2 ? 1.0 : 1.1 )
+//                            .foregroundStyle(.raPink)
+                    }
+                    Spacer()
+                    
+                }
+                Spacer()
+            }
+            .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: false), value: rad)
+            .animation(.easeInOut.repeatForever(autoreverses: true), value: rad2)
+        }
+        Button {
+            rad.toggle()
+            rad2.toggle()
+        } label: {
+            Text("perss me")
+        }
+            
     }
     func getAll (value: Int) {
         Task {
@@ -92,20 +63,8 @@ struct TestView: View {
             
         }
     }
-    func saveUser (user: UserModel) {
-        Task {
-            do {
-                try await FBFirestoreService.shared.addNewUser(newUser: user)
-            } catch {
-                print("eroor with save user")
-            }
-        }
-    }
-    func getUser(userId: String) async throws -> UserModel {
-                let result = try await FBFirestoreService.shared.getUser(userId: userId)
-                return result
-        }
-    }
+}
+
 
 
 #Preview {

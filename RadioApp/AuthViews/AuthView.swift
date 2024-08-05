@@ -26,8 +26,8 @@ struct AuthView: View {
                         .frame(width: 58, height: 58)
                     Spacer()
                     Button {
-                        viewModel.email = "test@test.ru"
-                        viewModel.password = "qwerty"
+                        viewModel.email = "challenge3fb@gmail.com"
+                        viewModel.password = "SwiftTeam6"
                     } label: {
                         Image(systemName: "person")
                             .frame(width: 10)
@@ -148,19 +148,25 @@ struct AuthView: View {
                     }
                     
                     //TODO: autorization google+
-                    GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
+//                    GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
+//
+//                    }
+                    
+                    Button {
                         Task {
                             do {
                                 try await viewModel.signInGoogle()
-                                // showSignIn = false
+                                if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+                                    mainViewModel.signIn(id: authUser.uid)
+                                    mainViewModel.getUserPhoto()
+                                    DispatchQueue.main.async {
+                                        showAuthView = false
+                                    }
+                                }
                             } catch {
                                 print(error)
                             }
                         }
-                    }
-                    
-                    Button {
-                       // something happend
                     } label: {
                         Image("googleLogo")
                             .resizableToFit()
@@ -177,6 +183,12 @@ struct AuthView: View {
                                 if viewModel.signInBool {
                                     Task {
                                         let result = await !viewModel.signIn()
+                                        if !result {
+                                            if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+                                                mainViewModel.signIn(id: authUser.uid)
+                                                mainViewModel.getUserPhoto()
+                                            }
+                                        }
                                         DispatchQueue.main.async {
                                             showAuthView = result
                                         }
@@ -184,6 +196,14 @@ struct AuthView: View {
                                 } else {
                                     Task {
                                         let result = await !viewModel.signUp()
+                                        print("result out")
+                                        print(result)
+                                        if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
+                                            print("authuser fetch in")
+                                            print(authUser.uid)
+                                            viewModel.userModel.id = authUser.uid
+                                            mainViewModel.signUp(user: viewModel.userModel)
+                                        }
                                         DispatchQueue.main.async {
                                             mainViewModel.user = viewModel.userModel
                                             showAuthView = result
@@ -205,7 +225,7 @@ struct AuthView: View {
                             Button {
                                 viewModel.signInBool.toggle()
                             } label: {
-                                Text("Or \(!viewModel.signInBool ? "Sign Up" : "Sign In")")
+                                Text("Or \(viewModel.signInBool ? "Sign Up" : "Sign In")")
                                     .padding(.vertical, 8)
                                     .foregroundStyle(.raLightGray)
                                     .font(.custom(FontApp.medium, size: 16))
