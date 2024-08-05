@@ -37,7 +37,7 @@ struct StationDetailView: View {
                                 .scaledToFit()
                                 .frame(width: 70, height: 70)
                                 .clipShape(Circle())
-                                .rotationEffect(.degrees(viewModel.play ? 0 : 360))
+                                .rotationEffect(.degrees(animation ? 0 : 360))
                             Spacer()
                         }
                     }
@@ -45,11 +45,62 @@ struct StationDetailView: View {
                 }
                 .frame(height: 448)
                 Spacer()
-//                RadioButtonsView(play: $viewModel.play, next: $viewModel.next, prev: $viewModel.prev)
+//                //playButtons
+                HStack (spacing: 30) {
+                    Button {
+                        viewModel.prevStation()
+                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                        viewModel.radioPlayer.playMusic()
+                        viewModel.play = true
+                    } label: {
+                        RadioButtonsView(play: false, state: .left)
+                    }
+                    Button {
+                        if viewModel.play {
+                            viewModel.radioPlayer.pauseMusic()
+                            viewModel.play = false
+                        } else {
+                            if viewModel.stationNow.id.isEmpty {
+                                viewModel.radioPlayer.loadPlayer(from: viewModel.popular[0])
+                                viewModel.stationNow = viewModel.popular[0]
+                                viewModel.radioPlayer.playMusic()
+                                viewModel.play = true
+                            } else {
+                                viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                                viewModel.radioPlayer.playMusic()
+                                viewModel.play = true
+                            }
+                        }
+                        
+                    } label: {
+                        if viewModel.play {
+                            RadioButtonsView(play: true , state: .play)
+                        } else {
+                            RadioButtonsView(play: false , state: .play)
+                        }
+                        
+                    }
+                    Button {
+                        viewModel.nextStation()
+                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                        viewModel.radioPlayer.playMusic()
+                        viewModel.play = true
+                    } label: {
+                        RadioButtonsView(play: false, state: .right)
+                    }
+                }
+                    .padding(10)
+                HStack {
+                    VolumeSliderView(value: 100.0 , horizontal: true, mute: true)
+                        .frame(width: 300, height: 40)
+                        .padding(.top, 30)
+                        
+                }
+                
             }
 //            .padding(.bottom, 286)
         }
-        .animation(.linear(duration: 3.0).repeatForever(autoreverses: false), value: viewModel.play)
+        .animation(.linear(duration: 3.0).repeatForever(autoreverses: false), value: animation)
         .background(Image("bg").ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.automatic)
