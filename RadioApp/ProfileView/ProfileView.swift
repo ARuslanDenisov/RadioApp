@@ -231,18 +231,8 @@ struct ProfileView: View {
                             .foregroundStyle(.white)
                     }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    ZStack {
-                        Rectangle()
-                            .foregroundStyle(.white)
-                        Image(uiImage: viewModel.userPhoto)
-                            .resizableToFit()
-                    }
-                    .clipShape(TriangleShape())
-                    .frame(width: 40,height: 40)
-                }
             }
-        .onAppear{
+        .onAppear {
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }

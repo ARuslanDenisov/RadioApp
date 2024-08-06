@@ -32,7 +32,7 @@ class FBStorageService: ObservableObject {
     
     func checkImage (user: UserModel) async throws -> Bool {
         let storageRef = storage.reference().child("\(user.id)/\(user.id).jpg")
-        return storageRef.isAccessibilityElement
+        return try await storageRef.listAll().accessibilityElementCount() > 0
     }
     
     func downloadImage (user: UserModel ) async throws -> UIImage {

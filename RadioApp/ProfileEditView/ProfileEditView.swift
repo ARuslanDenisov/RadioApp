@@ -18,17 +18,14 @@ struct ProfileEditView: View {
     var body: some View {
         VStack {
             ZStack {
-                if let profileImage = profileImage {
-                    Image(uiImage: profileImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                        .onTapGesture {
-                            self.showImagePicker = true
-                        }
+                VStack {
+                    Image(uiImage: viewModel.userPhoto)
+                        .resizableToFill()
                 }
-                //PhotoPicker
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                
+                
                 HStack {
                     Spacer()
                     VStack {
@@ -39,11 +36,17 @@ struct ProfileEditView: View {
                             Image(systemName: "pencil")
                                 .foregroundStyle(.raLightBlue)
                         }
+                        .onTapGesture {
+                            self.showImagePicker = true
+                        }
                     }
                 }
             }
             .frame(width: 72, height: 72)
-            Image(uiImage: viewModel.userPhoto)
+            .onTapGesture {
+                self.showImagePicker = true
+            }
+//            Image(uiImage: viewModel.userPhoto)
             Text(viewModel.user.name)
                 .font(.custom(FontApp.bold, size: 16))
                 .foregroundStyle(.white)
@@ -143,7 +146,7 @@ struct ProfileEditView: View {
                 }
             }
         }
-        .sheet(isPresented: $showImagePicker, onDismiss: {
+        .fullScreenCover(isPresented: $showImagePicker, onDismiss: {
             if profileImage != nil {
                 saveProfileImage()
             }
@@ -155,32 +158,21 @@ struct ProfileEditView: View {
                     self.emailChange = viewModel.user.email
                 }
         }
-        .onAppear {
-            loadProfileImage()
-        }
+        
+        
     }
 }
 
 extension ProfileEditView {
    
-    private func loadProfileImage() {
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let folderURL = documentsURL.appendingPathComponent("RadioApp")
-        let fileURL = folderURL.appendingPathComponent("profileImage.jpg")
-        if FileManager.default.fileExists(atPath: folderURL.path),
-           let loadImage = UIImage(contentsOfFile: fileURL.path) {
-            profileImage = loadImage
-        }
-    }
+
     
     private func saveProfileImage() {
         guard  let image = profileImage else { return }
         viewModel.userPhoto = profileImage ?? .appLogo
-           
             Task {
-                try await FBStorageService.shared.uploadImage(image: image, user: UserModel())
+                try await FBStorageService.shared.uploadImage(image: image, user: viewModel.user)
             }
-        
     }
 }
 

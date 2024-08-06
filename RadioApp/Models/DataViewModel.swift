@@ -25,7 +25,7 @@ class DataViewModel: ObservableObject {
     @Published var indexRadio = 0
     @Published var radioPlayer = RadioPlayer.shared
     @Published var showDetailView = false
-
+    
     
     func signUp (user: UserModel) {
         Task {
@@ -68,16 +68,13 @@ class DataViewModel: ObservableObject {
     
     func getUserPhoto () {
         Task {
-            if try await FBStorageService.shared.checkImage(user: user) {
-                do {
-                    let image = try await FBStorageService.shared.downloadImage(user: user)
-                    DispatchQueue.main.async {
-                        self.userPhoto = image
-                    }
-                } catch {
-                    print("problem with user picture")
+            do {
+                let image = try await FBStorageService.shared.downloadImage(user: user)
+                DispatchQueue.main.async {
+                    self.userPhoto = image
                 }
-            } else {
+            } catch {
+                print("problem with user picture")
                 self.userPhoto = UIImage(systemName: "xmark")!
             }
         }
@@ -133,6 +130,10 @@ class DataViewModel: ObservableObject {
             } catch {
                 print("error with getting all data")
             }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.getUserPhoto ()
         }
         
     }
