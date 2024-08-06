@@ -83,6 +83,13 @@ final class FBAuthService {
             print("change email error")
         }
     }
+    
+    func changeNameAndEmail(name: String, email: String) {
+        Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email)
+        
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+    }
 }
 
 extension FBAuthService {
