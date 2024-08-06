@@ -35,15 +35,16 @@ struct RootView: View {
                 }
             }
             //header and tabBar
-            VStack {
-                Spacer()
-                EllipticalGradient(colors:[Color.raDarkBlue, Color.clear], center: .bottom, startRadiusFraction: 0.7, endRadiusFraction: 0.9)
-                    .frame(height: 150)
-                    .padding(.bottom, 20)
-                    
-                    
-            }
+            
             if !viewModel.showAuthView {
+                VStack {
+                    Spacer()
+                    EllipticalGradient(colors:[Color.raDarkBlue, Color.clear], center: .bottom, startRadiusFraction: 0.7, endRadiusFraction: 0.9)
+                        .frame(height: 150)
+                        .padding(.bottom, 20)
+                        
+                        
+                }
                 VStack {
                     //header
                     VStack {
