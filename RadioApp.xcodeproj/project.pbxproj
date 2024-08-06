@@ -63,6 +63,7 @@
 		442681A02C57C8A400E8C7F5 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */; };
 		442681A22C57CE2E00E8C7F5 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */; };
 		4499FFAE2C60BEDC00F25099 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */; };
+		4499FFB52C61436500F25099 /* TabBarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499FFB42C61436500F25099 /* TabBarAnimation.swift */; };
 		44B60EE92C59254A001177C2 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B60EE82C59254A001177C2 /* Shapes.swift */; };
 		44F9E2AC2C5D2D8B007EEE38 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */; };
 		923110B12C6206CE0023B8FB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923110B02C6206CE0023B8FB /* ImagePicker.swift */; };
@@ -128,6 +129,7 @@
 		4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		4499FFB42C61436500F25099 /* TabBarAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimation.swift; sourceTree = "<group>"; };
 		44B60EE82C59254A001177C2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		923110B02C6206CE0023B8FB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				44B60EE82C59254A001177C2 /* Shapes.swift */,
 				9238D3462C5BA37500D78661 /* SearchField.swift */,
 				92C936582C5D5F3500EAE1B0 /* CustomToggle.swift */,
+				4499FFB42C61436500F25099 /* TabBarAnimation.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				442681212C56721200E8C7F5 /* RadioBigAllStationElement.swift in Sources */,
 				4426810D2C56706500E8C7F5 /* FBStorageService.swift in Sources */,
 				442680FD2C566FD900E8C7F5 /* AllStationView.swift in Sources */,
+				4499FFB52C61436500F25099 /* TabBarAnimation.swift in Sources */,
 				4426810F2C56709100E8C7F5 /* NetworkServiceAA.swift in Sources */,
 				442680FB2C566FCC00E8C7F5 /* SearchView.swift in Sources */,
 				442680F72C566FB200E8C7F5 /* ProfileEditView.swift in Sources */,

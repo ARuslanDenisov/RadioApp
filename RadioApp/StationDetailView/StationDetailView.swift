@@ -12,6 +12,7 @@ struct StationDetailView: View {
     @StateObject var viewModel: DataViewModel
     @Environment (\.dismiss) var dismiss
     @State var animation = false
+    @State var animationText = false
     var body: some View {
         
         ZStack {
@@ -20,12 +21,25 @@ struct StationDetailView: View {
                     // TODO: equalizer!!!!
                     HStack {
                         VStack {
-                            Text(viewModel.stationNow.name)
-                                .foregroundStyle(.white)
-                                .font(.custom(FontApp.bold, size: 40))
+                            VStack {
+                                Text(viewModel.stationNow.name)
+                                    .foregroundStyle(.white)
+                                    .font(.custom(FontApp.bold, size: 40))
+                                    .lineLimit(1)
+                                    .frame(width: 900)
+                                    .offset(x: animationText ? -CGFloat(viewModel.stationNow.name.count * 7) : CGFloat(viewModel.stationNow.name.count * 7) )
+                                    .animation(Animation.linear(duration: 8).repeatForever(autoreverses: true))
+                                    .onAppear {
+                                        self.animationText.toggle()
+                                    }
+                            }
+                            .frame(width: 200)
+                            .clipShape(Rectangle())
                             Text(viewModel.stationNow.tags)
                                 .foregroundStyle(.white)
-                                .font(.custom(FontApp.regular, size: 20))
+                                .multilineTextAlignment(.center)
+                                .font(.custom(FontApp.light, size: 12))
+                                .frame(width: 200)
                             Spacer()
                         }
                     }
@@ -46,50 +60,7 @@ struct StationDetailView: View {
                 .frame(height: 448)
                 Spacer()
 //                //playButtons
-                HStack (spacing: 30) {
-                    Button {
-                        viewModel.prevStation()
-                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
-                        viewModel.radioPlayer.playMusic()
-                        viewModel.play = true
-                    } label: {
-                        RadioButtonsView(play: false, state: .left)
-                    }
-                    Button {
-                        if viewModel.play {
-                            viewModel.radioPlayer.pauseMusic()
-                            viewModel.play = false
-                        } else {
-                            if viewModel.stationNow.id.isEmpty {
-                                viewModel.radioPlayer.loadPlayer(from: viewModel.popular[0])
-                                viewModel.stationNow = viewModel.popular[0]
-                                viewModel.radioPlayer.playMusic()
-                                viewModel.play = true
-                            } else {
-                                viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
-                                viewModel.radioPlayer.playMusic()
-                                viewModel.play = true
-                            }
-                        }
-                        
-                    } label: {
-                        if viewModel.play {
-                            RadioButtonsView(play: true , state: .play)
-                        } else {
-                            RadioButtonsView(play: false , state: .play)
-                        }
-                        
-                    }
-                    Button {
-                        viewModel.nextStation()
-                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
-                        viewModel.radioPlayer.playMusic()
-                        viewModel.play = true
-                    } label: {
-                        RadioButtonsView(play: false, state: .right)
-                    }
-                }
-                    .padding(10)
+                RadioButtonsView(viewModel: viewModel)
                 HStack {
                     VolumeSliderView(value: 100.0 , horizontal: true, mute: true)
                         .frame(width: 300, height: 40)
@@ -128,6 +99,6 @@ struct StationDetailView: View {
 
 #Preview {
     NavigationView {
-        StationDetailView(viewModel: DataViewModel(user: UserModel(), stationNow: StationModel(id: "", name: "Dacha FM", favicon: "https://www.newstalkzb.co.nz/content/news/images/interface/icons/newstalkzb/apple-touch-icon.png", streamUrl: "", tags: "pop rock", language: "", countryCode: "Ru", votes: 131)))
+        StationDetailView(viewModel: DataViewModel(user: UserModel(), stationNow: StationModel(id: "", name: "Dacha kva4a privet kak dela FM", favicon: "https://www.newstalkzb.co.nz/content/news/images/interface/icons/newstalkzb/apple-touch-icon.png", streamUrl: "", tags: "pop rock, falklor things bad and another words that you can type", language: "", countryCode: "Ru", votes: 131)))
     }
 }
