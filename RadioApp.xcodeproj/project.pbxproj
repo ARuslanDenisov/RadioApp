@@ -62,6 +62,7 @@
 		4426819E2C57C86200E8C7F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4426819D2C57C86200E8C7F5 /* GoogleService-Info.plist */; };
 		442681A02C57C8A400E8C7F5 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */; };
 		442681A22C57CE2E00E8C7F5 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */; };
+		4468503E2C6284870008002F /* TabBarSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468503D2C6284870008002F /* TabBarSearch.swift */; };
 		4499FFAE2C60BEDC00F25099 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */; };
 		4499FFB52C61436500F25099 /* TabBarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499FFB42C61436500F25099 /* TabBarAnimation.swift */; };
 		44B60EE92C59254A001177C2 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B60EE82C59254A001177C2 /* Shapes.swift */; };
@@ -125,6 +126,7 @@
 		4426819D2C57C86200E8C7F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4426819F2C57C8A400E8C7F5 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		442681A12C57CE2E00E8C7F5 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		4468503D2C6284870008002F /* TabBarSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSearch.swift; sourceTree = "<group>"; };
 		4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		4499FFB42C61436500F25099 /* TabBarAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimation.swift; sourceTree = "<group>"; };
 		44B60EE82C59254A001177C2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				442680FC2C566FD900E8C7F5 /* AllStationView.swift */,
+				4468503D2C6284870008002F /* TabBarSearch.swift */,
 			);
 			path = AllStationView;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				4499FFB52C61436500F25099 /* TabBarAnimation.swift in Sources */,
 				4426810F2C56709100E8C7F5 /* NetworkServiceAA.swift in Sources */,
 				442680FB2C566FCC00E8C7F5 /* SearchView.swift in Sources */,
+				4468503E2C6284870008002F /* TabBarSearch.swift in Sources */,
 				442680F72C566FB200E8C7F5 /* ProfileEditView.swift in Sources */,
 				4499FFAE2C60BEDC00F25099 /* PasswordResetView.swift in Sources */,
 				442681642C56744B00E8C7F5 /* ImageExtension.swift in Sources */,

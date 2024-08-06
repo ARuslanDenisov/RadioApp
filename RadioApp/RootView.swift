@@ -37,11 +37,13 @@ struct RootView: View {
             //header and tabBar
             
             if !viewModel.showAuthView {
+                
                 VStack {
                     Spacer()
                     EllipticalGradient(colors:[Color.raDarkBlue, Color.clear], center: .bottom, startRadiusFraction: 0.7, endRadiusFraction: 0.9)
                         .frame(height: 150)
                         .padding(.bottom, 20)
+                        .opacity(viewModel.showTabBar ? 1: 0)
                         
                         
                 }
@@ -88,9 +90,12 @@ struct RootView: View {
                         }
                         RadioButtonsView(viewModel: viewModel)
                     }
+                    .offset(x: viewModel.showTabBar ? 0 : 50)
                         
                     //tabbar
-                    TabBarView(selectedTab: $viewModel.tabBarIndex)
+                        TabBarView(selectedTab: $viewModel.tabBarIndex)
+                        .offset(y: viewModel.showTabBar ? 0 : 200)
+                    
                 }
                 .opacity(viewModel.showAuthView ? 0 : 1)
             }
@@ -106,6 +111,7 @@ struct RootView: View {
         .animation(.easeInOut(duration: 0.5), value: viewModel.user.name)
         .animation(.easeInOut(duration: 1), value: viewModel.showAuthView)
         .animation(.easeInOut, value: viewModel.play)
+        .animation(.easeInOut, value: viewModel.showTabBar)
         
         .onAppear {
             

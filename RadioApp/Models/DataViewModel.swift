@@ -25,6 +25,7 @@ class DataViewModel: ObservableObject {
     @Published var indexRadio = 0
     @Published var radioPlayer = RadioPlayer.shared
     @Published var showDetailView = false
+    @Published var showTabBar = true
 
     
     func signUp (user: UserModel) {
@@ -118,6 +119,7 @@ class DataViewModel: ObservableObject {
             stationIn.id == station.id
         }
     }
+    
     //MARK: Inits
     init(user: UserModel, stationNow: StationModel) {
         self.user = user
