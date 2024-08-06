@@ -7,7 +7,13 @@
 
 import Foundation
 
-enum RadioTags: String {
+enum SearchType: String, CaseIterable {
+    case tags
+    case language
+    case country
+}
+
+enum RadioTags: String, CaseIterable {
     case electro
     case rock
     case house
@@ -27,7 +33,7 @@ enum RadioTags: String {
     case gig
 }
 
-enum Country: String {
+enum Country: String, CaseIterable {
     case Uganda
     case Ukraine
     case Serbia
@@ -38,7 +44,7 @@ enum Country: String {
     case Island
 }
 
-enum Languages: String {
+enum Languages: String, CaseIterable {
     case english
     case russian
     case german

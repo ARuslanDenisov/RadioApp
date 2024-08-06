@@ -59,6 +59,14 @@ class URLManager {
     func createURLCountry (name: String, limit: Int) -> URL? {
         URL(string: server + "/bycountry/\(name)?limit=\(limit.description)")
     }
-    
+    func createURLSearchForTag (_ name: String, numberLimit: Int, setup: SearchType, tag: String) -> URL? {
+        var setupText = ""
+        switch setup {
+        case .country : setupText = "country"
+        case .language : setupText = "language"
+        case .tags : setupText = "tag"
+        }
+        return URL(string: server + "/search?name=\(name)&limit=\(numberLimit.description)&\(setupText)=\(tag)")
+    }
 }
 
