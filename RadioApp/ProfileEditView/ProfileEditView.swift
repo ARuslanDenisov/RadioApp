@@ -173,7 +173,7 @@ extension ProfileEditView {
         }
     }
     
-    private func saveProfileImage() async {
+    private func saveProfileImage() {
         guard  let image = profileImage else { return }
         viewModel.userPhoto = profileImage ?? .appLogo
         
@@ -185,7 +185,7 @@ extension ProfileEditView {
             // Создаем папку, если она не существует
             try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
             
-            try await FBStorageService.shared.uploadImage(image: image, user: UserModel())
+//            try await FBStorageService.shared.uploadImage(image: image, user: UserModel())
             
             // Формируем URL файла для сохранения
             let fileURL = folderURL.appendingPathComponent("profileImage.jpg")
