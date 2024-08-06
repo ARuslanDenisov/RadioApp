@@ -9,7 +9,7 @@ struct StationModel: Identifiable, Codable {
     let tags: String
     let language: String
     let countryCode: String
-    let votes: Int
+    var votes: Int
     
 
     init(id: String, name: String, favicon: String, streamUrl: String, tags: String, language: String, countryCode: String, votes: Int) {
