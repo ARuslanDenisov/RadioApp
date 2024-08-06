@@ -176,28 +176,11 @@ extension ProfileEditView {
     private func saveProfileImage() {
         guard  let image = profileImage else { return }
         viewModel.userPhoto = profileImage ?? .appLogo
-        
-        // Получаем URL папки для сохранения
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let folderURL = documentsURL.appendingPathComponent("RadioApp")
-        
-        do {
-            // Создаем папку, если она не существует
-            try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
-            
-//            try await FBStorageService.shared.uploadImage(image: image, user: UserModel())
-            
-            // Формируем URL файла для сохранения
-            let fileURL = folderURL.appendingPathComponent("profileImage.jpg")
-            
-            // Сохраняем изображение в файл
-            if let data = image.jpegData(compressionQuality: 1.0) {
-                try data.write(to: fileURL)
-                print("Изображение сохранено по пути: \(fileURL.path)")
+           
+            Task {
+                try await FBStorageService.shared.uploadImage(image: image, user: UserModel())
             }
-        } catch {
-            print("Ошибка при сохранении/чтении изображения: \(error)")
-        }
+        
     }
 }
 
