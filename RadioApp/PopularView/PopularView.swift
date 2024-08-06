@@ -76,6 +76,9 @@ struct PopularView: View {
             }
             .animation(.easeInOut, value: viewModel.stationNow.id)
         }
+        .onAppear{
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
     }
 }
 

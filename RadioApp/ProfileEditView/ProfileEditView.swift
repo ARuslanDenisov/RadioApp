@@ -11,14 +11,23 @@ struct ProfileEditView: View {
     @StateObject var viewModel: DataViewModel
     @State var nameChange: String = ""
     @State var emailChange: String = ""
+    @State private var profileImage: UIImage?
+    @State private var showImagePicker = false
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
             ZStack {
-                Image(uiImage: viewModel.userPhoto)
-                    .resizableToFit()
-                    .clipShape(Circle())
+                if let profileImage = profileImage {
+                    Image(uiImage: profileImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .onTapGesture {
+                            self.showImagePicker = true
+                        }
+                }
                 //PhotoPicker
                 HStack {
                     Spacer()
@@ -114,6 +123,7 @@ struct ProfileEditView: View {
             .padding(.vertical, 50)
             Spacer()
         }
+        .padding(.top, 20)
         .background(Image(.bg).ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.automatic)
@@ -133,10 +143,58 @@ struct ProfileEditView: View {
                 }
             }
         }
-        .padding(.top, 30)
+        .sheet(isPresented: $showImagePicker, onDismiss: {
+            if profileImage != nil {
+                saveProfileImage()
+            }
+        }) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$profileImage)
+                .padding(.top, 30)
+                .onAppear {
+                    self.nameChange = viewModel.user.name
+                    self.emailChange = viewModel.user.email
+                }
+        }
         .onAppear {
-            self.nameChange = viewModel.user.name
-            self.emailChange = viewModel.user.email
+            loadProfileImage()
+        }
+    }
+}
+
+extension ProfileEditView {
+   
+    private func loadProfileImage() {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let folderURL = documentsURL.appendingPathComponent("RadioApp")
+        let fileURL = folderURL.appendingPathComponent("profileImage.jpg")
+        if FileManager.default.fileExists(atPath: folderURL.path),
+           let loadImage = UIImage(contentsOfFile: fileURL.path) {
+            profileImage = loadImage
+        }
+    }
+    
+    private func saveProfileImage() {
+        guard  let image = profileImage else { return }
+        viewModel.userPhoto = profileImage ?? .appLogo
+        
+        // Получаем URL папки для сохранения
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let folderURL = documentsURL.appendingPathComponent("RadioApp")
+        
+        do {
+            // Создаем папку, если она не существует
+            try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
+            
+            // Формируем URL файла для сохранения
+            let fileURL = folderURL.appendingPathComponent("profileImage.jpg")
+            
+            // Сохраняем изображение в файл
+            if let data = image.jpegData(compressionQuality: 1.0) {
+                try data.write(to: fileURL)
+                print("Изображение сохранено по пути: \(fileURL.path)")
+            }
+        } catch {
+            print("Ошибка при сохранении/чтении изображения: \(error)")
         }
     }
 }

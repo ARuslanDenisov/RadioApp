@@ -24,7 +24,7 @@ class NotificationManager {
     
     func sheduleNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Пора послушать любимое радио!"
+        content.title = "Включи любимое радио!"
         content.subtitle = "Тут много музыкальных новинок"
         content.sound = .default
         content.badge = 1

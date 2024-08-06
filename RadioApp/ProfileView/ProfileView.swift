@@ -17,7 +17,7 @@ struct ProfileView: View {
                 ScrollView {
                     VStack(spacing: 40)  {
                     HStack {
-                        Image(.backgroundOnbording)
+                        Image(uiImage: viewModel.userPhoto)
                             .resizable()
                             .clipShape(Circle())
                             .frame(width: 54, height: 54)
@@ -230,6 +230,16 @@ struct ProfileView: View {
                             .resizableToFit()
                             .foregroundStyle(.white)
                     }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    ZStack {
+                        Rectangle()
+                            .foregroundStyle(.white)
+                        Image(uiImage: viewModel.userPhoto)
+                            .resizableToFit()
+                    }
+                    .clipShape(TriangleShape())
+                    .frame(width: 40,height: 40)
                 }
             }
         .onAppear{

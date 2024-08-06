@@ -65,6 +65,7 @@
 		4499FFAE2C60BEDC00F25099 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */; };
 		44B60EE92C59254A001177C2 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B60EE82C59254A001177C2 /* Shapes.swift */; };
 		44F9E2AC2C5D2D8B007EEE38 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */; };
+		923110B12C6206CE0023B8FB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923110B02C6206CE0023B8FB /* ImagePicker.swift */; };
 		9238D3472C5BA37500D78661 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238D3462C5BA37500D78661 /* SearchField.swift */; };
 		9238D3492C5BAD1F00D78661 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238D3482C5BAD1F00D78661 /* ViewExtension.swift */; };
 		9249A4172C61017A00DA279F /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9249A4162C61017A00DA279F /* NotificationManager.swift */; };
@@ -128,6 +129,7 @@
 		4499FFAD2C60BEDC00F25099 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		44B60EE82C59254A001177C2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
+		923110B02C6206CE0023B8FB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		9238D3462C5BA37500D78661 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		9238D3482C5BAD1F00D78661 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		9249A4162C61017A00DA279F /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				442680F62C566FB200E8C7F5 /* ProfileEditView.swift */,
+				923110B02C6206CE0023B8FB /* ImagePicker.swift */,
 			);
 			path = ProfileEditView;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				442681832C569FFF00E8C7F5 /* TestView.swift in Sources */,
 				442680F52C566FA100E8C7F5 /* ProfileView.swift in Sources */,
 				442681A22C57CE2E00E8C7F5 /* AuthViewModel.swift in Sources */,
+				923110B12C6206CE0023B8FB /* ImagePicker.swift in Sources */,
 				44B60EE92C59254A001177C2 /* Shapes.swift in Sources */,
 				442680F12C566F7500E8C7F5 /* LicenseView.swift in Sources */,
 				92E634A92C5954D100C24A05 /* GoogleSignInResultModel.swift in Sources */,
