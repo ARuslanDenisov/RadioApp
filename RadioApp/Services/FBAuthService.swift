@@ -84,16 +84,22 @@ final class FBAuthService {
         }
     }
     
-    func changeName(name: String) {
+    func changeName(user: UserModel, name: String) async throws -> UserModel {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = name
-        changeRequest?.commitChanges { error in
-            if let error = error {
-                print("Error updating display name: \(error.localizedDescription)")
-            } else {
-                print("Display name updated successfully")
-            }
+        var userChange = user
+        userChange.name = name
+        do {
+            try await changeRequest?.commitChanges()
+            try await FBFirestoreService.shared.updateUser(user: userChange)
+        } catch {
+            return user
         }
+        return userChange
+    }
+    
+    func resetPassword(email: String) async throws {
+        try await Auth.auth().sendPasswordReset(withEmail: email)
     }
 }
 
