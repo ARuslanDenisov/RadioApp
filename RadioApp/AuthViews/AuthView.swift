@@ -124,8 +124,8 @@ struct AuthView: View {
                 if viewModel.signInBool {
                     HStack {
                         Spacer()
-                        Button {
-                            //TODO: провалиться в форготпасс
+                        NavigationLink {
+                            PasswordAuthView()
                         } label: {
                             Text("Forgot Password?")
                                 .foregroundStyle(.raLightGray)

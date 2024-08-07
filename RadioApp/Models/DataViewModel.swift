@@ -133,6 +133,21 @@ class DataViewModel: ObservableObject {
         }
     }
     
+    func changeName(name: String ) {
+        Task {
+            let updateUser = try await FBAuthService.shared.changeName(user:user, name: name)
+            DispatchQueue.main.async {
+                self.user = updateUser
+            }
+        }
+    }
+    
+    func changeEmail(email: String) {
+        Task {
+            try await FBAuthService.shared.changeEmail(email: email)
+        }
+    }
+    
     //MARK: Inits
     init(user: UserModel, stationNow: StationModel) {
         self.user = user

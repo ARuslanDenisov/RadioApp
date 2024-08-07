@@ -60,6 +60,9 @@ struct PasswordAuthView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
+                            Task {
+                                try await FBAuthService.shared.resetPassword(email: email)
+                            }
                             sendCheck = false
                             dismiss()
                         } label : {
@@ -102,6 +105,7 @@ struct PasswordAuthView: View {
             }
             
         }
+        .navigationBarBackButtonHidden(true)
         .animation(.easeInOut, value: sendCheck)
     }
 }
