@@ -9,7 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct TestView: View {
-    @State var test: [StationModel] = []
+    @State var test: [StationModel] = [StationModel(id: "123", name: "", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 1)]
+    @State var stationNow = StationModel(id: "123", name: "", favicon: "", streamUrl: "", tags: "", language: "", countryCode: "", votes: 1)
     @State var userIn: UserModel = UserModel()
     @State var userOut: UserModel = UserModel()
     @State var rad = false
@@ -19,7 +20,10 @@ struct TestView: View {
             
         
         Button {
-            print(URLManager.shared.createURLSearch("rocker", numberLimit: 10)!)
+            let result = test.contains { station in
+                station.id == stationNow.id
+            }
+            print(result)
         } label: {
             Text("perss me")
         }
