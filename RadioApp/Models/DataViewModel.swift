@@ -69,7 +69,6 @@ class DataViewModel: ObservableObject {
     
     func getUserPhoto () {
         Task {
-            if try await FBStorageService.shared.checkImage(user: user) {
                 do {
                     let image = try await FBStorageService.shared.downloadImage(user: user)
                     DispatchQueue.main.async {
@@ -77,10 +76,11 @@ class DataViewModel: ObservableObject {
                     }
                 } catch {
                     print("problem with user picture")
+                    self.userPhoto = UIImage(systemName: "xmark")!
                 }
-            } else {
-                self.userPhoto = UIImage(systemName: "xmark")!
-            }
+            
+                
+            
         }
     }
     
@@ -148,6 +148,9 @@ class DataViewModel: ObservableObject {
             } catch {
                 print("error with getting all data")
             }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.getUserPhoto()
         }
         
     }

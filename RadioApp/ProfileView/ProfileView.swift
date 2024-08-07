@@ -9,37 +9,32 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel: DataViewModel
-    @State var notificationIsOn = true
+    @State var notificationIsOn = false
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack {
-            Color.raDarkBlue
-                .ignoresSafeArea()
-            
-            
             VStack {
                 ScrollView {
                     VStack(spacing: 40)  {
                     HStack {
-                        Image(.backgroundOnbording)
+                        Image(uiImage: viewModel.userPhoto)
                             .resizable()
                             .clipShape(Circle())
                             .frame(width: 54, height: 54)
                         VStack(alignment: .leading, spacing: 10) {
-                            Text("User")
+                            Text(viewModel.user.name)
                                 .font(Font.custom(FontApp.bold, size: 16))
                                 .foregroundStyle(.white)
                             
-                            Text("Mail")
+                            Text(viewModel.user.email)
                                 .font(Font.custom(FontApp.medium, size: 14))
                                 .foregroundStyle(.white)
                         }
                         .padding(.leading, 8)
                         Spacer()
                         
-                        Button {
-                            
+                        NavigationLink {
+                            ProfileEditView(viewModel: viewModel)
                         } label: {
                             Image(systemName: "square.and.pencil")
                                 .foregroundStyle(.raLightBlue)
@@ -76,8 +71,19 @@ struct ProfileView: View {
                                 Text("Notification")
                                     .font(Font.custom(FontApp.medium, size: 14))
                                     .foregroundStyle(.white)
+                                
                             }
+                            .toggleStyle(CustomToggle(onColor: .raLightBlue, offColor: .gray, thumbColor: .raDarkGray))
+                            .onChange(of: notificationIsOn) { value in
+                                    if value {
+                                        NotificationManager.instance.requestAutorzation()
+                                        NotificationManager.instance.sheduleNotification()
+                                    } else {
+                                        NotificationManager.instance.cancelNotification()
+                                    }
+                                }
                         }
+                        
                         
                         Divider().background(.gray)
                             .padding(.horizontal, 16)
@@ -191,6 +197,7 @@ struct ProfileView: View {
                     .padding(.horizontal, 24)
                 }
             }
+                .padding(.top, 30)
                 Button {
                     try? FBAuthService.shared.signOut()
                     viewModel.checkAuth()
@@ -206,7 +213,27 @@ struct ProfileView: View {
                 }
                 .padding(.horizontal, 24)
             }
-            
+            .background(Image(.bg).ignoresSafeArea())
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.automatic)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Settings")
+                        .font(.custom(FontApp.semiBold, size: 24))
+                        .foregroundColor(.white)
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label : {
+                        Image(systemName: "arrow.left")
+                            .resizableToFit()
+                            .foregroundStyle(.white)
+                    }
+                }
+            }
+        .onAppear {
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
 }

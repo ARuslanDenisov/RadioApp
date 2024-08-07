@@ -76,11 +76,23 @@ final class FBAuthService {
         }
     }
     
-    func changeEmail (email: String, name: String) async throws {
+    func changeEmail(email: String) async throws {
         do {
             try await Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email)
         } catch {
             print("change email error")
+        }
+    }
+    
+    func changeName(name: String) {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+        changeRequest?.commitChanges { error in
+            if let error = error {
+                print("Error updating display name: \(error.localizedDescription)")
+            } else {
+                print("Display name updated successfully")
+            }
         }
     }
 }
