@@ -115,6 +115,7 @@ class DataViewModel: ObservableObject {
             stationIn.id == station.id
         }
     }
+    
     //MARK: Inits
     init(user: UserModel, stationNow: StationModel) {
         self.user = user

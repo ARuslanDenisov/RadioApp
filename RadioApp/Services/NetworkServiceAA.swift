@@ -68,7 +68,7 @@ class NetworkServiceAA {
         return try await getStations(url: url)
     }
     
-    //MARK: Search Stations by name
+    //MARK: Search Stations by name in popular
     func searchStations(name: String ,numberLimit: Int) async throws -> [StationModel] {
         guard let url = URLManager.shared.createURLSearch(name, numberLimit: numberLimit) else {
             throw NetworkError.badURL
@@ -99,7 +99,22 @@ class NetworkServiceAA {
         }
         return try await getStations(url: url)
     }
+    //MARK: Get stations by tag
+    func getStationsByTag (setup: SearchType, value: String, numberLimit: Int) async throws -> [StationModel] {
+        switch setup {
+        case .country : return try await getStationsByTag(country: value, numberLimit: numberLimit)
+        case .language : return try await getStationsByTag(lang: value, numberLimit: numberLimit)
+        case .tags : return try await getStationsByTag(tag: value, numberLimit: numberLimit)
+        }
+    }
     
+    func searchStationWithTag (search: String, setup: SearchType, value: String, numberLimit: Int) async throws -> [StationModel] {
+        guard let url = URLManager.shared.createURLSearchForTag(search, numberLimit: numberLimit, setup: setup, tag: value) else {
+            throw NetworkError.badURL
+        }
+        return try await getStations(url: url)
+        
+    }
     
     
 }
