@@ -12,6 +12,7 @@ struct RootView: View {
     @StateObject var viewModel = DataViewModel()
     
     
+    
     var body: some View {
         
         ZStack {
@@ -98,6 +99,9 @@ struct RootView: View {
                     
                 }
                 .opacity(viewModel.showAuthView ? 0 : 1)
+            }
+            if viewModel.showOnboarding {
+                OnboardingView(showOnbording: $viewModel.showOnboarding)
             }
         }
         .fullScreenCover(isPresented: $viewModel.showDetailView, content: {

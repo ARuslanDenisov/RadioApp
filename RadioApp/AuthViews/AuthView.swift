@@ -186,11 +186,14 @@ struct AuthView: View {
                                         if !result {
                                             if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
                                                 mainViewModel.signIn(id: authUser.uid)
-                                                mainViewModel.getUserPhoto()
+                                                
                                             }
                                         }
                                         DispatchQueue.main.async {
                                             showAuthView = result
+                                        }
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 2 ){
+                                            mainViewModel.getUserPhoto()
                                         }
                                     }
                                 } else {
