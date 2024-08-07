@@ -26,7 +26,7 @@ class DataViewModel: ObservableObject {
     @Published var radioPlayer = RadioPlayer.shared
     @Published var showDetailView = false
     @Published var showTabBar = true
-
+    @AppStorage("onboarding") var showOnboarding = true
     
     func signUp (user: UserModel) {
         Task {
@@ -106,9 +106,9 @@ class DataViewModel: ObservableObject {
     }
     func prevStation () {
         switch tabBarIndex {
-        case 0: stationNow = popular[indexRadio == 0 ? indexRadio : indexRadio - 1 ] ; indexRadio -= 1
-        case 1: stationNow = user.favorites[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= 1
-        case 2: stationNow = allStation[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= 1
+        case 0: stationNow = popular[indexRadio == 0 ? 0 : indexRadio - 1 ] ; indexRadio -= indexRadio == 0 ? 0 : 1
+        case 1: stationNow = user.favorites[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= indexRadio == 0 ? 0 : 1
+        case 2: stationNow = allStation[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= indexRadio == 0 ? 0 : 1
         default: ()
         }
     }

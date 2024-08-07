@@ -15,6 +15,7 @@ struct OnboardingStep {
 
 struct OnboardingView: View {
     @State private var currentSteps = 0
+    @Binding var showOnbording: Bool
     @Environment (\.dismiss) var dismiss
     
     private let onboardingSteps = [
@@ -27,12 +28,13 @@ struct OnboardingView: View {
     var body: some View {
         ZStack {
             TabView(selection: $currentSteps) {
-                ForEach(0..<onboardingSteps.count) { item in
+                ForEach(onboardingSteps.indices) { item in
                     ZStack {
                         Image(onboardingSteps[item].image)
                             .resizable()
                             .ignoresSafeArea()
                             .scaledToFill()
+                            .scaleEffect(item == 0 ? 1.05 : 1)
                         VStack {
                             Spacer()
                             ZStack {
@@ -52,16 +54,18 @@ struct OnboardingView: View {
                             }
                         }
                     }
-                    .tag(item)
+//                    .tag(item)
                 }
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .ignoresSafeArea()
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .animation(.easeInOut)
+            .transition(.slide)
             
             VStack {
                 Spacer()
                 HStack {
-                    ForEach(0..<onboardingSteps.count) { item in
+                    ForEach(onboardingSteps.indices) { item in
                         if item == currentSteps {
                             Rectangle()
                                 .frame(width: 20, height: 10)
@@ -79,6 +83,7 @@ struct OnboardingView: View {
                     if self.currentSteps < onboardingSteps.count - 1 {
                         self.currentSteps += 1
                     } else {
+                        showOnbording = false
                         dismiss()
                     }
                 } label: {
@@ -93,12 +98,13 @@ struct OnboardingView: View {
                 }
                 .padding()
                 .buttonStyle(PlainButtonStyle())
+                .animation(.easeInOut, value: currentSteps )
             }
         }
     }
 }
 
 #Preview {
-    OnboardingView()
+    OnboardingView(showOnbording: .constant(false))
 }
 
