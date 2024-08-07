@@ -30,7 +30,7 @@ class NotificationManager {
         content.badge = 1
         
         //time
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.0, repeats: false)
         
         let request = UNNotificationRequest(
              identifier: UUID().uuidString,

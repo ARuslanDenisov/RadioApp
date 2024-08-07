@@ -46,7 +46,7 @@ struct ProfileEditView: View {
             .onTapGesture {
                 self.showImagePicker = true
             }
-//            Image(uiImage: viewModel.userPhoto)
+            //            Image(uiImage: viewModel.userPhoto)
             Text(viewModel.user.name)
                 .font(.custom(FontApp.bold, size: 16))
                 .foregroundStyle(.white)
@@ -110,7 +110,11 @@ struct ProfileEditView: View {
                 }
                 .frame(width: 323, height: 53)
                 Button {
-                    
+                    FBAuthService.shared.changeName(name: nameChange)
+//                    Task {
+//                        try await FBAuthService.shared.changeEmail(email: emailChange)
+//                    }
+                    dismiss()
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 25)
@@ -158,21 +162,20 @@ struct ProfileEditView: View {
                     self.emailChange = viewModel.user.email
                 }
         }
-        
-        
+        .onAppear {
+            nameChange = viewModel.user.name
+            emailChange = viewModel.user.email
+        }
     }
 }
 
 extension ProfileEditView {
-   
-
-    
     private func saveProfileImage() {
         guard  let image = profileImage else { return }
         viewModel.userPhoto = profileImage ?? .appLogo
-            Task {
-                try await FBStorageService.shared.uploadImage(image: image, user: viewModel.user)
-            }
+        Task {
+            try await FBStorageService.shared.uploadImage(image: image, user: viewModel.user)
+        }
     }
 }
 
