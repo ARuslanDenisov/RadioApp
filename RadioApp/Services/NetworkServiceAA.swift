@@ -116,6 +116,13 @@ class NetworkServiceAA {
         
     }
     
+    func voteForStation( station: StationModel ) async throws {
+        guard let url = URL(string: "http://all.api.radio-browser.info/json/vote/\(station.id)") else {
+            throw NetworkError.badURL
+        }
+        let responce = try await URLSession.shared.data(from: url)
+    }
+    
     
 }
 

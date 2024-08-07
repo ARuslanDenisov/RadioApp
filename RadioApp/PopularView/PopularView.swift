@@ -33,15 +33,13 @@ struct PopularView: View {
                                             viewModel.radioPlayer.playMusic()
                                             viewModel.play = true
                                         }
-                                        .onLongPressGesture(minimumDuration: 1.0) {
-                                            viewModel.showDetailView = true
-                                        }
+                                        
                                 }
                                 //heart elements
                                 HStack {
                                     Spacer()
                                     VStack {
-                                        Image(systemName: viewModel.checkFavorite(station: viewModel.popular[index]) ? "heart" : "heart.fill")
+                                        Image(systemName: viewModel.checkFavorite(station: viewModel.popular[index]) ? "heart.fill" : "heart")
                                             .resizableToFit()
                                             .frame(width: 13)
                                             .foregroundStyle(.white)

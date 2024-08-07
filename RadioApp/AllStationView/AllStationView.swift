@@ -95,6 +95,9 @@ struct AllStationView: View {
                                             viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
                                             viewModel.play = true
                                         }
+                                        .onLongPressGesture(minimumDuration: 1.0) {
+                                            viewModel.showDetailView = true
+                                        }
                                 } else {
                                     RadioBigAllStationElement(station: viewModel.allStation[index], playingNow: false)
                                         .onTapGesture {

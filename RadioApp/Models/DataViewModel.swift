@@ -120,6 +120,19 @@ class DataViewModel: ObservableObject {
         }
     }
     
+    func toFavorite(station: StationModel) {
+        if checkFavorite(station: station) {
+            user.favorites = user.favorites.filter({ stationModel in
+                stationModel.id != station.id
+            })
+        } else {
+            user.favorites.append(station)
+        }
+        Task {
+            try await FBFirestoreService.shared.updateFavorites(user: user)
+        }
+    }
+    
     //MARK: Inits
     init(user: UserModel, stationNow: StationModel) {
         self.user = user

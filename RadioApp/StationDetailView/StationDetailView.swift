@@ -13,6 +13,7 @@ struct StationDetailView: View {
     @Environment (\.dismiss) var dismiss
     @State var animation = false
     @State var animationText = false
+    @State var vote = false
     var body: some View {
         
         ZStack {
@@ -59,8 +60,34 @@ struct StationDetailView: View {
                 }
                 .frame(height: 448)
                 Spacer()
-//                //playButtons
-                RadioButtonsView(viewModel: viewModel)
+                ZStack {
+                    RadioButtonsView(viewModel: viewModel)
+                    HStack {
+                        Button {
+                            Task {
+                                try await NetworkServiceAA.shared.voteForStation(station: viewModel.stationNow)
+                            }
+                            vote = true
+                        } label: {
+                            Image(systemName: !vote ? "hand.thumbsup" : "hand.thumbsup.fill" )
+                                .resizableToFit()
+                                .foregroundStyle(.white)
+                                .frame(width: 20, height: 20)
+                                .padding(20)
+                        }
+                        Spacer()
+                        Button {
+                            viewModel.toFavorite(station: viewModel.stationNow )
+                        } label: {
+                            Image(systemName: viewModel.checkFavorite(station: viewModel.stationNow) ? "heart.fill" : "heart")
+                                .resizableToFit()
+                                .foregroundStyle(.raPink)
+                                .frame(width: 20, height: 20)
+                                .padding(20)
+                        }
+                        
+                    }
+                }
                 HStack {
                     VolumeSliderView(value: 100.0 , horizontal: true, mute: true)
                         .frame(width: 300, height: 40)
