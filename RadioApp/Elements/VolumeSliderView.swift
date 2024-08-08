@@ -10,7 +10,7 @@ import SwiftUI
 struct VolumeSliderView: View {
     @ObservedObject var radioPlayer: RadioPlayer = .shared
     @State private var lastCoordinateValue: CGFloat = 0.0
-    @State private var oldValue = 0.0
+    @State private var oldValue: CGFloat = 0.0
     @State var horizontal: Bool
     @State var mute: Bool
 
@@ -110,12 +110,15 @@ struct VolumeSliderView: View {
                 }
             }
         }
+        .onAppear {
+            lastCoordinateValue = CGFloat(Double(radioPlayer.volume) * maxValue)
+        }
         .animation(.linear(duration: 0.1), value: radioPlayer.volume)
     }
 
     private func toggleMute() {
         if radioPlayer.volume != 0.0 {
-            oldValue = Double(radioPlayer.volume) * maxValue
+            oldValue = CGFloat(Double(radioPlayer.volume) * maxValue)
             radioPlayer.setVolume(0.0)
             mute = true
         } else {

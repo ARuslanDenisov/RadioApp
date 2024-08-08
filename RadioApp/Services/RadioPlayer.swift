@@ -77,6 +77,6 @@ class RadioPlayer: ObservableObject {
     }
 
     func setVolume(_ volume: Float) {
-        self.volume = max(0.0, min(volume, 1.0)) // Ограничение от 0.0 до 1.0
+        self.volume = max(0.0, min(volume, 1.0))
     }
 }
