@@ -27,7 +27,7 @@ struct SearchView: View {
                     ForEach(SearchType.allCases, id: \.self ) { option in
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
-                                .stroke(lineWidth: 1)
+                                .stroke(lineWidth: 0.8)
                                 .foregroundStyle(.raLightGray)
                             HStack{
                                 Text("Browse by \n\(option.rawValue)")
@@ -54,7 +54,7 @@ struct SearchView: View {
                         ForEach(arrayOfTags, id: \.self) { tag in
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 1)
+                                    .stroke(lineWidth: 0.8)
                                     .foregroundStyle(.raLightGray)
                                     
                                 Text(tag)

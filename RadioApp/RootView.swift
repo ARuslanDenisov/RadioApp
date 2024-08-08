@@ -11,8 +11,6 @@ import AVFoundation
 struct RootView: View {
     @StateObject var viewModel = DataViewModel()
     
-    
-    
     var body: some View {
         
         ZStack {
