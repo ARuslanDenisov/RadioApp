@@ -7,9 +7,9 @@
 
 import Foundation
 import AVFoundation
+import Combine
 
-
-class RadioPlayer {
+class RadioPlayer: ObservableObject {
     enum PlayerType {
         case musicResults
         case musicSearch
@@ -23,8 +23,15 @@ class RadioPlayer {
     private var currentPlayerType: PlayerType = .musicResults
     private var musicResults: [StationModel] = []
 
+    // Свойство громкости для AVPlayer
+    @Published var volume: Float = 1.0 {
+        didSet {
+            player?.volume = volume
+        }
+    }
+
     func loadPlayer(from episode: StationModel) {
-      guard let musicURL = URL(string: episode.streamUrl) else {
+        guard let musicURL = URL(string: episode.streamUrl) else {
             print("Invalid music URL")
             return
         }
@@ -33,6 +40,7 @@ class RadioPlayer {
 
         playerItem = AVPlayerItem(url: musicURL)
         player = AVPlayer(playerItem: playerItem)
+        player?.volume = volume  // Установка громкости при загрузке
         player?.play()
         currentURL = episode.streamUrl
     }
@@ -42,7 +50,7 @@ class RadioPlayer {
             pauseMusic()
         } else {
             loadPlayer(from: episode)
-          currentURL = episode.streamUrl
+            currentURL = episode.streamUrl
         }
     }
 
@@ -67,10 +75,8 @@ class RadioPlayer {
     func isPlayerPerforming() -> Bool {
         return player?.timeControlStatus == .playing ? true : false
     }
-    
-    func changeVolume () {
-        
+
+    func setVolume(_ volume: Float) {
+        self.volume = max(0.0, min(volume, 1.0))
     }
-
-
 }

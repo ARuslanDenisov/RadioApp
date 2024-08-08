@@ -20,7 +20,11 @@ struct StationDetailView: View {
         ZStack {
             VStack {
                 ZStack {
-                    // TODO: equalizer!!!!
+                    if viewModel.play{
+                        EqualizerView(animationStop: false)
+                    } else {
+                        EqualizerView(animationStop: true)
+                    }
                     HStack {
                         VStack {
                             VStack {
@@ -90,7 +94,7 @@ struct StationDetailView: View {
                     }
                 }
                 HStack {
-                    VolumeSliderView(value: 100.0 , horizontal: true, mute: true)
+                    VolumeSliderView(horizontal: true, mute: true)
                         .frame(width: 300, height: 40)
                         .padding(.top, 30)
                         

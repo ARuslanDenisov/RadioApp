@@ -86,3 +86,12 @@ struct sixAngleShape2: Shape {
         }
     }
 }
+
+struct line: Shape {
+    func path(in rect: CGRect) -> Path {
+        return Path { path in
+            path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+            path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        }
+    }
+}

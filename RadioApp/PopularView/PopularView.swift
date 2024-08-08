@@ -66,7 +66,7 @@ struct PopularView: View {
             HStack {
                 VStack {
 //                    Spacer()
-                    VolumeSliderView(value: 1.0, horizontal: false, mute: true)
+                    VolumeSliderView(horizontal: false, mute: true)
                         .frame(height: 200)
                         .padding(.bottom, 180)
 //                    Spacer()
