@@ -19,10 +19,18 @@ struct StationDetailView: View {
         ZStack {
             VStack {
                 ZStack {
-                    if viewModel.play{
-                        EqualizerView(animationStop: false)
-                    } else {
-                        EqualizerView(animationStop: true)
+                    ZStack {
+                        if viewModel.play{
+                            EqualizerView(animationStop: false)
+                                .opacity(0.3)
+                                .brightness(1.2)
+                                .blur(radius: 5)
+                                .scaleEffect(1.3)
+                            EqualizerView(animationStop: false)
+                                .scaleEffect(y: 0.7)
+                        } else {
+                            EqualizerView(animationStop: true)
+                        }
                     }
                     HStack {
                         VStack {
@@ -65,6 +73,11 @@ struct StationDetailView: View {
                 .frame(height: 448)
                 Spacer()
                 ZStack {
+                    if viewModel.play {
+                        TabBarAnimation(animation: true)
+                            .frame(height: 100)
+                            .scaleEffect(1.4)
+                    }
                     RadioButtonsView(viewModel: viewModel)
                     HStack {
                         Button {
@@ -103,6 +116,7 @@ struct StationDetailView: View {
 //            .padding(.bottom, 286)
         }
         .animation(.linear(duration: 3.0).repeatForever(autoreverses: false), value: animation)
+        .animation(.easeInOut, value: viewModel.play)
         .background(Image("bg").ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.automatic)
