@@ -71,7 +71,7 @@ struct VolumeSliderView: View {
                             .foregroundColor(.white)
                             .font(.custom(FontApp.regular, size: 18))
                             .frame(width: 60)
-                            .padding(.bottom, 5)
+                            .padding(.bottom, 10)
 
                         ZStack(alignment: .bottom) {
                             RoundedRectangle(cornerRadius: 10)

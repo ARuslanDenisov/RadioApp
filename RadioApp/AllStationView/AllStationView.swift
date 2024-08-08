@@ -39,7 +39,7 @@ struct AllStationView: View {
                 HStack {
                     ZStack {
                         SearchField(searchRadio: $searchRadio)
-                            .frame(width: searchActive ? 300 : 380)
+                            .frame(width: searchActive ? 290 : 380)
                             .padding(.horizontal, 10)
                             .padding(.leading, searchActive ? 80 : 0)
                             .onTapGesture {
@@ -85,29 +85,48 @@ struct AllStationView: View {
                 }
                 if !searchActive {
                     ScrollView(showsIndicators: false) {
-                        VStack(spacing: 12) {
+                        VStack {
                             ForEach(viewModel.allStation.indices, id: \.self) { index in
-                                if viewModel.stationNow.id == viewModel.allStation[index].id {
-                                    RadioBigAllStationElement(station: viewModel.allStation[index], playingNow: true)
-                                        .shadow(color: .raPink.opacity(0.7), radius: 10)
-                                        .onTapGesture {
-                                            viewModel.stationNow = viewModel.allStation[index]
-                                            viewModel.indexRadio = index
-                                            viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
-                                            viewModel.play = true
+                                ZStack {
+                                    if viewModel.stationNow.id == viewModel.allStation[index].id {
+                                        RadioBigAllStationElement(station: viewModel.allStation[index], playingNow: true)
+                                            .shadow(color: .raPink.opacity(0.7), radius: 10)
+                                            .onTapGesture {
+                                                viewModel.stationNow = viewModel.allStation[index]
+                                                viewModel.indexRadio = index
+                                                viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
+                                                viewModel.play = true
+                                            }
+                                            .onLongPressGesture(minimumDuration: 1.0) {
+                                                viewModel.showDetailView = true
+                                            }
+                                    } else {
+                                        RadioBigAllStationElement(station: viewModel.allStation[index], playingNow: false)
+                                            .onTapGesture {
+                                                viewModel.stationNow = viewModel.allStation[index]
+                                                viewModel.indexRadio = index
+                                                viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
+                                                viewModel.play = true
+                                            }
+                                    }
+                                    HStack {
+                                        Spacer()
+                                        VStack {
+                                            Image(systemName: viewModel.checkFavorite(station: viewModel.popular[index]) ? "heart.fill" : "heart")
+                                                .resizableToFit()
+                                                .frame(width: 13)
+                                                .foregroundStyle(.white)
+                                                .padding(.horizontal, 14)
+                                                .padding(.vertical, 14)
+                                                .onTapGesture {
+                                                    
+                                                }
+                                            Spacer()
                                         }
-                                        .onLongPressGesture(minimumDuration: 1.0) {
-                                            viewModel.showDetailView = true
-                                        }
-                                } else {
-                                    RadioBigAllStationElement(station: viewModel.allStation[index], playingNow: false)
-                                        .onTapGesture {
-                                            viewModel.stationNow = viewModel.allStation[index]
-                                            viewModel.indexRadio = index
-                                            viewModel.radioPlayer.playMusicWithURL(viewModel.stationNow)
-                                            viewModel.play = true
-                                        }
+                                    }
+                                    .frame(width: 300, height: 129)
                                 }
+                                .frame(height: 124)
                                 
                             }
                         }

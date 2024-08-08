@@ -49,7 +49,7 @@ struct ProfileView: View {
                     .cornerRadius(15)
                     .overlay {
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.gray, lineWidth: 1.0)
+                            .stroke(Color.gray, lineWidth: 0.5)
                             .opacity(0.8)
                     }
                     .padding(.horizontal, 24)
@@ -65,7 +65,7 @@ struct ProfileView: View {
                         HStack {
                             ZStack {
                                 Circle()
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.raDarkGray)
                                     .frame(width: 25, height: 25)
                                 Image(systemName: "bell.fill")
                                     .foregroundStyle(.raLightGray)
@@ -92,7 +92,7 @@ struct ProfileView: View {
                         HStack {
                             ZStack {
                                 Circle()
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.raDarkGray)
                                     .frame(width: 25, height: 25)
                                 Image(systemName: "globe")
                                     .foregroundStyle(.raLightGray)
@@ -112,7 +112,7 @@ struct ProfileView: View {
                             } label: {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.raDarkGray)
                                         .frame(width: 25, height: 25)
                                     Image(systemName: "chevron.right")
                                         .foregroundStyle(.raLightBlue)
@@ -124,7 +124,7 @@ struct ProfileView: View {
                     .cornerRadius(15)
                     .overlay {
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.gray, lineWidth: 1.0)
+                            .stroke(Color.gray, lineWidth: 0.5)
                             .opacity(0.8)
                     }
                     .padding(.horizontal, 24)
@@ -140,7 +140,7 @@ struct ProfileView: View {
                         HStack {
                             ZStack {
                                 Circle()
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.raDarkGray)
                                     .frame(width: 25, height: 25)
                                 Image(systemName: "shield.fill")
                                     .foregroundStyle(.raLightGray)
@@ -156,7 +156,7 @@ struct ProfileView: View {
                             } label: {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.raDarkGray)
                                         .frame(width: 25, height: 25)
                                     Image(systemName: "chevron.right")
                                         .foregroundStyle(.raLightBlue)
@@ -170,7 +170,7 @@ struct ProfileView: View {
                         HStack {
                             ZStack {
                                 Circle()
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.raDarkGray)
                                     .frame(width: 25, height: 25)
                                 Image(systemName: "info")
                                     .foregroundStyle(.raLightGray)
@@ -181,12 +181,12 @@ struct ProfileView: View {
                                 .foregroundStyle(.white)
                             Spacer()
 
-                            Button {
-
+                            NavigationLink {
+                                AboutView(viewModel: viewModel)
                             } label: {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.raDarkGray)
                                         .frame(width: 25, height: 25)
                                     Image(systemName: "chevron.right")
                                         .foregroundStyle(.raLightBlue)
@@ -198,7 +198,7 @@ struct ProfileView: View {
                     .cornerRadius(15)
                     .overlay {
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.gray, lineWidth: 1.0)
+                            .stroke(Color.gray, lineWidth: 0.5)
                             .opacity(0.8)
                     }
                     .padding(.horizontal, 24)
