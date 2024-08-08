@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PasswordAuthView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var languageManager: LanguageManager
     @State var email = ""
     @State private var sendCheck = false
     var body: some View {
@@ -18,10 +19,10 @@ struct PasswordAuthView: View {
                 .ignoresSafeArea()
             ZStack {
                 VStack(alignment: .leading) {
-                    Text("Forgot \nPassword")
+                  Text("Forgot \nPassword".localized)
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.bold, size: 50))
-                    Text("Email")
+                    Text("Email".localized)
                         .foregroundStyle(.white)
                         .padding(.vertical, 10)
                     ZStack {
@@ -30,7 +31,7 @@ struct PasswordAuthView: View {
                             .foregroundStyle(.raPink)
                             .shadow(color: .raPink, radius: 5)
                             .background(.white.opacity(0.05))
-                        TextField("You email", text: $email)
+                        TextField("You email".localized, text: $email)
                             .padding(.horizontal, 10)
                             .font(.custom(FontApp.medium, size: 16))
                             .foregroundStyle(.raLightGray)
@@ -49,7 +50,7 @@ struct PasswordAuthView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10 )
                                 .foregroundStyle(.raLightBlue)
-                            Text("Sent")
+                            Text("Sent".localized)
                                 .font(.custom(FontApp.medium, size: 25))
                                 .foregroundStyle(.white)
                         }
@@ -80,7 +81,7 @@ struct PasswordAuthView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundStyle(.white)
                     VStack {
-                        Text("Check your email")
+                        Text("Check your email".localized)
                             .font(.custom(FontApp.regular, size: 25))
                             .padding(.bottom, 30)
                     }
@@ -93,7 +94,7 @@ struct PasswordAuthView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundStyle(.raLightBlue)
-                                Text("OK")
+                                Text("OK".localized)
                                     .foregroundStyle(.white)
                             }
                             .frame(width: 200, height: 50)

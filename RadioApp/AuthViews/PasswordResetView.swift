@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PasswordResetView: View {
     @State private var email: String?
+    @EnvironmentObject var languageManager: LanguageManager
     @State var incomingURL = URL(string: "")
     var body: some View {
         VStack {

@@ -13,6 +13,7 @@ struct AuthView: View {
     @StateObject var mainViewModel: DataViewModel
     @StateObject var viewModel: AuthViewModel = AuthViewModel()
     @Binding var showAuthView: Bool
+    @EnvironmentObject var languageManager: LanguageManager
     var body: some View {
         ZStack {
             Image("bgAuth")
@@ -35,11 +36,11 @@ struct AuthView: View {
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(viewModel.signInBool ? "Sign in" : "Sign up")
+                        Text(viewModel.signInBool ? "Sign in".localized : "Sign up".localized)
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.bold, size: 50))
                             .padding(.vertical, 1)
-                        Text ("to start play")
+                        Text ("to start play".localized)
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.light, size: 25))
                     }
@@ -49,7 +50,7 @@ struct AuthView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         if !viewModel.signInBool {
-                            Text("Name")
+                            Text("Name".localized)
                                 .foregroundStyle(.white)
                                 .font(.custom(FontApp.medium, size: 16))
                                 .padding(.vertical, 15)
@@ -59,14 +60,14 @@ struct AuthView: View {
                                     .foregroundStyle(.raPink)
                                     .shadow(color: .raPink, radius: 5)
                                     .background(.white.opacity(0.05))
-                                TextField("You name", text: $viewModel.name)
+                                TextField("You name".localized, text: $viewModel.name)
                                     .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
                             }
                             .frame(width: 338, height: 53)
                         }
-                        Text("Email")
+                        Text("Email".localized)
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.medium, size: 16))
                             .padding(.vertical, 15)
@@ -76,13 +77,13 @@ struct AuthView: View {
                                 .foregroundStyle(.raPink)
                                 .shadow(color: .raPink, radius: 5)
                                 .background(.white.opacity(0.05))
-                            TextField("You email", text: $viewModel.email)
+                            TextField("You email".localized, text: $viewModel.email)
                                 .padding(.horizontal, 10)
                                 .font(.custom(FontApp.medium, size: 16))
                                 .foregroundStyle(.raLightGray)
                         }
                         .frame(width: 338, height: 53)
-                        Text("Password")
+                        Text("Password".localized)
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.medium, size: 16))
                             .padding(.vertical, 15)
@@ -93,12 +94,12 @@ struct AuthView: View {
                                 .shadow(color: .raPink, radius: 5)
                                 .background(.white.opacity(0.05))
                             if viewModel.passwordHidden {
-                                SecureField("Your password", text: $viewModel.password)
+                                SecureField("Your password".localized, text: $viewModel.password)
                                     .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
                             } else {
-                                TextField("Your password", text: $viewModel.password)
+                                TextField("Your password".localized, text: $viewModel.password)
                                     .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
@@ -127,7 +128,7 @@ struct AuthView: View {
                         NavigationLink {
                             PasswordAuthView()
                         } label: {
-                            Text("Forgot Password?")
+                            Text("Forgot Password?".localized)
                                 .foregroundStyle(.raLightGray)
                                 .font(.custom(FontApp.light, size: 14))
                                 .padding(.vertical, 16)
@@ -139,7 +140,7 @@ struct AuthView: View {
                         Rectangle()
                             .foregroundStyle(.raLightGray)
                             .frame(width: 84, height: 1)
-                        Text("Or connect with")
+                        Text("Or connect with".localized)
                             .foregroundStyle(.raLightGray)
                             .font(.custom(FontApp.thin, size: 13 ))
                         Rectangle()
@@ -228,7 +229,7 @@ struct AuthView: View {
                             Button {
                                 viewModel.signInBool.toggle()
                             } label: {
-                                Text("Or \(viewModel.signInBool ? "Sign Up" : "Sign In")")
+                              Text(String(format: "Or %@".localized, viewModel.signInBool ? "Sign Up".localized : "Sign In".localized))
                                     .padding(.vertical, 8)
                                     .foregroundStyle(.raLightGray)
                                     .font(.custom(FontApp.medium, size: 16))

@@ -3,13 +3,15 @@ import SwiftUI
 
 struct PopularView: View {
     @StateObject var viewModel: DataViewModel
+    @EnvironmentObject var languageManager: LanguageManager
+  
     var body: some View {
         ZStack {
             Color.raDarkBlue
                 .ignoresSafeArea()
 
             VStack(alignment: .leading, spacing: 0) {
-                Text("Popular")
+                Text("Popular".localized)
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
                     .padding(.top, 80)
