@@ -1,4 +1,6 @@
 import Foundation
+import Combine
+import SwiftUI
 
 extension Bundle {
 
@@ -29,9 +31,6 @@ extension Bundle {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LanguageChangedNotification"), object: nil)
     }
 }
-
-import Combine
-import SwiftUI
 
 class LanguageManager: ObservableObject {
     @Published var currentLanguage: String = Bundle.currentLanguage {
