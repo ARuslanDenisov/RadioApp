@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EqualizerView: View {
-    var valueOfBars: CGFloat = 20
+    var valueOfBars: CGFloat = 21
     @State var animationStart = false
     @State var animationStop = false
     @State var random = CGFloat.random(in: 0...450)

@@ -27,7 +27,7 @@ class URLManager {
     
     //поиск по имени
     func createURLSearch (_ name: String, numberLimit: Int) -> URL? {
-        URL(string: server + "/search?name=\(name)&limit=\(numberLimit.description)")
+        URL(string: server + "/search?name=\(name.components(separatedBy: .whitespaces).joined())&limit=\(numberLimit.description)")
     }
     //получение станции по uuid
     func createURLUUID ( uuid: String) -> URL? {
@@ -66,7 +66,7 @@ class URLManager {
         case .language : setupText = "language"
         case .tags : setupText = "tag"
         }
-        return URL(string: server + "/search?name=\(name)&limit=\(numberLimit.description)&\(setupText)=\(tag)")
+        return URL(string: server + "/search?name=\(name.components(separatedBy: .whitespaces).joined())&limit=\(numberLimit.description)&\(setupText)=\(tag)")
     }
 }
 
