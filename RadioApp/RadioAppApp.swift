@@ -25,12 +25,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct RadioAppApp: App {
     //Firebase import
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+  @StateObject var languageManager = LanguageManager()
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
 //                TestView()
                 RootView()
+                    .environmentObject(languageManager)
+                    .onOpenURL(perform: { url in
+                        PasswordResetView(incomingURL: url)
+                    })
             }
         }
     }

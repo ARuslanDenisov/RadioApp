@@ -51,7 +51,7 @@ final class FBAuthService {
 //        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
 //        return AuthDataResultModel(user: authDataResult.user)
 //     }
-    func signUp(email: String, password: String) async  throws -> Bool {
+    func signUp(email: String, password: String) async throws -> Bool {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             currentUser = result.user
@@ -64,6 +64,42 @@ final class FBAuthService {
     
     func signOut() throws {
         try Auth.auth().signOut()
+    }
+    
+    func sendEmailForChange (email: String ) async throws -> Bool {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+            return true
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    
+    func changeEmail(email: String) async throws {
+        do {
+            try await Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email)
+        } catch {
+            print("change email error")
+        }
+    }
+    
+    func changeName(user: UserModel, name: String) async throws -> UserModel {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+        var userChange = user
+        userChange.name = name
+        do {
+            try await changeRequest?.commitChanges()
+            try await FBFirestoreService.shared.updateUser(user: userChange)
+        } catch {
+            return user
+        }
+        return userChange
+    }
+    
+    func resetPassword(email: String) async throws {
+        try await Auth.auth().sendPasswordReset(withEmail: email)
     }
 }
 

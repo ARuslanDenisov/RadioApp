@@ -1,52 +1,111 @@
 //
-//  OnboardingView.swift
+//  OnboardingPage.swift
 //  RadioApp
 //
-//  Created by Руслан on 28.07.2024.
+//  Created by Юрий on 07.08.2024.
 //
 
 import SwiftUI
 
+struct OnboardingStep {
+    let image: String
+    let title: String
+    let description: String
+}
+
 struct OnboardingView: View {
-    
+    @State private var currentSteps = 0
+    @Binding var showOnbording: Bool
     @Environment (\.dismiss) var dismiss
+    @EnvironmentObject var languageManager: LanguageManager
+
+    private let onboardingSteps = [
+      OnboardingStep(image: "backgroundOnbording", title: "Get Started".localized, description: "Enjoy the best radio station \n from you home, don't miss \n out on anything".localized),
+      OnboardingStep(image: "Onboarding2", title: "Transition".localized, description: "Long press and you fail to view".localized),
+      OnboardingStep(image: "Onboarding3", title: "Favorites".localized, description: "Add to your favorites - click on the heart".localized)
+
+    ]
     
     var body: some View {
         ZStack {
-            // background
-            Image("backgroundOnbording")
-                .resizableToFill()
-                .ignoresSafeArea()
-            // text
-            VStack(alignment: .leading, spacing: 0) {
-                Text("Let's Get \nStarted")
-                    .font(.custom(FontApp.bold, size: 60))
-                    .padding(.top, 150)
-                .foregroundStyle(.white)
-                Text("Enjoy the best radio station \n from you home, don't miss \n out on anything")
-                    .foregroundStyle(.white)
-                    .font(.custom(FontApp.regular, size: 16))
-                    .padding(.top, 31)
+            TabView(selection: $currentSteps) {
+                ForEach(onboardingSteps.indices) { item in
+                    ZStack {
+                        Image(onboardingSteps[item].image)
+                            .resizable()
+                            .ignoresSafeArea()
+                            .scaledToFill()
+                            .scaleEffect(item == 0 ? 1.05 : 1)
+                        VStack {
+                            Spacer()
+                            ZStack {
+                                Rectangle().frame(height: 450)
+                                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.clear, .raDarkBlue]), startPoint: .top, endPoint: .bottom))
+                                
+                                VStack {
+                                    Text(onboardingSteps[item].title)
+                                        .font(.custom(FontApp.bold, size: 30))
+                                        .foregroundStyle(.white)
+                                    
+                                    Text(onboardingSteps[item].description)
+                                        .font(.custom(FontApp.regular, size: 20))
+                                        .multilineTextAlignment(.center)
+                                        .foregroundStyle(.white)
+                                }
+                            }
+                        }
+                    }
+//                    .tag(item)
+                }
+            }
+            .ignoresSafeArea()
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .animation(.easeInOut)
+            .transition(.slide)
+            
+            VStack {
                 Spacer()
-                // button
+                HStack {
+                    ForEach(onboardingSteps.indices) { item in
+                        if item == currentSteps {
+                            Rectangle()
+                                .frame(width: 20, height: 10)
+                                .cornerRadius(10)
+                                .foregroundColor(.raMediumBlue)
+                        } else {
+                            Circle()
+                                .frame(height: 10)
+                                .foregroundStyle(.raLightGray)
+                        }
+                    }
+                }
+                
                 Button {
-                    dismiss()
+                    if self.currentSteps < onboardingSteps.count - 1 {
+                        self.currentSteps += 1
+                    } else {
+                        showOnbording = false
+                        dismiss()
+                    }
                 } label: {
-                    Text("Get Started")
+                  Text(currentSteps < onboardingSteps.count - 1 ? "Next".localized : "Get Started".localized)
+                        .font(.custom(FontApp.bold, size: 20))
                         .foregroundStyle(.white)
                         .frame(height: 58)
                         .frame(maxWidth: .infinity)
                         .background(.raPink)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding(.bottom, 75)
-                    
+                        .cornerRadius(15)
+                        .padding(.bottom, 7)
                 }
+                .padding()
+                .buttonStyle(PlainButtonStyle())
+                .animation(.easeInOut, value: currentSteps )
             }
-            .padding(.horizontal, 52)
         }
     }
 }
 
 #Preview {
-    OnboardingView()
+    OnboardingView(showOnbording: .constant(false))
 }
+

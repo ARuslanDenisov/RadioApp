@@ -9,7 +9,9 @@ import SwiftUI
 
 struct RadioBigAllStationElement: View {
     var station: StationModel
+    @EnvironmentObject var languageManager: LanguageManager
     @State var playingNow: Bool
+    @State var animationText = false
     
     var body: some View {
         ZStack {
@@ -22,7 +24,7 @@ struct RadioBigAllStationElement: View {
             HStack {
                 Spacer()
                 VStack {
-                    Text("votes \(station.votes)")
+                  Text(String(format: "votes %d".localized, station.votes))
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.bold, size: 10))
                         .padding(.trailing, 20)
@@ -32,14 +34,25 @@ struct RadioBigAllStationElement: View {
             .padding(10)
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(station.name)
-                    .foregroundStyle(.white)
-                    .font(.custom(FontApp.bold, size: 30))
+                VStack {
+                    Text(station.name)
+                        .foregroundStyle(.white)
+                        .font(.custom(FontApp.bold, size: 30))
+                        .frame(width: 900)
+                        .offset(x: animationText ? -CGFloat(station.name.count * 7) : CGFloat(station.name.count * 7) )
+                        .animation(Animation.linear(duration: 8).repeatForever(autoreverses: true))
+                        .onAppear {
+                            self.animationText.toggle()
+                        }
+                }
+                
+                .frame(width: 150)
+                .clipShape(Rectangle())
                 
                 HStack {
-                    Text(station.tags.isEmpty ? "Popular" : "\(station.tags)")
+                  Text(station.tags.isEmpty ? "Popular".localized : "\(station.tags)")
                         .foregroundStyle(.white)
-                    .font(.custom(FontApp.regular, size: 15))
+                        .font(.custom(FontApp.regular, size: 15))
                     Spacer()
                     ZStack{
                         WaveAnimationElement(color: .raPlayingNowText, animationStop: !playingNow)
@@ -47,7 +60,7 @@ struct RadioBigAllStationElement: View {
                     .frame(width: 94, height: 23)
                 }
                 
-                Text(playingNow ? "Playing now" : "")
+              Text(playingNow ? "Playing now".localized : "")
                     .foregroundStyle(.raPlayingNowText)
                     .opacity(0.8)
                     .font(.custom(FontApp.bold, size: 14))

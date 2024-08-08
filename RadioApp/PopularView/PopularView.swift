@@ -3,13 +3,15 @@ import SwiftUI
 
 struct PopularView: View {
     @StateObject var viewModel: DataViewModel
+    @EnvironmentObject var languageManager: LanguageManager
+  
     var body: some View {
         ZStack {
             Color.raDarkBlue
                 .ignoresSafeArea()
 
             VStack(alignment: .leading, spacing: 0) {
-                Text("Popular")
+                Text("Popular".localized)
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
                     .padding(.top, 80)
@@ -33,15 +35,13 @@ struct PopularView: View {
                                             viewModel.radioPlayer.playMusic()
                                             viewModel.play = true
                                         }
-                                        .onLongPressGesture(minimumDuration: 1.0) {
-                                            viewModel.showDetailView = true
-                                        }
+                                        
                                 }
                                 //heart elements
                                 HStack {
                                     Spacer()
                                     VStack {
-                                        Image(systemName: viewModel.checkFavorite(station: viewModel.popular[index]) ? "heart" : "heart.fill")
+                                        Image(systemName: viewModel.checkFavorite(station: viewModel.popular[index]) ? "heart.fill" : "heart")
                                             .resizableToFit()
                                             .frame(width: 13)
                                             .foregroundStyle(.white)
@@ -66,7 +66,7 @@ struct PopularView: View {
             HStack {
                 VStack {
 //                    Spacer()
-                    VolumeSliderView(value: 1.0, horizontal: false, mute: true)
+                    VolumeSliderView(horizontal: false, mute: true)
                         .frame(height: 200)
                         .padding(.bottom, 180)
 //                    Spacer()
@@ -74,10 +74,10 @@ struct PopularView: View {
                 .offset(x:-7)
                 Spacer()
             }
-            .fullScreenCover(isPresented: $viewModel.showAuthView, content: {
-                StationDetailView(viewModel: viewModel)
-            })
             .animation(.easeInOut, value: viewModel.stationNow.id)
+        }
+        .onAppear{
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
 }

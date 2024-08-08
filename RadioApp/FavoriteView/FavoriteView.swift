@@ -9,8 +9,9 @@ import SwiftUI
 
 struct FavoriteView: View {
     @StateObject var viewModel: DataViewModel
-    @State var activeStation: StationModel = StationModel()
+    @EnvironmentObject var languageManager: LanguageManager
     @State var bool = false
+  
     var body: some View {
         ZStack {
             Color.raDarkBlue
@@ -19,41 +20,66 @@ struct FavoriteView: View {
             
             //favorites with scroll view
             VStack(alignment: .leading, spacing: 0) {
-                Text("Favorites")
+                Text("Favorites".localized)
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
                     .padding(.top, 80)
                 ScrollView {
                     ForEach(viewModel.user.favorites) { station in
-//                        NavigationLink {
-//                            
-//                        } label: {
-//                            RadioBigFavoriteElement(station: station, animationStart: true)
-//                        }
-                        if station.id == activeStation.id {
-                            RadioBigFavoriteElement(station: station, animationStart: false)
-                                .onTapGesture {
-                                    activeStation = station
+                        ZStack {
+                            if station.id != viewModel.stationNow.id {
+                                RadioBigFavoriteElement(station: station, animationStart: false)
+                                    .onTapGesture {
+                                        viewModel.stationNow = station
+                                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                                        viewModel.radioPlayer.playMusic()
+                                        viewModel.play = true
+                                    }
+                                    
+                            } else {
+                                RadioBigFavoriteElement(station: station, animationStart: true)
+                                    .onTapGesture {
+                                        viewModel.stationNow = station
+                                        viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
+                                        viewModel.radioPlayer.playMusic()
+                                        viewModel.play = true
+                                    }
+                                    .onLongPressGesture(minimumDuration: 1.0) {
+                                        viewModel.showDetailView = true
+                                    }
+                            }
+                            HStack {
+                                Spacer()
+                                VStack {
+                                    Image(systemName: "xmark")
+                                        .resizableToFit()
+                                        .frame(width: 15)
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 13)
+                                        .padding(.horizontal, 17)
+                                        .onTapGesture {
+                                            viewModel.toFavorite(station: station)
+                                        }
+                                    Spacer()
                                 }
-                        } else {
-                            RadioBigFavoriteElement(station: station, animationStart: true)
-                                .onTapGesture {
-                                    activeStation = station
-                                }
+                            }
+                            .frame(width: 300, height: 119)
                         }
                         
                         
                            
                     }
+                    Spacer(minLength: 100)
+                        .frame(height: 100)
                 }
                 .padding(.top, 20)
-                .frame(width: 300, height: 380  )
+                .frame(width: 300, height: 550  )
                 Spacer()
             }
             HStack {
                 VStack {
 //                    Spacer()
-                    VolumeSliderView(value: 1.0, horizontal: false, mute: true)
+                    VolumeSliderView(horizontal: false, mute: true)
                         .frame(height: 200)
                         .padding(.bottom, 180)
 //                    Spacer()
@@ -64,6 +90,7 @@ struct FavoriteView: View {
             
             
         }
+        .animation(.easeInOut, value: viewModel.user.favorites.count)
     }
 }
 

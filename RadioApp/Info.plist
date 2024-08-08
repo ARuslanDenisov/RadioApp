@@ -14,6 +14,16 @@
 				<string>com.googleusercontent.apps.25877551460-ndjc7ujt6k05pj44ibje5vnj8ct3v27l</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>RadioApp</string>
+			</array>
+		</dict>
 	</array>
 	<key>GIDClientID</key>
 	<string>25877551460-ndjc7ujt6k05pj44ibje5vnj8ct3v27l.apps.googleusercontent.com</string>

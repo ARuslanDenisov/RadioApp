@@ -25,7 +25,8 @@ class DataViewModel: ObservableObject {
     @Published var indexRadio = 0
     @Published var radioPlayer = RadioPlayer.shared
     @Published var showDetailView = false
-
+    @Published var showTabBar = true
+    @AppStorage("onboarding") var showOnboarding = true
     
     func signUp (user: UserModel) {
         Task {
@@ -68,7 +69,6 @@ class DataViewModel: ObservableObject {
     
     func getUserPhoto () {
         Task {
-            if try await FBStorageService.shared.checkImage(user: user) {
                 do {
                     let image = try await FBStorageService.shared.downloadImage(user: user)
                     DispatchQueue.main.async {
@@ -76,10 +76,11 @@ class DataViewModel: ObservableObject {
                     }
                 } catch {
                     print("problem with user picture")
+                    self.userPhoto = UIImage(systemName: "xmark")!
                 }
-            } else {
-                self.userPhoto = UIImage(systemName: "xmark")!
-            }
+            
+                
+            
         }
     }
     
@@ -105,9 +106,9 @@ class DataViewModel: ObservableObject {
     }
     func prevStation () {
         switch tabBarIndex {
-        case 0: stationNow = popular[indexRadio == 0 ? indexRadio : indexRadio - 1 ] ; indexRadio -= 1
-        case 1: stationNow = user.favorites[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= 1
-        case 2: stationNow = allStation[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= 1
+        case 0: stationNow = popular[indexRadio == 0 ? 0 : indexRadio - 1 ] ; indexRadio -= indexRadio == 0 ? 0 : 1
+        case 1: stationNow = user.favorites[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= indexRadio == 0 ? 0 : 1
+        case 2: stationNow = allStation[indexRadio == 0 ? indexRadio : indexRadio - 1] ; indexRadio -= indexRadio == 0 ? 0 : 1
         default: ()
         }
     }
@@ -118,6 +119,35 @@ class DataViewModel: ObservableObject {
             stationIn.id == station.id
         }
     }
+    
+    func toFavorite(station: StationModel) {
+        if checkFavorite(station: station) {
+            user.favorites = user.favorites.filter({ stationModel in
+                stationModel.id != station.id
+            })
+        } else {
+            user.favorites.append(station)
+        }
+        Task {
+            try await FBFirestoreService.shared.updateFavorites(user: user)
+        }
+    }
+    
+    func changeName(name: String ) {
+        Task {
+            let updateUser = try await FBAuthService.shared.changeName(user:user, name: name)
+            DispatchQueue.main.async {
+                self.user = updateUser
+            }
+        }
+    }
+    
+    func changeEmail(email: String) {
+        Task {
+            try await FBAuthService.shared.changeEmail(email: email)
+        }
+    }
+    
     //MARK: Inits
     init(user: UserModel, stationNow: StationModel) {
         self.user = user
@@ -133,6 +163,9 @@ class DataViewModel: ObservableObject {
             } catch {
                 print("error with getting all data")
             }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.getUserPhoto()
         }
         
     }
