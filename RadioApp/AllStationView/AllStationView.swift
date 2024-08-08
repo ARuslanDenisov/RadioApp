@@ -169,7 +169,7 @@ struct AllStationView: View {
                                     Spacer()
                                     VStack {
                                         ScrollView {
-                                            ForEach(searchArray, id: \.id ) { station in
+                                            ForEach(viewModel.user.favorites, id: \.id ) { station in
                                                 if viewModel.stationNow.id == station.id {
                                                     RadioBigAllStationElement(station: station, playingNow: true)
                                                         .onTapGesture {
@@ -194,6 +194,7 @@ struct AllStationView: View {
                                         .onAppear {
                                             searchArray = viewModel.user.favorites
                                         }
+                                        Spacer()
                                     }
                                 }
                             }

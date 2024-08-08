@@ -19,7 +19,11 @@ struct StationDetailView: View {
         ZStack {
             VStack {
                 ZStack {
-                    // TODO: equalizer!!!!
+                    if viewModel.play{
+                        EqualizerView(animationStop: false)
+                    } else {
+                        EqualizerView(animationStop: true)
+                    }
                     HStack {
                         VStack {
                             VStack {
