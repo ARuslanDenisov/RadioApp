@@ -10,13 +10,14 @@ import SwiftUI
 struct TabBarView: View {
     
     @Binding var selectedTab: Int
-    
+    @EnvironmentObject var languageManager: LanguageManager
+  
     var body: some View {
         HStack {
           Spacer()
             // tab Popular View
                 VStack {
-                    Text("Popular")
+                    Text("Popular".localized)
                         .font(.custom(FontApp.regular, size: 20))
                         .foregroundStyle(selectedTab == 0 ? .white : .gray)
                     Circle()
@@ -30,7 +31,7 @@ struct TabBarView: View {
             Spacer()
             // tab Favorites View
                 VStack {
-                    Text("Favorites")
+                    Text("Favorites".localized)
                         .font(.custom(FontApp.regular, size: 20))
                         .foregroundStyle(selectedTab == 1 ? .white : .gray)
                     Circle()
@@ -44,7 +45,7 @@ struct TabBarView: View {
             Spacer()
             // tab AllStaions View
                 VStack {
-                    Text("AllStations")
+                    Text("All Stations".localized)
                         .font(.custom(FontApp.regular, size: 20))
                         .foregroundStyle(selectedTab == 2 ? .white : .gray)
                     Circle()

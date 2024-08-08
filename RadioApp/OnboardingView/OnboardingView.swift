@@ -17,11 +17,12 @@ struct OnboardingView: View {
     @State private var currentSteps = 0
     @Binding var showOnbording: Bool
     @Environment (\.dismiss) var dismiss
-    
+    @EnvironmentObject var languageManager: LanguageManager
+
     private let onboardingSteps = [
-        OnboardingStep(image: "backgroundOnbording", title: "Get Started", description: "Enjoy the best radio station \n from you home, don't miss \n out on anything"),
-        OnboardingStep(image: "Onboarding2", title: "Transition", description: "Long press and you fail to view"),
-        OnboardingStep(image: "Onboarding3", title: "Favorites", description: "Add to your favorites - click on the heart")
+      OnboardingStep(image: "backgroundOnbording", title: "Get Started".localized, description: "Enjoy the best radio station \n from you home, don't miss \n out on anything".localized),
+      OnboardingStep(image: "Onboarding2", title: "Transition".localized, description: "Long press and you fail to view".localized),
+      OnboardingStep(image: "Onboarding3", title: "Favorites".localized, description: "Add to your favorites - click on the heart".localized)
 
     ]
     
@@ -87,7 +88,7 @@ struct OnboardingView: View {
                         dismiss()
                     }
                 } label: {
-                    Text(currentSteps < onboardingSteps.count - 1 ? "Next" : "Get Started")
+                  Text(currentSteps < onboardingSteps.count - 1 ? "Next".localized : "Get Started".localized)
                         .font(.custom(FontApp.bold, size: 20))
                         .foregroundStyle(.white)
                         .frame(height: 58)

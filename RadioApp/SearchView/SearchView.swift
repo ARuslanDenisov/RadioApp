@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @Binding var searchSetup: SearchType
+    @EnvironmentObject var languageManager: LanguageManager
     @State var firstSetup = false
     @State var secondSetup = false
     @Binding var searchTag: String
@@ -30,7 +31,7 @@ struct SearchView: View {
                                 .stroke(lineWidth: 0.8)
                                 .foregroundStyle(.raLightGray)
                             HStack{
-                                Text("Browse by \n\(option.rawValue)")
+                              Text("Browse by \n%s".localized(with: option.rawValue))
                                     .font(.custom(FontApp.bold, size: 30))
                                     .foregroundStyle(.white)
                                     .padding()
@@ -57,7 +58,7 @@ struct SearchView: View {
                                     .stroke(lineWidth: 0.8)
                                     .foregroundStyle(.raLightGray)
                                     
-                                Text(tag)
+                              Text(tag.localized)
                                     .font(.custom(FontApp.bold, size: 20))
                                     .foregroundStyle(.white)
                                     .padding()

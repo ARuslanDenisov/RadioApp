@@ -9,7 +9,9 @@ import SwiftUI
 
 struct FavoriteView: View {
     @StateObject var viewModel: DataViewModel
+    @EnvironmentObject var languageManager: LanguageManager
     @State var bool = false
+  
     var body: some View {
         ZStack {
             Color.raDarkBlue
@@ -18,7 +20,7 @@ struct FavoriteView: View {
             
             //favorites with scroll view
             VStack(alignment: .leading, spacing: 0) {
-                Text("Favorites")
+                Text("Favorites".localized)
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
                     .padding(.top, 80)

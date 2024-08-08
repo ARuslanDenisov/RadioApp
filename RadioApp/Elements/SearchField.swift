@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchField: View {
     @Binding var searchRadio: String
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
@@ -23,7 +23,7 @@ struct SearchField: View {
                 TextField("", text: $searchRadio)
                     .foregroundStyle(.white)
                     .placeholder(when: searchRadio.isEmpty) {
-                        Text("Search radio station")
+                      Text("Search radio station".localized)
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.regular, size: 14))
                     }

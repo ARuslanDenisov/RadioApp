@@ -10,6 +10,7 @@ import Kingfisher
 
 struct StationDetailView: View {
     @StateObject var viewModel: DataViewModel
+    @EnvironmentObject var languageManager: LanguageManager
     @Environment (\.dismiss) var dismiss
     @State var animation = false
     @State var animationText = false
@@ -122,7 +123,7 @@ struct StationDetailView: View {
         .navigationBarTitleDisplayMode(.automatic)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text("Playing now")
+                Text("Playing now".localized)
                     .font(.custom(FontApp.semiBold, size: 24))
                     .foregroundColor(.white)
             }

@@ -6,7 +6,8 @@ struct RadioSmallGridElement: View {
     @State var station: StationModel
     @State var active: Bool
     @State private var isHeartSelected = false
-    
+    @EnvironmentObject var languageManager: LanguageManager
+
     var body: some View {
         ZStack {
             ZStack {
@@ -51,7 +52,7 @@ struct RadioSmallGridElement: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("votes \(formatVotes(votes: station.votes))")
+                  Text("votes %@" .localized(with: formatVotes(votes: station.votes)))
                         .foregroundColor(active ? .white : .gray)
                         .font(.custom(FontApp.bold , size: 10))
                         .padding(20)

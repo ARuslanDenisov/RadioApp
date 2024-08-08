@@ -68,6 +68,9 @@
 		4499FFB52C61436500F25099 /* TabBarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499FFB42C61436500F25099 /* TabBarAnimation.swift */; };
 		44B60EE92C59254A001177C2 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B60EE82C59254A001177C2 /* Shapes.swift */; };
 		44F9E2AC2C5D2D8B007EEE38 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */; };
+		57F1A27B2C64BF0400FE71DC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1A27A2C64BF0400FE71DC /* StringExtension.swift */; };
+		57F1A28E2C64C52E00FE71DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 57F1A28A2C64C52E00FE71DC /* Localizable.strings */; };
+		57F1A28F2C64C52E00FE71DC /* LocalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1A28C2C64C52E00FE71DC /* LocalizeExtension.swift */; };
 		923110B12C6206CE0023B8FB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923110B02C6206CE0023B8FB /* ImagePicker.swift */; };
 		92388D5E2C63BCFA000D4125 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92388D5D2C63BCFA000D4125 /* OnboardingView.swift */; };
 		9238D3472C5BA37500D78661 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238D3462C5BA37500D78661 /* SearchField.swift */; };
@@ -136,6 +139,10 @@
 		4499FFB42C61436500F25099 /* TabBarAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimation.swift; sourceTree = "<group>"; };
 		44B60EE82C59254A001177C2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		44F9E2AB2C5D2D8B007EEE38 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
+		57F1A27A2C64BF0400FE71DC /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		57F1A28B2C64C52E00FE71DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		57F1A28C2C64C52E00FE71DC /* LocalizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizeExtension.swift; sourceTree = "<group>"; };
+		57F1A28D2C64C52E00FE71DC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		923110B02C6206CE0023B8FB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		92388D5D2C63BCFA000D4125 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		9238D3462C5BA37500D78661 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
@@ -210,6 +217,7 @@
 				442680DA2C566CBB00E8C7F5 /* Preview Content */,
 				442681102C56709D00E8C7F5 /* Extensions */,
 				442680D82C566CBB00E8C7F5 /* Assets.xcassets */,
+				57F1A2892C64C52E00FE71DC /* Localization */,
 				442681822C569FFF00E8C7F5 /* TestView.swift */,
 			);
 			path = RadioApp;
@@ -367,6 +375,7 @@
 				92E634A62C594A8E00C24A05 /* Utilites.swift */,
 				9238D3482C5BAD1F00D78661 /* ViewExtension.swift */,
 				4468506C2C650B7C0008002F /* GifImageView.swift */,
+				57F1A27A2C64BF0400FE71DC /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -428,6 +437,15 @@
 			path = Texts;
 			sourceTree = "<group>";
 		};
+		57F1A2892C64C52E00FE71DC /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				57F1A28A2C64C52E00FE71DC /* Localizable.strings */,
+				57F1A28C2C64C52E00FE71DC /* LocalizeExtension.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -482,6 +500,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 442680C82C566CBA00E8C7F5;
 			packageReferences = (
@@ -507,6 +526,7 @@
 				4426819B2C57A96500E8C7F5 /* SFProDisplay-Semibold.ttf in Resources */,
 				442681962C57A96500E8C7F5 /* SFProDisplay-Heavy.ttf in Resources */,
 				442681992C57A96500E8C7F5 /* SFProDisplay-Light.ttf in Resources */,
+				57F1A28E2C64C52E00FE71DC /* Localizable.strings in Resources */,
 				4426819A2C57A96500E8C7F5 /* SFProDisplay-Regular.ttf in Resources */,
 				442680DC2C566CBB00E8C7F5 /* Preview Assets.xcassets in Resources */,
 				4426819E2C57C86200E8C7F5 /* GoogleService-Info.plist in Resources */,
@@ -546,7 +566,9 @@
 				9238D3492C5BAD1F00D78661 /* ViewExtension.swift in Sources */,
 				442681882C57636F00E8C7F5 /* FontsEnum.swift in Sources */,
 				92C936592C5D5F3500EAE1B0 /* CustomToggle.swift in Sources */,
+				57F1A28F2C64C52E00FE71DC /* LocalizeExtension.swift in Sources */,
 				4426811D2C5671E600E8C7F5 /* RadioSmallGridElement.swift in Sources */,
+				57F1A27B2C64BF0400FE71DC /* StringExtension.swift in Sources */,
 				442681212C56721200E8C7F5 /* RadioBigAllStationElement.swift in Sources */,
 				4426810D2C56706500E8C7F5 /* FBStorageService.swift in Sources */,
 				442680FD2C566FD900E8C7F5 /* AllStationView.swift in Sources */,
@@ -579,6 +601,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		57F1A28A2C64C52E00FE71DC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57F1A28B2C64C52E00FE71DC /* en */,
+				57F1A28D2C64C52E00FE71DC /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		442680DD2C566CBB00E8C7F5 /* Debug */ = {

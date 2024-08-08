@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RadioBigAllStationElement: View {
     var station: StationModel
+    @EnvironmentObject var languageManager: LanguageManager
     @State var playingNow: Bool
     @State var animationText = false
     
@@ -23,7 +24,7 @@ struct RadioBigAllStationElement: View {
             HStack {
                 Spacer()
                 VStack {
-                    Text("votes \(station.votes)")
+                  Text(String(format: "votes %d".localized, station.votes))
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.bold, size: 10))
                         .padding(.trailing, 20)
@@ -49,7 +50,7 @@ struct RadioBigAllStationElement: View {
                 .clipShape(Rectangle())
                 
                 HStack {
-                    Text(station.tags.isEmpty ? "Popular" : "\(station.tags)")
+                  Text(station.tags.isEmpty ? "Popular".localized : "\(station.tags)")
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.regular, size: 15))
                     Spacer()
@@ -59,7 +60,7 @@ struct RadioBigAllStationElement: View {
                     .frame(width: 94, height: 23)
                 }
                 
-                Text(playingNow ? "Playing now" : "")
+              Text(playingNow ? "Playing now".localized : "")
                     .foregroundStyle(.raPlayingNowText)
                     .opacity(0.8)
                     .font(.custom(FontApp.bold, size: 14))
