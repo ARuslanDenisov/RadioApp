@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileEditView: View {
     @StateObject var viewModel: DataViewModel
+    @EnvironmentObject var languageManager: LanguageManager
     @State var nameChange: String = ""
     @State var emailChange: String = ""
     @State private var profileImage: UIImage?
@@ -69,7 +70,7 @@ struct ProfileEditView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 5)
                                         .foregroundStyle(.raDarkGray)
-                                    Text("Full Name")
+                                  Text("Full Name".localized)
                                         .foregroundStyle(.white)
                                         .font(.custom(FontApp.light, size: 12))
                                 }
@@ -96,7 +97,7 @@ struct ProfileEditView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 5)
                                         .foregroundStyle(.raDarkGray)
-                                    Text("Email")
+                                    Text("Email".localized)
                                         .font(.custom(FontApp.light, size: 12))
                                         .foregroundStyle(.white)
                                 }
@@ -125,7 +126,7 @@ struct ProfileEditView: View {
                             RoundedRectangle(cornerRadius: 25)
                                 .foregroundStyle(.raLightBlue)
                                 .frame(width: 323, height: 53)
-                            Text("Save Changes")
+                            Text("Save Changes".localized)
                                 .foregroundStyle(.white)
                                 .font(.custom(FontApp.medium, size: 16))
                             
@@ -142,7 +143,7 @@ struct ProfileEditView: View {
             .navigationBarTitleDisplayMode(.automatic)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Profile")
+                    Text("Profile".localized)
                         .font(.custom(FontApp.semiBold, size: 24))
                         .foregroundColor(.white)
                 }
@@ -177,7 +178,7 @@ struct ProfileEditView: View {
                     RoundedRectangle(cornerRadius: 15)
                         .foregroundStyle(.white)
                     VStack {
-                        Text("Check your email for changes")
+                        Text("Check your email for changes".localized)
                             .multilineTextAlignment(.center)
                             .font(.custom(FontApp.medium, size: 20))
                             .padding(20)
@@ -194,7 +195,7 @@ struct ProfileEditView: View {
                                     RoundedRectangle(cornerRadius: 10)
                                         .frame(width: 100, height: 50)
                                         .foregroundStyle(.raDarkBlue)
-                                    Text("OK")
+                                    Text("OK".localized)
                                         .font(.custom(FontApp.medium, size: 10))
                                         .foregroundStyle(.white)
                                 }

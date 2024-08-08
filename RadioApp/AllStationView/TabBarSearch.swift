@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TabBarSearch: View {
     @Binding var index: Int
-    let tabArray = ["Popular", "Favorites", "All Stations"]
+    @EnvironmentObject var languageManager: LanguageManager
+    let tabArray = ["Popular".localized, "Favorites".localized, "All Stations".localized]
     var body: some View {
             HStack {
                 HStack {

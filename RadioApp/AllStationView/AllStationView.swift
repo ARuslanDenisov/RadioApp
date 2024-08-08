@@ -10,7 +10,8 @@ import SwiftUI
 struct AllStationView: View {
 
     @StateObject var viewModel: DataViewModel
-    @State var headerText = ["Popular", "Favorites", "All Stations"]
+    @EnvironmentObject var languageManager: LanguageManager
+    @State var headerText = ["Popular".localized, "Favorites".localized, "All Stations".localized]
     @State var searchRadio: String = ""
     @State var searchActive = false
     @State var tabIndex: Int = 0
@@ -27,7 +28,7 @@ struct AllStationView: View {
             
             VStack {
                 HStack {
-                    Text( searchActive ? headerText[tabIndex] : "All Stations" )
+                  Text( searchActive ? headerText[tabIndex] : "All Stations".localized )
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.regular, size: 30))
                         .padding(.top, 80)
