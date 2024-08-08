@@ -260,10 +260,11 @@ struct AllStationView: View {
             }
             HStack {
                 VStack {
-                    Spacer()
-                    VolumeSliderView(value: 1.0, horizontal: false, mute: true)
+//                    Spacer()
+                    VolumeSliderView(horizontal: false, mute: true)
                         .frame(height: 200)
-                    Spacer()
+                        .padding(.bottom, 180)
+//                    Spacer()
                 }
                 .offset(x:15)
                 Spacer()

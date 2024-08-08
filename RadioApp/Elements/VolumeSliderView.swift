@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VolumeSliderView: View {
-    @State var value: Double
+    @ObservedObject var radioPlayer: RadioPlayer = .shared
     @State private var lastCoordinateValue: CGFloat = 0.0
     @State private var oldValue = 0.0
     @State var horizontal: Bool
@@ -25,7 +25,7 @@ struct VolumeSliderView: View {
             VStack {
                 if horizontal {
                     HStack {
-                        Image(systemName: volumeIconName(volume: value))
+                        Image(systemName: volumeIconName(volume: radioPlayer.volume))
                             .foregroundColor(.gray)
                             .frame(width: 20, height: 20)
                             .onTapGesture {
@@ -39,28 +39,27 @@ struct VolumeSliderView: View {
                                 .foregroundColor(Color.gray.opacity(0.2))
 
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: CGFloat(value), height: sliderHeight)
+                                .frame(width: CGFloat(Double(radioPlayer.volume) * maxValue), height: sliderHeight)
                                 .foregroundColor(.raLightBlue)
 
                             Circle()
                                 .foregroundColor(.raLightBlue)
                                 .frame(width: 15, height: 15)
-                                .offset(x: (value - 15).clamped(to: 0...maxValue))
+                                .offset(x: CGFloat(Double(radioPlayer.volume) * maxValue - 15).clamped(to: 0...maxValue))
                                 .gesture(
                                     DragGesture(minimumDistance: 0)
                                         .onChanged { v in
                                             let newValue = (lastCoordinateValue + v.translation.width).clamped(to: minValue...maxValue)
-                                            value = newValue
-                                            RadioPlayer.shared.setVolume(Float(value / maxValue))
+                                            radioPlayer.setVolume(Float(newValue / maxValue))
                                         }
                                         .onEnded { v in
-                                            lastCoordinateValue = value
+                                            lastCoordinateValue = CGFloat(Double(radioPlayer.volume) * maxValue)
                                         }
                                 )
                         }
                         .frame(width: sliderWidth)
 
-                        Text(volumeText(volume: value))
+                        Text(volumeText(volume: Double(radioPlayer.volume) * maxValue))
                             .foregroundColor(.white)
                             .font(.custom(FontApp.regular, size: 18))
                             .frame(width: 60)
@@ -68,7 +67,7 @@ struct VolumeSliderView: View {
                     }
                 } else {
                     VStack {
-                        Text(volumeText(volume: value))
+                        Text(volumeText(volume: Double(radioPlayer.volume) * maxValue))
                             .foregroundColor(.white)
                             .font(.custom(FontApp.regular, size: 18))
                             .frame(width: 60)
@@ -80,28 +79,27 @@ struct VolumeSliderView: View {
                                 .foregroundColor(Color.gray.opacity(0.2))
 
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: sliderWidth, height: CGFloat(value))
+                                .frame(width: sliderWidth, height: CGFloat(Double(radioPlayer.volume) * maxValue))
                                 .foregroundColor(.raLightBlue)
 
                             Circle()
                                 .foregroundColor(.raLightBlue)
                                 .frame(width: 15, height: 15)
-                                .offset(y: -(CGFloat(value).clamped(to: 0...maxValue)))
+                                .offset(y: -(CGFloat(Double(radioPlayer.volume) * maxValue).clamped(to: 0...maxValue)))
                                 .gesture(
                                     DragGesture(minimumDistance: 0)
                                         .onChanged { v in
                                             let newValue = (lastCoordinateValue - v.translation.height).clamped(to: minValue...maxValue)
-                                            value = newValue
-                                            RadioPlayer.shared.setVolume(Float(value / maxValue))
+                                            radioPlayer.setVolume(Float(newValue / maxValue))
                                         }
                                         .onEnded { v in
-                                            lastCoordinateValue = value
+                                            lastCoordinateValue = CGFloat(Double(radioPlayer.volume) * maxValue)
                                         }
                                 )
                         }
                         .frame(height: sliderHeight)
 
-                        Image(systemName: volumeIconName(volume: value))
+                        Image(systemName: volumeIconName(volume: radioPlayer.volume))
                             .foregroundColor(.gray)
                             .frame(width: 20, height: 20)
                             .onTapGesture {
@@ -112,30 +110,29 @@ struct VolumeSliderView: View {
                 }
             }
         }
-        .animation(.linear(duration: 0.1), value: value)
+        .animation(.linear(duration: 0.1), value: radioPlayer.volume)
     }
 
     private func toggleMute() {
-        if value != 0.0  {
-            oldValue = value
-            value = 0.0
+        if radioPlayer.volume != 0.0 {
+            oldValue = Double(radioPlayer.volume) * maxValue
+            radioPlayer.setVolume(0.0)
             mute = true
         } else {
-            value = oldValue
+            radioPlayer.setVolume(Float(oldValue / maxValue))
             mute = false
         }
-        RadioPlayer.shared.setVolume(Float(value / maxValue))
     }
 
-    private func volumeIconName(volume: Double) -> String {
+    private func volumeIconName(volume: Float) -> String {
         switch volume {
         case 0:
             return "volume.slash.fill"
-        case 0..<63.3:
+        case 0..<0.333:
             return "volume.1.fill"
-        case 63.3..<127.6:
+        case 0.333..<0.667:
             return "volume.2.fill"
-        case 127.6...maxValue:
+        case 0.667...1:
             return "volume.3.fill"
         default:
             return "volume.fill"
@@ -154,5 +151,5 @@ extension Comparable {
 }
 
 #Preview {
-    VolumeSliderView(value: 1.0, horizontal: false, mute: false)
+    VolumeSliderView(horizontal: false, mute: false)
 }

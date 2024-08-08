@@ -7,8 +7,9 @@
 
 import Foundation
 import AVFoundation
+import Combine
 
-class RadioPlayer {
+class RadioPlayer: ObservableObject {
     enum PlayerType {
         case musicResults
         case musicSearch
@@ -23,7 +24,7 @@ class RadioPlayer {
     private var musicResults: [StationModel] = []
 
     // Свойство громкости для AVPlayer
-    private var volume: Float = 1.0 {
+    @Published var volume: Float = 1.0 {
         didSet {
             player?.volume = volume
         }
