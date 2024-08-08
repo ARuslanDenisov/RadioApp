@@ -181,8 +181,8 @@ struct ProfileView: View {
                                 .foregroundStyle(.white)
                             Spacer()
 
-                            Button {
-
+                            NavigationLink {
+                                AboutView(viewModel: viewModel)
                             } label: {
                                 ZStack {
                                     Circle()
