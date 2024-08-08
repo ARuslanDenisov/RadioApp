@@ -31,7 +31,7 @@ struct SearchView: View {
                                 .stroke(lineWidth: 0.8)
                                 .foregroundStyle(.raLightGray)
                             HStack{
-                              Text("Browse by \n%s".localized(with: option.rawValue))
+                                Text("Browse by \(option.rawValue)".localized)
                                     .font(.custom(FontApp.bold, size: 30))
                                     .foregroundStyle(.white)
                                     .padding()
