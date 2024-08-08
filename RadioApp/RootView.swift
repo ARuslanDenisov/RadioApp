@@ -25,6 +25,7 @@ struct RootView: View {
                 case 2: AllStationView(viewModel: viewModel)
                 default: PopularView(viewModel: viewModel)
                 }
+                
 
             }
             .navigationViewStyle(.stack)
