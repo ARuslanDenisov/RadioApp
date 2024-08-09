@@ -101,6 +101,10 @@ final class FBAuthService {
     func resetPassword(email: String) async throws {
         try await Auth.auth().sendPasswordReset(withEmail: email)
     }
+    
+    func updatePassword(password: String) async throws {
+        try await Auth.auth().currentUser?.updatePassword(to: password)
+    }
 }
 
 extension FBAuthService {

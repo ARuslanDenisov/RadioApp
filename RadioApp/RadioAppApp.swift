@@ -34,7 +34,7 @@ struct RadioAppApp: App {
                 RootView()
                     .environmentObject(languageManager)
                     .onOpenURL(perform: { url in
-                        PasswordResetView(incomingURL: url)
+                        PasswordResetView(authViewModel: AuthViewModel(), incomingURL: url)
                     })
             }
         }

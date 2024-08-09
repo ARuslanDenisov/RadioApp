@@ -10,6 +10,7 @@ import AVFoundation
 
 struct RootView: View {
     @StateObject var viewModel = DataViewModel()
+    @StateObject var authViewModel = AuthViewModel()
     @EnvironmentObject var languageManager: LanguageManager
 
     var body: some View {
@@ -66,8 +67,8 @@ struct RootView: View {
                                 .font(.custom(FontApp.bold, size: 30))
                             Spacer()
                             NavigationLink {
-                                ProfileView(viewModel: viewModel)
-                                    .environmentObject(languageManager) 
+                                ProfileView(viewModel: viewModel, authViewModel: authViewModel)
+                                    .environmentObject(languageManager)
                             } label: {
                                 ZStack {
                                     Rectangle()

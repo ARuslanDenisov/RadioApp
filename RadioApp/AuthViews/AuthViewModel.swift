@@ -14,8 +14,10 @@ import FirebaseAuth
 final class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
+    @Published var confirmPassword = ""
     @Published var name = ""
     @Published var passwordHidden = true
+    @Published var confirmPasswordHidden = true
     @Published var signInBool = true
     @Published var userModel: UserModel = UserModel()
     

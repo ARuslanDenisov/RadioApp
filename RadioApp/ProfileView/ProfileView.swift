@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel: DataViewModel
+    @StateObject var authViewModel: AuthViewModel
     @State var notificationIsOn = false
     @State var showingLanguagePicker = false
     @EnvironmentObject var languageManager: LanguageManager
@@ -109,6 +110,34 @@ struct ProfileView: View {
                                         Text(languages[key]!)
                                     }
                                 }
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .foregroundColor(.raDarkGray)
+                                        .frame(width: 25, height: 25)
+                                    Image(systemName: "chevron.right")
+                                        .foregroundStyle(.raLightBlue)
+                                }
+                            }
+                        }
+                        
+                        Divider().background(.gray)
+                            .padding(.horizontal, 16)
+                        
+                        HStack {
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(.raDarkGray)
+                                    .frame(width: 25, height: 25)
+                                Image(systemName: "person")
+                                    .foregroundStyle(.raLightGray)
+                            }
+                            Text("Change Password".localized)
+                                .font(Font.custom(FontApp.medium, size: 14))
+                                .foregroundStyle(.white)
+                            Spacer()
+                            NavigationLink {
+                                PasswordResetView(authViewModel: authViewModel)
                             } label: {
                                 ZStack {
                                     Circle()
@@ -246,6 +275,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(viewModel: DataViewModel())
+    ProfileView(viewModel: DataViewModel(), authViewModel: AuthViewModel())
         .environmentObject(LanguageManager())
 }
