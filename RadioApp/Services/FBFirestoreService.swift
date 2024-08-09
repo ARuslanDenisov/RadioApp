@@ -65,7 +65,9 @@ class FBFirestoreService {
             for station in user.favorites {
                 try await favoritesRef.document(user.id).collection("favorites").document("\(station.id)").setData(station.representation)
             }
+            print("favorites in")
         } catch {
+            print("favorites in error")
             throw error
         }
     }

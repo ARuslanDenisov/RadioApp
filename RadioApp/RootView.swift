@@ -11,7 +11,7 @@ import AVFoundation
 struct RootView: View {
     @StateObject var viewModel = DataViewModel()
     @EnvironmentObject var languageManager: LanguageManager
-
+    
     var body: some View {
         ZStack {
             Color.raDarkBlue
@@ -33,14 +33,14 @@ struct RootView: View {
                 }
             }
             .navigationViewStyle(.stack)
-
+            
             if viewModel.showAuthView {
                 NavigationView {
                     AuthView(mainViewModel: viewModel, showAuthView: $viewModel.showAuthView)
                         .environmentObject(languageManager)
                 }
             }
-
+            
             if !viewModel.showAuthView {
                 VStack {
                     Spacer()
@@ -67,7 +67,7 @@ struct RootView: View {
                             Spacer()
                             NavigationLink {
                                 ProfileView(viewModel: viewModel)
-                                    .environmentObject(languageManager) 
+                                    .environmentObject(languageManager)
                             } label: {
                                 ZStack {
                                     Rectangle()
@@ -91,7 +91,7 @@ struct RootView: View {
                         RadioButtonsView(viewModel: viewModel)
                     }
                     .offset(x: viewModel.showTabBar ? 0 : 50)
-
+                    
                     TabBarView(selectedTab: $viewModel.tabBarIndex)
                         .offset(y: viewModel.showTabBar ? 0 : 200)
                 }
@@ -100,6 +100,21 @@ struct RootView: View {
             if viewModel.showOnboarding {
                 OnboardingView(showOnbording: $viewModel.showOnboarding)
                     .environmentObject(languageManager)
+            }
+            if viewModel.showLoading {
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.raDarkBlue)
+                    
+                    Image("appLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaleEffect(viewModel.scaleAmount)
+                        .frame(width: 80)
+                    
+                    
+                }
+                .opacity(viewModel.opacityAmount)
             }
         }
         .fullScreenCover(isPresented: $viewModel.showDetailView, content: {
@@ -114,7 +129,22 @@ struct RootView: View {
         .animation(.easeInOut, value: viewModel.play)
         .animation(.easeInOut, value: viewModel.showTabBar)
         .onAppear {
-            // Perform necessary actions on appear
+            // уменьшаем картинку
+            withAnimation(.easeInOut(duration: 1).delay(2)) {
+                viewModel.scaleAmount = 0.6
+            }
+            // увеличиваем картинку
+            withAnimation(.easeInOut(duration: 2)) {
+                viewModel.scaleAmount = 2.5
+            }
+            // картинка улетает
+            withAnimation(.easeInOut(duration: 0.4).delay(1.7)) {
+                viewModel.scaleAmount = 0
+                viewModel.opacityAmount = 0
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                viewModel.showLoading = false
+            }
         }
     }
 }
