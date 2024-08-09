@@ -1,65 +1,40 @@
 import SwiftUI
 
-struct LicenseView: View {
-  @EnvironmentObject var languageManager: LanguageManager
-    var body: some View {
-        NavigationView {
-            LicenseView()
-        }
-    }
-}
 
 struct LicenseView: View {
-    init() {
-          
-          let appearance = UINavigationBarAppearance()
-          appearance.configureWithOpaqueBackground()
-          appearance.backgroundColor = UIColor.systemBlue
-         
-          UINavigationBar.appearance().standardAppearance = appearance
-          UINavigationBar.appearance().scrollEdgeAppearance = appearance
-      }
-//    init() {
-//
-//           if let image = UIImage(named: "bgAuth") {
-//               UINavigationBar.appearance().setBackgroundImage(image)
-//           }
-//       }
-      
+    @EnvironmentObject var languageManager: LanguageManager
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack {
             
-            Image("bgAuth")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
-
+            Image("bg")
+                .resizableToFill()
+                .ignoresSafeArea()
+            
             VStack {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Group {
-                            Text("Terms")
-                                .bold()
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .padding(.trailing, 260)
-                                .padding(.top, -200)
-                            Text("""
+                    VStack(alignment: .center, spacing: 0) {
+                        
+                        Text("Terms")
+                            .font(.custom(FontApp.bold, size: 25))
+                            .foregroundColor(.white)
+                            .padding(.vertical, 30)
+                        
+                        Text("""
                             Welcome to RadioApp, the mobile radio service that brings you closer to the music and shows you love. By using our app, you agree to be bound by the following terms and conditions. Please read them carefully.
                             
                             Our service allows you to listen to music, access radio shows, and interact with live broadcasts. We provide personalized content based on your listening habits and preferences.
                             """)
+                        .foregroundColor(.white)
+                        .fixedSize(horizontal: false, vertical: true)
+                        
+                        Text("Privacy Policy")
+                            .multilineTextAlignment(.leading)
+                            .font(.custom(FontApp.bold, size: 25))
                             .foregroundColor(.white)
-                            .padding(.top, -735)
-                            Text("Privacy Policy")
-                               // .bold()
-                                .multilineTextAlignment(.leading)
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                
-                                .padding(.top, -1050)
-                                .padding(.trailing, 195)
-                            Text("""
+                            .padding(.vertical, 30)
+                        Text("""
                             Your privacy is important to us. This privacy policy explains how we collect, use, and share information about you when you use our app.
                             
                             **Information Collection and Use:**
@@ -68,50 +43,46 @@ struct LicenseView: View {
                             **Information Sharing:**
                             We may share your information with third-party partners who help us provide and improve our services or who use advertising or related products, which makes it possible to operate our company and provide free services to people around the world.
                             """)
-                            .foregroundColor(.white)
-                            .padding(.top, -1580)
-                        }
-                        .frame(width: 327, height: 571, alignment: .center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        //                            .frame(height: 580)
+                        .foregroundColor(.white)
+                        
+                        //                        .frame(width: 327, height: 571, alignment: .center)
                     }
+                    .padding(10)
+                    
                 }
-                .navigationTitle("Privacy Policy")
+                .padding(.top, 10)
+                .frame(height: 700)
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationLink(destination: AnotherView()) {
-                            Image(systemName: "arrow.backward")
-                                .foregroundColor(.white)
-                        }
+            }
+            VStack {
+                HStack {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.backward")
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 20)
                     }
+                    Text("Rules".localized)
+                        .font(.custom(FontApp.semiBold, size: 24))
+                        .foregroundColor(.white)
+                        .frame(width: 70)
+                        .padding(.horizontal, 100)
+                    Spacer()
+                    
                 }
+                .padding(.top, 50)
+                Spacer()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-struct AnotherView: View {
-    var body: some View {
-        Text("Another View Just for testing")
-    }
-}
-
-struct runView_Previews: PreviewProvider {
-    static var previews: some View {
-        runView()
-    }
-}
-
-
-extension UINavigationBar {
-   
-    func setBackgroundImage(_ image: UIImage) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-
-     
-        appearance.backgroundImage = image
-
-        self.standardAppearance = appearance
-        self.scrollEdgeAppearance = appearance
+#Preview {
+    NavigationView {
+        LicenseView()
     }
 }
