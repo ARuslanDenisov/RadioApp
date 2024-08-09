@@ -26,7 +26,11 @@ class DataViewModel: ObservableObject {
     @Published var radioPlayer = RadioPlayer.shared
     @Published var showDetailView = false
     @Published var showTabBar = true
+    @Published var showLoading = true
     @AppStorage("onboarding") var showOnboarding = true
+    
+    @Published var scaleAmount: CGFloat = 1
+    @Published var opacityAmount: CGFloat = 1
     
     func signUp (user: UserModel) {
         Task {
@@ -128,9 +132,7 @@ class DataViewModel: ObservableObject {
         } else {
             user.favorites.append(station)
         }
-        Task {
-            try await FBFirestoreService.shared.updateFavorites(user: user)
-        }
+        
     }
     
     func changeName(name: String ) {
