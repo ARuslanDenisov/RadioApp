@@ -237,6 +237,7 @@ struct ProfileView: View {
             Button {
                 try? FBAuthService.shared.signOut()
                 viewModel.checkAuth()
+                viewModel.radioPlayer.stopMusic()
                 dismiss()
             } label: {
                 Text("Log Out".localized)

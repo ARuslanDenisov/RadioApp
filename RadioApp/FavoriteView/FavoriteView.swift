@@ -11,7 +11,7 @@ struct FavoriteView: View {
     @StateObject var viewModel: DataViewModel
     @EnvironmentObject var languageManager: LanguageManager
     @State var bool = false
-  
+    
     var body: some View {
         ZStack {
             Color.raDarkBlue
@@ -35,7 +35,7 @@ struct FavoriteView: View {
                                         viewModel.radioPlayer.playMusic()
                                         viewModel.play = true
                                     }
-                                    
+                                
                             } else {
                                 RadioBigFavoriteElement(station: station, animationStart: true)
                                     .onTapGesture {
@@ -51,26 +51,31 @@ struct FavoriteView: View {
                             HStack {
                                 Spacer()
                                 VStack {
-                                    Image(systemName: "xmark")
-                                        .resizableToFit()
-                                        .frame(width: 15)
-                                        .foregroundStyle(.white)
-                                        .padding(.vertical, 13)
-                                        .padding(.horizontal, 17)
-                                        .onTapGesture {
-                                            viewModel.toFavorite(station: station)
-                                        }
+                                    ZStack {
+                                        Circle()
+                                            .stroke(lineWidth: 1)
+                                            .foregroundColor(.white)
+                                            .frame(width: 20)
+                                        Image(systemName: "xmark")
+                                            .resizableToFit()
+                                            .foregroundStyle(.white)
+                                            .frame(width: 15)
+                                    }
+                                    
+                                    .padding(.vertical, 13)
+                                    .padding(.horizontal, 17)
+                                    .onTapGesture {
+                                        viewModel.toFavorite(station: station)
+                                    }
                                     Spacer()
                                 }
                             }
-                            .frame(width: 300, height: 119)
+                            .frame(width: 300, height: 129)
                         }
                         
-                        
-                           
                     }
                     Spacer(minLength: 100)
-                        .frame(height: 100)
+                    
                 }
                 .padding(.top, 20)
                 .frame(width: 300, height: 550  )
@@ -78,14 +83,19 @@ struct FavoriteView: View {
             }
             HStack {
                 VStack {
-//                    Spacer()
+                    //                    Spacer()
                     VolumeSliderView(horizontal: false, mute: true)
                         .frame(height: 200)
                         .padding(.bottom, 180)
-//                    Spacer()
+                    //                    Spacer()
                 }
                 .offset(x:-7)
                 Spacer()
+            }
+            .onDisappear {
+                Task {
+                    try await FBFirestoreService.shared.updateFavorites(user: viewModel.user)
+                }
             }
             
             
