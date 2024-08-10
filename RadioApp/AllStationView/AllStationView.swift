@@ -58,9 +58,15 @@ struct AllStationView: View {
                                     }
                                 }
                                 if tabIndex == 1 {
-                                    searchArray = searchArray.filter({ station in
-                                        station.name.lowercased() == searchRadio.lowercased()
-                                    })
+                                    Task {
+                                        var searchArray2 = viewModel.user.favorites.filter({ stationUser in
+                                            stationUser.name == searchRadio
+                                        })
+                                        print(searchArray2)
+                                        DispatchQueue.main.async {
+                                            searchArray = searchArray2
+                                        }
+                                    }
                                 }
                                 if tabIndex == 2 {
                                     Task {
@@ -154,7 +160,7 @@ struct AllStationView: View {
                                                             viewModel.radioPlayer.playMusic()
                                                             viewModel.play = true
                                                         }
-                                                        .padding(10)
+                                                        
                                                 } else {
                                                     RadioBigAllStationElement(station: station, playingNow: false)
                                                         .onTapGesture {
@@ -169,7 +175,7 @@ struct AllStationView: View {
                                         .frame(width: 350, height: 390)
                                         .onAppear {
                                             Task {
-                                                let array = try await NetworkServiceAA.shared.searchStations(name: searchRadio, numberLimit: 12)
+                                                let array = viewModel.popular
                                                 DispatchQueue.main.async {
                                                     searchArray = array
                                                 }
@@ -189,7 +195,7 @@ struct AllStationView: View {
                                     Spacer()
                                     VStack {
                                         ScrollView {
-                                            ForEach(viewModel.user.favorites, id: \.id ) { station in
+                                            ForEach(searchArray, id: \.id ) { station in
                                                 if viewModel.stationNow.id == station.id {
                                                     RadioBigAllStationElement(station: station, playingNow: true)
                                                         .onTapGesture {
@@ -198,7 +204,7 @@ struct AllStationView: View {
                                                             viewModel.radioPlayer.playMusic()
                                                             viewModel.play = true
                                                         }
-                                                        .padding(10)
+                                                        
                                                 } else {
                                                     RadioBigAllStationElement(station: station, playingNow: false)
                                                         .onTapGesture {
@@ -212,7 +218,10 @@ struct AllStationView: View {
                                         }
                                         .frame(width: 350, height: 390)
                                         .onAppear {
-                                            searchArray = viewModel.user.favorites
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                                                searchArray = viewModel.user.favorites
+                                            }
+                                            
                                         }
                                         Spacer()
                                     }
@@ -251,7 +260,7 @@ struct AllStationView: View {
                                                                     viewModel.radioPlayer.playMusic()
                                                                     viewModel.play = true
                                                                 }
-                                                                .padding(10)
+                                                                
                                                         } else {
                                                             RadioBigAllStationElement(station: station, playingNow: false)
                                                                 .onTapGesture {

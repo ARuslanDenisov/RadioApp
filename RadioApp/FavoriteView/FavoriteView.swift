@@ -51,21 +51,26 @@ struct FavoriteView: View {
                             HStack {
                                 Spacer()
                                 VStack {
-                                    ZStack {
-                                        Circle()
-                                            .stroke(lineWidth: 1)
-                                            .foregroundColor(.white)
-                                            .frame(width: 20)
-                                        Image(systemName: "xmark")
-                                            .resizableToFit()
-                                            .foregroundStyle(.white)
-                                            .frame(width: 15)
-                                    }
-                                    
-                                    .padding(.vertical, 13)
-                                    .padding(.horizontal, 17)
-                                    .onTapGesture {
+                                    Button {
                                         viewModel.toFavorite(station: station)
+                                        Task {
+                                            try await FBFirestoreService.shared.updateFavorites(user: viewModel.user)
+                                        }
+                                    } label : {
+                                        ZStack {
+                                            Circle()
+                                                .stroke(lineWidth: 1)
+                                                .foregroundColor(.white)
+                                                .frame(width: 20)
+                                            Image(systemName: "xmark")
+                                                .resizableToFit()
+                                                .foregroundStyle(.white)
+                                                .frame(width: 15)
+                                        }
+                                        
+                                        .padding(.vertical, 13)
+                                        .padding(.horizontal, 17)
+                                        
                                     }
                                     Spacer()
                                 }
