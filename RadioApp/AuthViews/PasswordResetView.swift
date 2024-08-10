@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PasswordResetView: View {
-    //    @State private var email: String?
     @StateObject var authViewModel: AuthViewModel
     @EnvironmentObject var languageManager: LanguageManager
     @Environment(\.dismiss) var dismiss
@@ -24,7 +23,7 @@ struct PasswordResetView: View {
                 .ignoresSafeArea()
             ZStack {
                 VStack(alignment: .leading) {
-                    Text("Forgot \nPassword".localized)
+                    Text("Change \nPassword".localized)
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.bold, size: 50))
                     Text("Password".localized)
@@ -38,9 +37,15 @@ struct PasswordResetView: View {
                             .background(.white.opacity(0.05))
                         if authViewModel.passwordHidden {
                             SecureField("Your password".localized, text: $authViewModel.password)
-                                .padding(.horizontal, 10)
+//                                .padding(.horizontal, 10)
                                 .font(.custom(FontApp.medium, size: 16))
                                 .foregroundStyle(.raLightGray)
+                                .placeholder(when: authViewModel.password.isEmpty) {
+                                  Text("Your password".localized)
+                                        .foregroundStyle(.raLightGray)
+                                        .font(.custom(FontApp.regular, size: 14))
+                                }
+                                .padding(.leading, 10)
                         } else {
                             TextField("Your password".localized, text: $authViewModel.password)
                                 .padding(.horizontal, 10)
@@ -72,9 +77,15 @@ struct PasswordResetView: View {
                             .background(.white.opacity(0.05))
                         if authViewModel.confirmPasswordHidden {
                             SecureField("Your password".localized, text: $authViewModel.confirmPassword)
-                                .padding(.horizontal, 10)
+//                                .padding(.horizontal, 10)
                                 .font(.custom(FontApp.medium, size: 16))
                                 .foregroundStyle(.raLightGray)
+                                .placeholder(when: authViewModel.confirmPassword.isEmpty) {
+                                  Text("Your password".localized)
+                                        .foregroundStyle(.raLightGray)
+                                        .font(.custom(FontApp.regular, size: 14))
+                                }
+                                .padding(.leading, 10)
                         } else {
                             TextField("Your password".localized, text: $authViewModel.confirmPassword)
                                 .padding(.horizontal, 10)
@@ -96,7 +107,7 @@ struct PasswordResetView: View {
                     .frame(width: 338, height: 53)
                     
                     // Button Sent
-                    if authViewModel.password == authViewModel.confirmPassword {
+                    if authViewModel.password == authViewModel.confirmPassword && authViewModel.password.count >= 6 {
                         Button {
                             Task {
                                 do {
@@ -110,13 +121,14 @@ struct PasswordResetView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10 )
                                     .foregroundStyle(.raLightBlue)
-                                Text("Change password".localized)
+                                Text("Change Password".localized)
                                     .font(.custom(FontApp.medium, size: 25))
                                     .foregroundStyle(.white)
                             }
                             .frame(width: 338, height: 62)
                             .padding(.vertical, 60)
                         }
+                        .disabled(authViewModel.password != authViewModel.confirmPassword)
                     } else {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10 )
@@ -133,65 +145,52 @@ struct PasswordResetView: View {
                 }
             }
             .blur(radius: sendCheck ? 10 : 0)
-//            if sendCheck {
-//                ZStack {
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .foregroundStyle(.white)
-//                    VStack {
-//                        Text("Check your email".localized)
-//                            .font(.custom(FontApp.regular, size: 25))
-//                            .padding(.bottom, 30)
-//                    }
-//                    VStack {
-//                        Spacer()
-//                        Button {
-//                            sendCheck = false
-//                            dismiss()
-//                        } label: {
-//                            ZStack {
-//                                RoundedRectangle(cornerRadius: 10)
-//                                    .foregroundStyle(.raLightBlue)
-//                                Text("OK".localized)
-//                                    .foregroundStyle(.white)
-//                            }
-//                            .frame(width: 200, height: 50)
-//                        }
-//                        .padding()
-//                    }
-//                }
-//                .frame(width: 350, height: 150)
-//            }
+            
+            if sendCheck {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundStyle(.white)
+                    VStack {
+                        Text("Password changed".localized)
+                            .font(.custom(FontApp.regular, size: 25))
+                            .padding(.bottom, 30)
+                    }
+                    VStack {
+                        Spacer()
+                        Button {
+                            sendCheck = false
+                            dismiss()
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(.raLightBlue)
+                                Text("OK".localized)
+                                    .foregroundStyle(.white)
+                            }
+                            .frame(width: 200, height: 50)
+                        }
+                        .padding()
+                    }
+                }
+                .frame(width: 350, height: 150)
+            }
             
         }
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.automatic)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label : {
+                    Image(systemName: "arrow.left")
+                        .resizableToFit()
+                        .foregroundStyle(.white)
+                }
+            }
+        }
         .animation(.easeInOut, value: sendCheck)
-        .onOpenURL { incomingURL in
-            print("App was opened via URL: \(incomingURL)")
-            handleIncomingURL(incomingURL)
-        }
-        
-        
-    }
-    private func handleIncomingURL(_ url: URL) {
-        guard url.scheme == "RadioApp" else {
-            return
-        }
-        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-            print("Invalid URL")
-            return
-        }
-        
-        guard let action = components.host, action == "change-email" else {
-            print("Unknown URL, we can't handle this one!")
-            return
-        }
-        
-        guard let email = components.queryItems?.first(where: { $0.name == "email" })?.value else {
-            print("Recipe name not found")
-            return
-        }
-        
-        self.email = email
+         
     }
 }
 

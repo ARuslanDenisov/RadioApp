@@ -11,7 +11,7 @@ import GoogleSignInSwift
 
 struct AuthView: View {
     @StateObject var mainViewModel: DataViewModel
-    @StateObject var viewModel: AuthViewModel = AuthViewModel()
+    @StateObject var authViewModel: AuthViewModel = AuthViewModel()
     @Binding var showAuthView: Bool
     @EnvironmentObject var languageManager: LanguageManager
     var body: some View {
@@ -27,8 +27,8 @@ struct AuthView: View {
                         .frame(width: 58, height: 58)
                     Spacer()
                     Button {
-                        viewModel.email = "challenge3fb@gmail.com"
-                        viewModel.password = "SwiftTeam6"
+                        authViewModel.email = "challenge3fb@gmail.com"
+                        authViewModel.password = "SwiftTeam6"
                     } label: {
                         Image(systemName: "person")
                             .frame(width: 10)
@@ -36,7 +36,7 @@ struct AuthView: View {
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(viewModel.signInBool ? "Sign in".localized : "Sign up".localized)
+                        Text(authViewModel.signInBool ? "Sign in".localized : "Sign up".localized)
                             .foregroundStyle(.white)
                             .font(.custom(FontApp.bold, size: 50))
                             .padding(.vertical, 1)
@@ -49,7 +49,7 @@ struct AuthView: View {
                 .padding(.top, 35)
                 HStack {
                     VStack(alignment: .leading) {
-                        if !viewModel.signInBool {
+                        if !authViewModel.signInBool {
                             Text("Name".localized)
                                 .foregroundStyle(.white)
                                 .font(.custom(FontApp.medium, size: 16))
@@ -60,10 +60,16 @@ struct AuthView: View {
                                     .foregroundStyle(.raPink)
                                     .shadow(color: .raPink, radius: 5)
                                     .background(.white.opacity(0.05))
-                                TextField("You name".localized, text: $viewModel.name)
-                                    .padding(.horizontal, 10)
+                                TextField("Your name".localized, text: $authViewModel.name)
+//                                    .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
+                                    .placeholder(when: authViewModel.name.isEmpty) {
+                                      Text("Your name".localized)
+                                            .foregroundStyle(.raLightGray)
+                                            .font(.custom(FontApp.regular, size: 14))
+                                    }
+                                    .padding(.leading, 10)
                             }
                             .frame(width: 338, height: 53)
                         }
@@ -77,10 +83,16 @@ struct AuthView: View {
                                 .foregroundStyle(.raPink)
                                 .shadow(color: .raPink, radius: 5)
                                 .background(.white.opacity(0.05))
-                            TextField("You email".localized, text: $viewModel.email)
-                                .padding(.horizontal, 10)
+                            TextField("Your email".localized, text: $authViewModel.email)
+//                                .padding(.horizontal, 10)
                                 .font(.custom(FontApp.medium, size: 16))
                                 .foregroundStyle(.raLightGray)
+                                .placeholder(when: authViewModel.email.isEmpty) {
+                                  Text("Your email".localized)
+                                        .foregroundStyle(.raLightGray)
+                                        .font(.custom(FontApp.regular, size: 14))
+                                }
+                                .padding(.leading, 10)
                         }
                         .frame(width: 338, height: 53)
                         Text("Password".localized)
@@ -93,13 +105,19 @@ struct AuthView: View {
                                 .foregroundStyle(.raPink)
                                 .shadow(color: .raPink, radius: 5)
                                 .background(.white.opacity(0.05))
-                            if viewModel.passwordHidden {
-                                SecureField("Your password".localized, text: $viewModel.password)
-                                    .padding(.horizontal, 10)
+                            if authViewModel.passwordHidden {
+                                SecureField("Your password".localized, text: $authViewModel.password)
+//                                    .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
+                                    .placeholder(when: authViewModel.password.isEmpty) {
+                                      Text("Your password".localized)
+                                            .foregroundStyle(.raLightGray)
+                                            .font(.custom(FontApp.regular, size: 14))
+                                    }
+                                    .padding(.leading, 10)
                             } else {
-                                TextField("Your password".localized, text: $viewModel.password)
+                                TextField("Your password".localized, text: $authViewModel.password)
                                     .padding(.horizontal, 10)
                                     .font(.custom(FontApp.medium, size: 16))
                                     .foregroundStyle(.raLightGray)
@@ -108,9 +126,9 @@ struct AuthView: View {
                             HStack {
                                 Spacer()
                                 Button {
-                                    viewModel.passwordHidden.toggle()
+                                    authViewModel.passwordHidden.toggle()
                                 } label: {
-                                    Image(systemName: viewModel.passwordHidden ? "eye" : "eye.slash")
+                                    Image(systemName: authViewModel.passwordHidden ? "eye" : "eye.slash")
                                         .foregroundStyle(.raLightGray)
                                 }
                                 .padding(.horizontal, 10)
@@ -122,7 +140,7 @@ struct AuthView: View {
                     }
                     Spacer()
                 }
-                if viewModel.signInBool {
+                if authViewModel.signInBool {
                     HStack {
                         Spacer()
                         NavigationLink {
@@ -156,7 +174,7 @@ struct AuthView: View {
                     Button {
                         Task {
                             do {
-                                try await viewModel.signInGoogle()
+                                try await authViewModel.signInGoogle()
                                 if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
                                     mainViewModel.signIn(id: authUser.uid)
                                     mainViewModel.getUserPhoto()
@@ -181,9 +199,9 @@ struct AuthView: View {
                         VStack (alignment: .leading) {
                             // MARK: Sing in Sign up button
                             Button {
-                                if viewModel.signInBool {
+                                if authViewModel.signInBool {
                                     Task {
-                                        let result = await !viewModel.signIn()
+                                        let result = await !authViewModel.signIn()
                                         if !result {
                                             if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
                                                 mainViewModel.signIn(id: authUser.uid)
@@ -199,17 +217,17 @@ struct AuthView: View {
                                     }
                                 } else {
                                     Task {
-                                        let result = await !viewModel.signUp()
+                                        let result = await !authViewModel.signUp()
                                         print("result out")
                                         print(result)
                                         if let authUser = try? FBAuthService.shared.getAuthenticationUser() {
                                             print("authuser fetch in")
                                             print(authUser.uid)
-                                            viewModel.userModel.id = authUser.uid
-                                            mainViewModel.signUp(user: viewModel.userModel)
+                                            authViewModel.userModel.id = authUser.uid
+                                            mainViewModel.signUp(user: authViewModel.userModel)
                                         }
                                         DispatchQueue.main.async {
-                                            mainViewModel.user = viewModel.userModel
+                                            mainViewModel.user = authViewModel.userModel
                                             showAuthView = result
                                         }
                                     }
@@ -227,9 +245,9 @@ struct AuthView: View {
                                 .frame(width: 153, height: 62)
                             }
                             Button {
-                                viewModel.signInBool.toggle()
+                                authViewModel.signInBool.toggle()
                             } label: {
-                              Text(String(format: "Or %@".localized, viewModel.signInBool ? "Sign Up".localized : "Sign In".localized))
+                              Text(String(format: "Or %@".localized, authViewModel.signInBool ? "Sign Up".localized : "Sign In".localized))
                                     .padding(.vertical, 8)
                                     .foregroundStyle(.raLightGray)
                                     .font(.custom(FontApp.medium, size: 16))
@@ -245,7 +263,7 @@ struct AuthView: View {
             .padding(38)
             
         }
-        .animation(.easeInOut, value: viewModel.signInBool)
+        .animation(.easeInOut, value: authViewModel.signInBool)
     }
 }
 

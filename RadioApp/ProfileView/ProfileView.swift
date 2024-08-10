@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel: DataViewModel
-    @StateObject var authViewModel: AuthViewModel
+    @StateObject var authViewModel: AuthViewModel = AuthViewModel()
     @State var notificationIsOn = false
     @State var showingLanguagePicker = false
     @EnvironmentObject var languageManager: LanguageManager
