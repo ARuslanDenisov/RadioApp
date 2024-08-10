@@ -24,7 +24,7 @@ struct RadioBigAllStationElement: View {
             HStack {
                 Spacer()
                 VStack {
-                  Text(String(format: "votes %d".localized, station.votes))
+                    Text("\("votes".localized) \(formatVotes(votes: station.votes))")
                         .foregroundStyle(.white)
                         .font(.custom(FontApp.bold, size: 10))
                         .padding(.trailing, 20)
@@ -68,6 +68,9 @@ struct RadioBigAllStationElement: View {
             .padding(.horizontal, 22)
         }
         .frame(width: 293, height: 123)
+    }
+    func formatVotes(votes: Int) -> String {
+        votes > 999 ? "\(votes/1000)K" : "\(votes)"
     }
 }
 
