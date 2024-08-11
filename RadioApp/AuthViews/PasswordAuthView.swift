@@ -31,10 +31,16 @@ struct PasswordAuthView: View {
                             .foregroundStyle(.raPink)
                             .shadow(color: .raPink, radius: 5)
                             .background(.white.opacity(0.05))
-                        TextField("You email".localized, text: $email)
-                            .padding(.horizontal, 10)
+                        TextField("Your email".localized, text: $email)
+//                            .padding(.horizontal, 10)
                             .font(.custom(FontApp.medium, size: 16))
                             .foregroundStyle(.raLightGray)
+                            .placeholder(when: email.isEmpty) {
+                              Text("Your email".localized)
+                                    .foregroundStyle(.raLightGray)
+                                    .font(.custom(FontApp.regular, size: 14))
+                            }
+                            .padding(.leading, 10)
                     }
                     .frame(width: 338, height: 53)
                     // Button Sent

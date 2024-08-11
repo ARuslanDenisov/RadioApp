@@ -22,8 +22,8 @@
 "Sign up"="Sign up";
 "to start play"="to start play";
 "Name"="Name";
-"You name"="You name";
-"You email"="You email";
+"Your name"="Your name";
+"Your email"="Your email";
 "Password"="Password";
 "Your password"="Your password";
 "Forgot Password?"="Forgot Password?";
@@ -47,3 +47,7 @@
 "Browse by language"="Browse by language";
 "Browse by country"="Browse by country";
 "Rules"="Rules";
+"Change Password"="Change Password";
+"Confirm password"="Confirm password";
+"Change \nPassword"="Change \nPassword";
+

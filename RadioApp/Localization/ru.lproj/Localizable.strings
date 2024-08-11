@@ -22,8 +22,8 @@
 "Sign up" = "Регистрация";
 "to start play" = "чтобы начать играть";
 "Name" = "Имя";
-"You name" = "Ваше имя";
-"You email" = "Ваш email";
+"Your name" = "Ваше имя";
+"Your email"="Ваш email";
 "Password" = "Пароль";
 "Your password" = "Ваш пароль";
 "Forgot Password?" = "Забыли пароль?";
@@ -47,4 +47,8 @@
 "Browse by language"="Поиск по языку";
 "Browse by country"="Поиск по стране";
 "Rules"="Правила";
+"Change Password"="Изменить пароль";
+"Confirm password"="Повторите пароль";
+"Change \nPassword"="Сменить \nПароль";
+
 
