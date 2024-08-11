@@ -32,22 +32,16 @@ struct AboutView: View {
                     VStack {
                         Spacer(minLength: secondText ? 0 : 900)
                         Text(
-                        """
-\n
-You might have heard about the idea of wearing a foil hat to protect yourself from the effects of radio waves. While this concept has gained some popularity, there's no scientific evidence to support the claim that such hats can shield your brain from harmful radiation. In fact, radio waves are a form of non-ionizing radiation, which means they don't have enough energy to damage DNA.
-"""
+                            "\n\nYou might have heard about the idea of wearing a foil hat to protect yourself from the effects of radio waves. While this concept has gained some popularity, there's no scientific evidence to support the claim that such hats can shield your brain from harmful radiation. In fact, radio waves are a form of non-ionizing radiation, which means they don't have enough energy to damage DNA.".localized
                         )
                         .font(.custom(FontApp.regular, size: 18))
                         .foregroundStyle(.white)
                         Text(
-                        """
-\n
-So instead of worrying about radio waves, why not focus on enjoying the positive aspects of radio? Our app offers a safe and convenient way to tune in to your favorite shows and discover new ones. Explore a vast library of radio stations, from classic hits to cutting-edge podcasts. Whether you're looking for news, sports, or simply some background music, we've got you covered
-"""
+                            "\n\nSo instead of worrying about radio waves, why not focus on enjoying the positive aspects of radio? Our app offers a safe and convenient way to tune in to your favorite shows and discover new ones. Explore a vast library of radio stations, from classic hits to cutting-edge podcasts. Whether you're looking for news, sports, or simply some background music, we've got you covered".localized
                         )
                         .font(.custom(FontApp.regular, size: 18))
                         .foregroundStyle(.white)
-                        Text("\nStay tuned for more updates and let's have some real rick-rolling!")
+                        Text("\nStay tuned for more updates and let's have some real rick-rolling!".localized)
                             .font(.custom(FontApp.regular, size: 18))
                             .foregroundStyle(.white)
                         

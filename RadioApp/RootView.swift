@@ -52,7 +52,9 @@ struct RootView: View {
                 VStack {
                     VStack {
                         HStack(spacing: 0) {
-                            Button { print(viewModel.user) } label: {
+                            NavigationLink {
+                                StationDetailView(viewModel: viewModel)
+                            } label: {
                                 Image("appLogo")
                                     .resizableToFit()
                                     .frame(width: 33)
