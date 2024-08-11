@@ -111,8 +111,9 @@ struct PasswordResetView: View {
                         Button {
                             Task {
                                 do {
-                                    //sendCheck =
+//                                    sendCheck =
                                     try await FBAuthService.shared.updatePassword(password: password)
+                                    
                                 } catch {
                                     print("error")
                                 }

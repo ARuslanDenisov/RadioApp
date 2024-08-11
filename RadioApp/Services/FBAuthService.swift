@@ -26,7 +26,7 @@ struct AuthDataResultModel {
 final class FBAuthService {
     static let shared = FBAuthService()
     private init() {}
-    var currentUser : User?
+    var currentUser: User?
     
     
     func signIn (email: String, password: String ) async throws -> Bool {
@@ -103,6 +103,16 @@ final class FBAuthService {
     }
     
     func updatePassword(password: String) async throws {
+        let user = Auth.auth().currentUser
+        let credential = EmailAuthProvider.credential(withEmail: "krasnov1yuri@gmail.com", password: "Test123")
+        
+        user?.reauthenticate(with: credential) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                print(result ?? "")
+            }
+        }
         try await Auth.auth().currentUser?.updatePassword(to: password)
     }
 }
