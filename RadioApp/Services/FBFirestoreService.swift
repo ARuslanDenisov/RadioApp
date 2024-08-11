@@ -74,6 +74,15 @@ class FBFirestoreService {
     
     //delete
     
+    func deleteFavoriteStation (user: UserModel, station: StationModel) async throws {
+        do {
+            try await favoritesRef.document(user.id).collection("favorites").document(station.id).delete()
+        } catch {
+            print("favorites in error")
+            throw error
+        }
+    }
+    
     func deleteUser (user: UserModel) async throws {
         do {
             try await usersRef.document(user.id).delete()
