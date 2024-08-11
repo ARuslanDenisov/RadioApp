@@ -104,7 +104,7 @@ final class FBAuthService {
     
     func updatePassword(password: String) async throws {
         let user = Auth.auth().currentUser
-        let credential = EmailAuthProvider.credential(withEmail: "krasnov1yuri@gmail.com", password: "Test123")
+        let credential = EmailAuthProvider.credential(withEmail: "", password: "")
         
         user?.reauthenticate(with: credential) { result, error in
             if let error = error {

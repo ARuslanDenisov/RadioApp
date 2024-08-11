@@ -26,13 +26,6 @@ struct AuthView: View {
                         .resizableToFit()
                         .frame(width: 58, height: 58)
                     Spacer()
-                    Button {
-                        authViewModel.email = "challenge3fb@gmail.com"
-                        authViewModel.password = "SwiftTeam6"
-                    } label: {
-                        Image(systemName: "person")
-                            .frame(width: 10)
-                    }
                 }
                 HStack {
                     VStack(alignment: .leading) {
@@ -247,7 +240,7 @@ struct AuthView: View {
                             Button {
                                 authViewModel.signInBool.toggle()
                             } label: {
-                              Text(String(format: "Or %@".localized, authViewModel.signInBool ? "Sign Up".localized : "Sign In".localized))
+                              Text(String(format: "Or %@".localized, authViewModel.signInBool ? "Sign up".localized : "Sign in".localized))
                                     .padding(.vertical, 8)
                                     .foregroundStyle(.raLightGray)
                                     .font(.custom(FontApp.medium, size: 16))
