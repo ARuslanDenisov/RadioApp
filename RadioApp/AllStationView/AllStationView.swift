@@ -150,7 +150,7 @@ struct AllStationView: View {
                                 HStack {
                                     Spacer()
                                     VStack {
-                                        ScrollView {
+                                        ScrollView (showsIndicators: false) {
                                             ForEach(searchArray, id:\.id) { station in
                                                 if viewModel.stationNow.id == station.id {
                                                     RadioBigAllStationElement(station: station, playingNow: true)
@@ -159,6 +159,9 @@ struct AllStationView: View {
                                                             viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
                                                             viewModel.radioPlayer.playMusic()
                                                             viewModel.play = true
+                                                        }
+                                                        .onLongPressGesture(minimumDuration: 1.0) {
+                                                            viewModel.showDetailView = true
                                                         }
                                                         
                                                 } else {
@@ -194,7 +197,7 @@ struct AllStationView: View {
                                 HStack {
                                     Spacer()
                                     VStack {
-                                        ScrollView {
+                                        ScrollView (showsIndicators: false) {
                                             ForEach(searchArray, id: \.id ) { station in
                                                 if viewModel.stationNow.id == station.id {
                                                     RadioBigAllStationElement(station: station, playingNow: true)
@@ -203,6 +206,9 @@ struct AllStationView: View {
                                                             viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
                                                             viewModel.radioPlayer.playMusic()
                                                             viewModel.play = true
+                                                        }
+                                                        .onLongPressGesture(minimumDuration: 1.0) {
+                                                            viewModel.showDetailView = true
                                                         }
                                                         
                                                 } else {
@@ -250,7 +256,7 @@ struct AllStationView: View {
                                         HStack {
                                             Spacer()
                                             VStack {
-                                                ScrollView {
+                                                ScrollView (showsIndicators: false) {
                                                     ForEach (searchArray, id: \.id) { station in
                                                         if viewModel.stationNow.id == station.id {
                                                             RadioBigAllStationElement(station: station, playingNow: true)
@@ -259,6 +265,9 @@ struct AllStationView: View {
                                                                     viewModel.radioPlayer.loadPlayer(from: viewModel.stationNow)
                                                                     viewModel.radioPlayer.playMusic()
                                                                     viewModel.play = true
+                                                                }
+                                                                .onLongPressGesture(minimumDuration: 1.0) {
+                                                                    viewModel.showDetailView = true
                                                                 }
                                                                 
                                                         } else {

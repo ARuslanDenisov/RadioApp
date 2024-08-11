@@ -15,7 +15,7 @@ struct PopularView: View {
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
                     .padding(.top, 80)
-                ScrollView{
+                ScrollView (showsIndicators: false) {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 139))], spacing: 15) {
                     
                         ForEach(viewModel.popular.indices, id: \.self) { index in

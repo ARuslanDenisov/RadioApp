@@ -24,7 +24,7 @@ struct FavoriteView: View {
                     .foregroundStyle(.white)
                     .font(.custom(FontApp.regular, size: 30))
                     .padding(.top, 80)
-                ScrollView {
+                ScrollView (showsIndicators: false) {
                     ForEach(viewModel.user.favorites) { station in
                         ZStack {
                             if station.id != viewModel.stationNow.id {
@@ -97,11 +97,11 @@ struct FavoriteView: View {
                 .offset(x:-7)
                 Spacer()
             }
-            .onDisappear {
-                Task {
-                    try await FBFirestoreService.shared.updateFavorites(user: viewModel.user)
-                }
-            }
+//            .onDisappear {
+//                Task {
+//                    try await FBFirestoreService.shared.updateFavorites(user: viewModel.user)
+//                }
+//            }
             
             
         }
