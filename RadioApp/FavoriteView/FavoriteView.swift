@@ -54,7 +54,7 @@ struct FavoriteView: View {
                                     Button {
                                         viewModel.toFavorite(station: station)
                                         Task {
-                                            try await FBFirestoreService.shared.updateFavorites(user: viewModel.user)
+                                            try await FBFirestoreService.shared.deleteFavoriteStation(user:viewModel.user, station: station)
                                         }
                                     } label : {
                                         ZStack {
