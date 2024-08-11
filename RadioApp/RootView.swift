@@ -115,6 +115,7 @@ struct RootView: View {
                     
                 }
                 .opacity(viewModel.opacityAmount)
+                .ignoresSafeArea()
             }
         }
         .fullScreenCover(isPresented: $viewModel.showDetailView, content: {
