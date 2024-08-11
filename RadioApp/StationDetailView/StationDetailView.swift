@@ -95,7 +95,14 @@ struct StationDetailView: View {
                         }
                         Spacer()
                         Button {
-                            viewModel.toFavorite(station: viewModel.stationNow )
+                            if viewModel.checkFavorite(station: viewModel.stationNow) { 
+                                viewModel.toFavorite(station: viewModel.stationNow)
+                                Task {
+                                    try await FBFirestoreService.shared.deleteFavoriteStation(user: viewModel.user ,station: viewModel.stationNow )
+                                    }
+                            } else {
+                                viewModel.toFavorite(station: viewModel.stationNow )
+                            }
                         } label: {
                             Image(systemName: viewModel.checkFavorite(station: viewModel.stationNow) ? "heart.fill" : "heart")
                                 .resizableToFit()
